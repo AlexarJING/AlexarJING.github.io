@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Hello World"/>
+        <meta property="og:title" content="写在前面"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>Hello World - Alexar的Love2d实战教程</title>
+    <title>写在前面 - Alexar的Love2d实战教程</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -137,7 +137,7 @@
     <div class="post-header">
         <h1 class="title">
             <a href="/2016/11/24/hello-world/">
-                Hello World
+                写在前面
             </a>
         </h1>
         <div class="post-info">
@@ -155,15 +155,15 @@
         
 
         <!-- Post Content -->
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>love2d以下简称love</p>
+<h1 id="写给love新人的几句话"><a href="#写给love新人的几句话" class="headerlink" title="写给love新人的几句话"></a>写给love新人的几句话</h1><p>这段文字希望成为我自己教程的开篇，我希望大家在学习love之前能够了解一些love的知识，让大家能够认识love，从而决定是否选择love。<br>说起来很心寒，国内现在有几个人正在用love写东西呢，有多少成品呢？寥寥无几。也许国人对Love这种小众引擎有着自来的偏见，就像去饭店吃饭，冷冷清清的饭店的饭菜永远不好吃，因为没什么人选择，导致分化更加严重。当然国内的环境，生活压力大，很少人对love这种纯“爱好”而非职业技能还抱着很大的激情，这是可以理解的。<br>不过仍然希望现在的年轻人在压力下，仍能有自己的爱好，自己的圈子，而非浑浑噩噩。</p>
+<h3 id="love2d是什么"><a href="#love2d是什么" class="headerlink" title="love2d是什么"></a>love2d是什么</h3><p>love是一个跨平台的游戏程序框架，与其说love是一个游戏引擎不如说love是一个游戏编程框架。所以它的本质是程序向的，而非脚本向的。<br>这意味着你需要具备一定的lua编程能力，当然编程能力可以跟游戏开发能力同步提升,而lua又是一种十分简单易学的语言，所以对于新手不用太担心语言问题。<br>love相比cocos,unity3d,defold等游戏引擎最大的特点就是不具备任何虚概念，比如我们常见的“精灵”、“层”、“场景”等。也就是说任何游戏虚拟对象都需要你自己来构建，值得庆幸的是作为初学者我们不需要考虑这些。<br>love本身的功能很底层，但是love有着相当活跃的一个论坛，里面有各种各样的库来提供额外的上层功能，包括上面提到的精灵等，也有碰撞、光影、3d、ui等等一些高级功能。当然你也可以从git上获取大量love库、工具和学习素材。</p>
+<h3 id="love2d能做什么"><a href="#love2d能做什么" class="headerlink" title="love2d能做什么"></a>love2d能做什么</h3><p>几乎任何类型的2d游戏，这里的2d游戏主要是画面表现的2d，也就是说3d转2d这类的游戏最好不要在love上尝试，毕竟它是2d引擎，3d的用起来效率不高，且没有配套工具。<br>几乎所有游戏中需要互动功能，包括键盘输入、触屏输入、游戏控制器输入、音频输出、图像输出、视频输出等等。通过第三方库还可以跟其他设备互动。<br>包括各种tile-based游戏，也就是常说的瓦片地图游戏。（通过第三方库）<br>几乎全部2d游戏可能包含的特效。因为love支持blendmode,mesh,shader,因此包括任意形变、渐变、颜色混合、动态shader、静态图像处理等等。<br>目前love几乎无差别的支持全平台，也就是一个代码直接对应各种平台 包括，win linux mac ios android h5 甚至还有psp nds等等。<br>由于love是底层向的，因此除了游戏，很容易做其他一些工具，比如图形处理，游戏界面编辑，电路沙盘，数学可视化，各种模拟等等。<br>当然，love实际最擅长的当属小游戏或者游戏原型的快速开发，因为lua没有上层结构，因此很容易根据自己的需求构建代码结构，这是其他引擎无法比拟的。</p>
+<h3 id="love2d的利与弊"><a href="#love2d的利与弊" class="headerlink" title="love2d的利与弊"></a>love2d的利与弊</h3><p>初学者最喜欢做的就是下载一大堆引擎，搜索各种引擎的好与坏，然后在各种论坛去讨论自己该选怎么引擎。这能够被理解，但对于你的成长益处不大。<br>任何一款引擎都是作者的心血，作者只要能发布它，就可以肯定它不是一无是处，但它也不可能无所不能，love也是这样。<br>这里我大体的介绍下love的利与弊，读者可以根据自己的想法选择love或者去找一个你喜欢的引擎。</p>
+<h4 id="positive"><a href="#positive" class="headerlink" title="positive"></a>positive</h4><p>love使用lua语言，简单易学，默认使用luajit,效率总体相当于c代码的1/5左右，支持ffi所以你可以将功能任意拓展。<br>love是一个底层向的框架，没有上层概念，因此不会被各种诸如场景、节点、调度器等等概念拒之门外。不需要任何理论学习即可快速上手。<br>love的本质还是编程，因此在love游戏开发能力成长的同时，你对数据结构、代码结构、代码优化等领域自然而然的提升。<br>love几乎支持全平台，因此方便不同平台间的快速编译。<br>love除了游戏，做其他类型的工具也很方便。<br>love擅长游戏快速开发。<br>love属于那种新手很容易入门，但想深入你仍然有很长的路要走，也就是学习曲线够平滑，而且深度足够深。<br>love有很好的wiki，很活跃的论坛（论坛成员来自世界各地，但以英语为交流语言），几乎有问必答。而且论坛内有海量的学习资料。<br>很多代码编辑器都有love的语法检测和提示，包括sublime text atom zerobrane等等。<br>有love作为基础，任意引擎几乎通吃。</p>
+<h4 id="negative"><a href="#negative" class="headerlink" title="negative"></a>negative</h4><p>love代码加密是一个问题，虽然可以制作成lua字节码，但反过来任何语言都可以被破解，不是么，当你的作品达到有人不嫌麻烦去破解，说明你已经成功了。<br>love的游戏开发到发布还没有一个统一的一次性解决方案，当然也有很多第三方工具可以选择，不过相比其他引擎还是比较麻烦。<br>love的运行效率相比cocos2d仍有一定差距，love的主循环都是基于lua的，而cocos本身只是一个cpp引擎的luabinding，其实他们的本质是不同的。<br>love过于灵活以至于代码范式、代码结构、代码质量千差万别。同样一个目的，实现的方式也是不一而同。对于企业，不太有可能把这种灵活性交给每个员工。<br>love由于没有上层概念，因此对于一些定式的游戏生产力略显不足。（当然你自己写的上层代码是可以复用的）<br>love没有内建不同平台分别的api，比如支付，积分榜等，需要用户自己针对平台单独绑定，这也是一些独立商业游戏的硬伤。<br>love的大多数库都是老外写的，对于中文可能支持不是很好，还有一些平台相关的中文导致的问题。<br>love的中文群体较小，教学资源略显不足，当然这两个方面是相互影响的，很少人愿意写教程只被十几个人看，也很少人愿意学习一个连教程都找不到的引擎。<br>love的主要用户还是说英文，如果你英文不是很给力的话，你将失去大量的库、源码、学习资源。<br>基于种种原因，没有一个企业会用love作为游戏引擎，也就是无论你love路走多远，它都不会直接的成为你找工作的工具。</p>
+<h3 id="如何学love2d"><a href="#如何学love2d" class="headerlink" title="如何学love2d"></a>如何学love2d</h3><p>核心中的核心：和学习任何编程语言一样，记住一句话no more talking, just<br>coding，是的空谈无益，踏踏实实写代码。你的能力永远跟代码量成正比，跟你看了多少教程关系不大。<br>善于利用wiki,它是我见过写的最为完整的wiki了，虽然是英文的（你可以编辑中文页面）。在里面可以查api及其使用实例以及一些提示性说明。<br>善于利用论坛，它也是我见过的最为友好的论坛之一，里面常年有大佬解答你各式各样的问题，当然提问前最好搜一下论坛，看看是不是已经有你想要的答案了。<br>善于利用git,love的价值核心在于开源，是的，你可以再github或者bitbucket上搜索到大量的love的东西，慢慢学习吧。<br>初学者可以不太在意代码结构，以达成效果为首要目的，随着你能力的提升，你自己就会意识到代码结构的重要性了，同时也有能力去改善你的代码结构。<br>虽然看源码是一个很好的事，不过很多代码不一定是你当前阶段能掌握的，更多的你要思考达到那个效果，我要怎么做。<br>我可以建议你去多少学点英文么？实际上游戏所涉及的英文单词很少很少，英文无障碍会给你带来巨大的优势。<br>我可以建议你去多少学点数学和物理么？数学是代码的基础，基本的几何公式是必须的，物理的一些牛二定律什么不用多说了。<br>初学者不要眼高手低，上去就要做自己的MMO，一定要把大的任务块分解到自己能够承受的范围内，然后去敲代码。<br>要提升自己的自学能力，虽然有句话说不会就问，但问题是不会的时候第一反应应该是问百度，问wiki，问论坛，然后再去问别人。这样你才能有解决问题的能力。</p>
+<p>还有别的么？ 暂时想不起，但还是要说一句话，no more talking, just coding</p>
 
     </div>
 
@@ -204,7 +204,7 @@
             </li>
             
             <li>
-                <a class="footer-post" href="/2016/11/24/hello-world/">Hello World</a>
+                <a class="footer-post" href="/2016/11/24/hello-world/">写在前面</a>
             </li>
             
         </ul>
