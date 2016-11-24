@@ -189,30 +189,12 @@
     
         <div class="content">
             <h1 id="love2d环境设置"><a href="#love2d环境设置" class="headerlink" title="love2d环境设置"></a>love2d环境设置</h1><p>本章介绍如何安装love2d,设置环境变量,设置IDE,并进行简单的测试。<br>本章大多数内容对应官网的<a href="https://www.love2d.org/wiki/Getting_Started" target="_blank" rel="external">getting start</a>章节.</p>
-<h2 id="love2d的安装"><a href="#love2d的安装" class="headerlink" title="love2d的安装"></a>love2d的安装</h2><pre><code>浏览器进入[love2d的官网](https://www.love2d.org/)即可看到最新版本的下载地址。可以根据具体需要进行下载。
-这里简单介绍下各个下载版本的不同。
-win64/win32的区别不多说。简单说一下installer和zip版本的区别,installer是传统的安装向导,可以一步一步引导你把软件安装到指定位置，并且帮助你设置好环境变量。如果下载zip版，则需要自己在win设置中添加love目录到环境变量love。苹果系统,linux请自己查官网吧，我没有终端。其他下载中，有安卓的预编译客户端，可以自行选择love文件来运行love游戏。还有其他的love源文件，用来编译游戏的。还有love引擎的历史版本。论坛有很多案例是用老版写的，如果你对版本变更不是很熟悉的话，可以用旧版本打开游戏。
-</code></pre><h2 id="love2d目录结构"><a href="#love2d目录结构" class="headerlink" title="love2d目录结构"></a>love2d目录结构</h2><pre><code>love2d目录结构下包括引擎程序love.exe，lovec.exe，love2d的依赖库各种dll，图标文件ico，版本说明，以及软件协议。
-这里值得注意的是，love2d属于开源引擎，意味着你可以免费使用，但不代表你可以声称该引擎是你开发的。所以在任何正式发布的游戏里，一定要附带目录下的软件协议。
-</code></pre><h2 id="测试love2d"><a href="#测试love2d" class="headerlink" title="测试love2d"></a>测试love2d</h2><pre><code>双击love.exe，可以看到no-game屏幕，当你不已任何参数执行love.exe时，将显示此画面。
-如果想真正运行你自己写的游戏，需要以你的游戏源文件目录为第一参数来运行love.exe。
-lovec.exe是一个附带控制台的love系统，当你需要love的输出目标为内建控制台时，使用lovec.exe代替love.exe
-</code></pre><h2 id="IDE（集成开发环境）"><a href="#IDE（集成开发环境）" class="headerlink" title="IDE（集成开发环境）"></a>IDE（集成开发环境）</h2><pre><code>使用ide，你可以方便的控制项目文档结构，编辑源文件，进行编译运行及调试。当然，你也完全可以当一个hardcore用记事本开发。
-目前拥有比较完整插件的ide包括：sublime text; zerobrane; atom; notepad++ 等，也有论坛内高手做的web编辑器等等。这里介绍sublime text和 zerobrane的配置，其他情形类似。
-对于sublimetext的安装，这里不再介绍。进入工具——命令托盘——安装包——lualove安装。配置情形按照官网相关介绍。
-zerobrane是一个专门的lua开发ide，提供了sublime无法胜任的debug调试功能，所以比较推荐这个软件。而且它的用户设置很强大。插件也是用lua写的，所以很容易自行添加额外的功能，比如一键打包编译等等。如果是installer默认安装则不需要做任何设置，否则需要在用户设置文档中添加 
-</code></pre><figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">path.love2d = 安装路径</div></pre></td></tr></table></figure>
-<pre><code>喜欢中文界面的可以添加
-</code></pre><figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">language = <span class="string">"cn"</span></div></pre></td></tr></table></figure>    
-<h2 id="建立第一个项目"><a href="#建立第一个项目" class="headerlink" title="建立第一个项目"></a>建立第一个项目</h2><pre><code>这里以zerobrane开发环境为例，其他类似。
-首先在你喜欢的位置新建可以文件夹test。
-在zerobrane项目选项卡下右键——选择项目文件夹,定位到你的test文件夹上。
-右键点击test文件夹，建立文件main.lua。这个是所有love程序的入口，必须有这个文件。
-点击main.lua进行编辑。键入下面代码
-</code></pre><figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">love.<span class="built_in">load</span>()</div><div class="line">	<span class="built_in">print</span>(<span class="string">"hello world"</span>)</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">love.draw()</div><div class="line">	love.graphics.<span class="built_in">print</span>(<span class="string">"hello world"</span>)</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
-<pre><code>在编辑器项目-lua解释器下选择love。点击工具栏向右方向的双箭头即可执行。你将看到控制台以及游戏窗体输出hello world。
-到这里，游戏开发环境设置结束，我们将以这个环境进行我们后面游戏的开发。
-</code></pre>
+<h2 id="love2d的安装"><a href="#love2d的安装" class="headerlink" title="love2d的安装"></a>love2d的安装</h2><p>浏览器进入<a href="https://www.love2d.org/" target="_blank" rel="external">love2d的官网</a>即可看到最新版本的下载地址。可以根据具体需要进行下载。<br>这里简单介绍下各个下载版本的不同。<br>win64/win32的区别不多说。简单说一下installer和zip版本的区别,installer是传统的安装向导,可以一步一步引导你把软件安装到指定位置，并且帮助你设置好环境变量。如果下载zip版，则需要自己在win设置中添加love目录到环境变量love。苹果系统,linux请自己查官网吧，我没有终端。其他下载中，有安卓的预编译客户端，可以自行选择love文件来运行love游戏。还有其他的love源文件，用来编译游戏的。还有love引擎的历史版本。论坛有很多案例是用老版写的，如果你对版本变更不是很熟悉的话，可以用旧版本打开游戏。</p>
+<h2 id="love2d目录结构"><a href="#love2d目录结构" class="headerlink" title="love2d目录结构"></a>love2d目录结构</h2><p>love2d目录结构下包括引擎程序love.exe，lovec.exe，love2d的依赖库各种dll，图标文件ico，版本说明，以及软件协议。<br>这里值得注意的是，love2d属于开源引擎，意味着你可以免费使用，但不代表你可以声称该引擎是你开发的。所以在任何正式发布的游戏里，一定要附带目录下的软件协议。</p>
+<h2 id="测试love2d"><a href="#测试love2d" class="headerlink" title="测试love2d"></a>测试love2d</h2><p>双击love.exe，可以看到no-game屏幕，当你不已任何参数执行love.exe时，将显示此画面。<br>如果想真正运行你自己写的游戏，需要以你的游戏源文件目录为第一参数来运行love.exe。<br>lovec.exe是一个附带控制台的love系统，当你需要love的输出目标为内建控制台时，使用lovec.exe代替love.exe</p>
+<h2 id="IDE（集成开发环境）"><a href="#IDE（集成开发环境）" class="headerlink" title="IDE（集成开发环境）"></a>IDE（集成开发环境）</h2><p>使用ide，你可以方便的控制项目文档结构，编辑源文件，进行编译运行及调试。当然，你也完全可以当一个hardcore用记事本开发。<br>目前拥有比较完整插件的ide包括：sublime text; zerobrane; atom; notepad++ 等，也有论坛内高手做的web编辑器等等。这里介绍sublime text和 zerobrane的配置，其他情形类似。<br>对于sublimetext的安装，这里不再介绍。进入工具——命令托盘——安装包——lualove安装。配置情形按照官网相关介绍。<br>zerobrane是一个专门的lua开发ide，提供了sublime无法胜任的debug调试功能，所以比较推荐这个软件。而且它的用户设置很强大。插件也是用lua写的，所以很容易自行添加额外的功能，比如一键打包编译等等。如果是installer默认安装则不需要做任何设置，否则需要在用户设置文档中添加<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">path.love2d = 安装路径</div></pre></td></tr></table></figure><br>    喜欢中文界面的可以添加<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">language = <span class="string">"cn"</span></div></pre></td></tr></table></figure>    </p>
+<h2 id="建立第一个项目"><a href="#建立第一个项目" class="headerlink" title="建立第一个项目"></a>建立第一个项目</h2><p>这里以zerobrane开发环境为例，其他类似。<br>首先在你喜欢的位置新建可以文件夹test。<br>在zerobrane项目选项卡下右键——选择项目文件夹,定位到你的test文件夹上。<br>右键点击test文件夹，建立文件main.lua。这个是所有love程序的入口，必须有这个文件。<br>点击main.lua进行编辑。键入下面代码<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">love.<span class="built_in">load</span>()</div><div class="line">	<span class="built_in">print</span>(<span class="string">"hello world"</span>)</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">love.draw()</div><div class="line">	love.graphics.<span class="built_in">print</span>(<span class="string">"hello world"</span>)</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure><br>在编辑器项目-lua解释器下选择love。点击工具栏向右方向的双箭头即可执行。你将看到控制台以及游戏窗体输出hello world。<br>到这里，游戏开发环境设置结束，我们将以这个环境进行我们后面游戏的开发。</p>
+
         </div>
     
 
