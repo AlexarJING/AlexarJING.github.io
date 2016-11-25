@@ -139,6 +139,74 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2016/11/25/第1章-游戏的基本元素/">
+                第1章 游戏的基本元素
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016-11-25</span>
+            
+            
+
+            
+            
+                <span class="category">
+                    <a href="/categories/教程/">教程</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h1 id="游戏的基本元素"><a href="#游戏的基本元素" class="headerlink" title="游戏的基本元素"></a>游戏的基本元素</h1><h4 id="教程开启之前，笔者假定你对lua已经有了初步了解，因为在教程中，我不会再讲解关于lua的基础使用。所谓初步了解是指，起码了解lua的数据类型，函数，遍历，条件语句。对自定义迭代器，metatable-与c互动方面暂时不做要求。如有可能，希望了解一些初步的oop-面向对象编程-和eop-面向组件编程-的概念。因为我们未来是写程序的，而写脚本，因此对于程序架构需要有一定的了解。"><a href="#教程开启之前，笔者假定你对lua已经有了初步了解，因为在教程中，我不会再讲解关于lua的基础使用。所谓初步了解是指，起码了解lua的数据类型，函数，遍历，条件语句。对自定义迭代器，metatable-与c互动方面暂时不做要求。如有可能，希望了解一些初步的oop-面向对象编程-和eop-面向组件编程-的概念。因为我们未来是写程序的，而写脚本，因此对于程序架构需要有一定的了解。" class="headerlink" title="教程开启之前，笔者假定你对lua已经有了初步了解，因为在教程中，我不会再讲解关于lua的基础使用。所谓初步了解是指，起码了解lua的数据类型，函数，遍历，条件语句。对自定义迭代器，metatable,与c互动方面暂时不做要求。如有可能，希望了解一些初步的oop(面向对象编程)和eop(面向组件编程)的概念。因为我们未来是写程序的，而写脚本，因此对于程序架构需要有一定的了解。"></a>教程开启之前，笔者假定你对lua已经有了初步了解，因为在教程中，我不会再讲解关于lua的基础使用。所谓初步了解是指，起码了解lua的数据类型，函数，遍历，条件语句。对自定义迭代器，metatable,与c互动方面暂时不做要求。如有可能，希望了解一些初步的oop(面向对象编程)和eop(面向组件编程)的概念。因为我们未来是写程序的，而写脚本，因此对于程序架构需要有一定的了解。</h4><p>好啦，言归正传，下面我们将开启对游戏的另一个视角，从如何玩游戏到如何做游戏。本章的主要目的是让你更深的了解何为游戏，以及用love2d我们有哪些基本的做游戏的工具。</p>
+<h2 id="游戏的基本元素-1"><a href="#游戏的基本元素-1" class="headerlink" title="游戏的基本元素"></a>游戏的基本元素</h2><p>游戏，换个说法可以说是一种有趣的人机互动。<br>有趣就意味着你的游戏得有“游戏性”，也就是让人觉得“好玩”，或者起码让人坚持玩下去。<br>人机互动意味着起码你需要有用户输入，而输出对于现在一般电脑来讲，主要是声音和图像的输出。当然手机有摄像头是输入，有震动是输出。<br>人机互动还意味着输入和输出的反馈关系，好的输入会产生正向的反馈，比如得分的画面和声音，不好的输入会产生负反馈，比如gameover。而游戏的“好玩”主要就是反馈的感觉如何上体现的。本章我们将用love实现一下简单的这种反馈。<br>本次我们仅仅学一下游戏最基本的元素，更复杂的元素我们在后面再慢慢道来。</p>
+<h2 id="love引擎循环"><a href="#love引擎循环" class="headerlink" title="love引擎循环"></a>love引擎循环</h2><p>想要实现游戏，就需要了解love引擎是如何运作的。</p>
+<p>首先要理解游戏循环，大家要知道，游戏,窗体等图形界面，程序都不是一闪而过，得出了结构程序就自动退出了，而是一直出于一个循环状态，在循环的某个间隙中，我们把程序的控制权交给程序，而其他时间它都处于休眠的状态。而在这个间隙中，我们要完成程序本身的所有工作，比如检测某个按钮是否被按下，画面如何更新等等。<br>理解到游戏程序是个循环，我们就可以进行下一步了。<br>作为一个循环，我们必须在循环之前做一些必要的设置。比如布置好一个场景，生成几个按钮等等。<br>在循环过程中，我们需要根据用户输入以及一些预先设定好的方式对场景进行变更。<br>既然场景变更了，那么它的画面表现也要随之变更。<br>至于如何设置，如何变更，如何绘图，love提供了几个回调函数。所谓回调函数的意义是，平时它不工作，直到特定的条件下，由条件的检测者来触发这些函数。另外，在检测者触发函数时，会传入一些参数。这些参数根据检测者的不同而不同。一句话，所有回调函数是不应该被用户（你们）主动调用的，而是系统（love引擎）来调用他们，而调用的时机也是系统控制的。<br>love.load函数，是在循环开始前的必要设置时触发。<br>love.update函数，是在循环时，每当程序拥有控制权时触发。<br>（程序合适拥有控制权？程序更新的快慢也叫帧率，也就是每秒更新的频率，对于游戏玩家来讲一点都不陌生，简称fps,而每帧之间的时间间隔叫帧时间，简称dt。<br>提高帧率有助于让画面流畅，降低帧率可以降低cpu或gpu的使用率从而节能。如果开启垂直同步，则默认60帧每秒。垂直同步相关信息请咨询百度。<br>love.draw函数，是在循环时，游戏逻辑更新后，画面更新时触发。<br>进阶：对于老手来讲，请自行参阅wiki中的love.run，它是love运行时的一个回调，它控制着love的游戏循环。你可以更深的了解love是如何更新引擎的，同时也可以自行修改，使之更符合自身需求。<br>同时，love还有其他的回调，即在其他条件下可以触发的回调。比如下面将介绍的键盘按下，鼠标按下等。（其他回调可以参阅wiki中回调部分）<br>换一句话将，做游戏就是要把对应的功能放到对应回调中就可以了。</p>
+<h2 id="love引擎的输入和输出"><a href="#love引擎的输入和输出" class="headerlink" title="love引擎的输入和输出"></a>love引擎的输入和输出</h2><p>####输入</p>
+<p>输入就是让电脑知道你想做什么，人物走停跑跳？车子拐弯？开枪？都需要电脑来读取你的输入。当然，输入也不局限于键盘和鼠标，他们是最基本的输入工具，还有比如游戏杆，触摸屏，重力感应器（手机，还有现在常见的vr设备），红外感应器（比如红外枪），还有主机相关的一堆杂七杂八的设备。下面介绍love2d提供了那些api(编程接口)来帮助用户判断这些输入。<br>键盘按下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">	love.keyreleased()  --回调</div><div class="line">`</div></pre></td></tr></table></figure></p>
+<p>键盘按住<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">love.keyboard.isDown() --状态函数</div></pre></td></tr></table></figure></p>
+<p>鼠标按下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">love.mousereleased() --回调</div></pre></td></tr></table></figure></p>
+<p>鼠标按住<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">love.mouse.isDown() --状态函数</div></pre></td></tr></table></figure></p>
+<p>我们发现，有些函数是回调函数，有些函数是状态函数，这里说明一下。回调函数，上面已经介绍了，是在某个状态下就立即触发的，它并不依赖游戏循环。也就是说即使在两帧的间隙中，有按下这个动作，控制者(love内部的事件系统)就会立即call这个函数，从而让你有机会执行到函数内部的内容。而状态函数是一个查询键盘状态的函数，可以任意场合被用户主动调用。<br>任意键(比如鼠标，键盘)有2种状态和2个回调。状态就是要么一个键是被按下的，要么这个键不被按下。而事件有按下事件和弹起事件，这两个事件回触发相应的回调函数，</p>
+<p>输出：<br>矢量绘图：<br>love.graphics.points,<br>love.graphics.line,<br>love.graphics.rectangle,<br>love.graphics.circle,<br>love.graphics.polygon,</p>
+<p>创建图像对象以及绘制图像<br>love.graphics.newImage<br>love.grphaics.draw</p>
+<p>设置字体以及绘制文字<br>love.graphics.newFont<br>love.graphics.print</p>
+<p>设置颜色<br>love.graphics.setColor</p>
+<p>在具体学习之前，我十分希望你们自己先wiki一下上面所介绍的api。</p>
+<p>ok,那么我们开始学习第一个love游戏。一开始就游戏？是的，让我们来试试。</p>
+<p>好啦，基础知识已经足够了，我们来开始实践操作。</p>
+<p>首先，我们新建一个main.lua文件，然后敲入我们的可以用到的回调。</p>
+<p>然后我们建立一个test对象，是的，lua table是我们最理想的对象形式，它融合了数组和构造（系数表）等功能，他可以包容数字，字符，表以及函数等等。总之用它没错^^<br>我们给test一些属性，比如他的位置x,y,它的图像对象image，它的文字对象“hello lovers!”我们后面图像和位置都需要更新他们。<br>我们知道，设置部分要写在love.load里面,于是有一下代码<br>function love.load()<br>    test = {<br>        x = 400,<br>        y = 300,<br>        image = love.graphics.newImage(“images/love-ball.png”),<br>        text = “hello lovers!”<br>    }<br>end<br>我们开始设计阶段：</p>
+<ol>
+<li>键盘按住ws时，每帧横向移动1个像素位置</li>
+<li>键盘按下ad时，每次纵向移动100个像素。</li>
+<li>鼠标任意键点击，随机重选位置。</li>
+<li>test需要画love-ball图片，需要一个线框圆圈以及一个第透明度的方块还要把文字写在下面。<br>上面几步我们基本实现了互动，只是还没有涉及“游戏性”的部分，我们之后再说。</li>
+</ol>
+<p>我们开始实现阶段：<br>实现键盘按住，在update中使用isDown函数，也就是每帧看看键盘是否按住，如果按住则进行纵向移动。<br>实现键盘按下，则不属于更新部分，因为无论是否有Update更新，这个回调都单独响应。于是在love.keyrelease下输入平移的判断。<br>实现鼠标点击随机移动，跟键盘按键类似。这里使用了随机函数，love.math.random,请自行查阅wiki。<br>插一句：love的绘制使用的是屏幕坐标系，也是就是屏幕左上角作为坐标原点，y轴正方向向下，x轴正方向向右。也许初学者对此很不适应，只能慢慢调整了。love的窗体默认状态下是800*600垂直同步。你可以通过love.conf来初始设置。以及love.graphics.setMode来动态调整。<br>update的回调函数有个参数叫dt，我们之前说的帧时间，我们暂时不用。可以使用love.timer.getDelta来获取。<br>function love.update(dt)<br>    if love.keyboard.isDown(“w”) then<br>        test.y = test.y - 1<br>    elseif love.keyboard.isDown(“s”) then<br>        test.y = test.y + 1<br>    end<br>end</p>
+<p>function love.keyreleased(key)<br>    if key == “a” then<br>        test.x = test.x - 100<br>    elseif key == “d” then<br>        test.x = test.x + 100<br>    end<br>end</p>
+<p>function love.mousereleased(key)<br>    test.x = love.math.random(1,800)<br>    test.y = love.math.random(1,600)<br>end</p>
+<p>接下来，我们让test呈现在我们屏幕上，<br>首先要注意几个问题，<br>love在绘制图片时，默认是以左上角作为锚点位置的，也就是你绘制在x,y上的是你图片左上角，有的人可能希望以图片的中心作为锚点。这里有两种方法，一种是你绘制时手动的左移图片，另一种是设置图片锚点。文字的绘制也有这个问题。<br>love的颜色设置，其方法收到blendMode的控制，我们暂时不管，只要知道，默认模式下，想绘制图片本色则设置255，255，255，255而，如果设置其他颜色则是染色的效果。<br>绘制可能遇到的属性包括，x,y位置，r旋转，sx,sy按坐标轴缩放，ox,oy锚点位置，kx,ky平行畸变（暂时不要管他）（进阶：如果知道4*4Matrix的童鞋移动很清除，这些东西实际上只是矩阵的简单化。当然你也可以用矩阵方式重新做这些。）<br>注意，锚点位置也会影响缩放中心和旋转中心，所以仅仅使用手动平移的画会有问题的。<br>function love.draw()<br>    love.graphics.setColor(255, 255, 255, 255)<br>    love.graphics.draw(test.image,test.x,test.y,0,1,1,32,32)<br>    –love.graphics.draw(test.image,test.x - 32,test.y - 32) 同样的效果，但是不方便未来的拓展。<br>    love.graphics.setColor(255, 0, 0, 255)<br>    love.graphics.circle(“line”, test.x, test.y, 100)<br>    love.graphics.setColor(0, 255, 255, 50)<br>    love.graphics.rectangle(“fill”, test.x - 100, test.y - 100, 200, 200)<br>    love.graphics.setColor(255, 255, 255, 255)<br>    love.graphics.print(test.text, test.x-100, test.y+100)<br>end<br>上面的代码就包含了，做一个游戏所需的互动内容。是不是很简单？ 我们现在实现了第一步。<br>接下来的一课，我们希望把游戏互动变得更加复杂和更有意思。就要在update里动手脚了。</p>
+<p>作业：<br>任意替换本课的图片内容，文字，颜色，矢量绘图，互动方式等</p>
+<p>请期待下一课，本课涉及的代码如下：<br>]]</p>
+<p>function love.load()<br>    test = {<br>        x = 400,<br>        y = 300,<br>        image = love.graphics.newImage(“images/love-ball.png”),<br>        text = “hello lovers!”<br>    }<br>end</p>
+<p>function love.update(dt)<br>    if love.keyboard.isDown(“w”) then<br>        test.y = test.y - 1<br>    elseif love.keyboard.isDown(“s”) then<br>        test.y = test.y + 1<br>    end<br>end</p>
+<p>function love.draw()<br>    love.graphics.setColor(255, 255, 255, 255)<br>    love.graphics.draw(test.image,test.x,test.y,0,1,1,32,32)<br>    –love.graphics.draw(test.image,test.x - 32,test.y - 32)<br>    love.graphics.setColor(255, 0, 0, 255)<br>    love.graphics.circle(“line”, test.x, test.y, 100)<br>    love.graphics.setColor(0, 255, 255, 50)<br>    love.graphics.rectangle(“fill”, test.x - 100, test.y - 100, 200, 200)<br>    love.graphics.setColor(255, 255, 255, 255)<br>    love.graphics.print(test.text, test.x-100, test.y+100)<br>end</p>
+<p>function love.keyreleased(key)<br>    if key == “a” then<br>        test.x = test.x - 100<br>    elseif key == “d” then<br>        test.x = test.x + 100<br>    end<br>end</p>
+<p>function love.mousereleased(key)<br>    test.x = love.math.random(1,800)<br>    test.y = love.math.random(1,600)<br>end</p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2016/11/24/第0-5章-相关资料/">
                 第0.5章 相关资料
             </a>
@@ -284,6 +352,10 @@
     <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
         <h2>最近发表</h2>
         <ul>
+            
+            <li>
+                <a class="footer-post" href="/2016/11/25/第1章-游戏的基本元素/">第1章 游戏的基本元素</a>
+            </li>
             
             <li>
                 <a class="footer-post" href="/2016/11/24/第0-5章-相关资料/">第0.5章 相关资料</a>
