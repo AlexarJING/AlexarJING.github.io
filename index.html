@@ -173,7 +173,7 @@
 <h3 id="计算某个点绕另一个点旋转后的坐标"><a href="#计算某个点绕另一个点旋转后的坐标" class="headerlink" title="计算某个点绕另一个点旋转后的坐标"></a>计算某个点绕另一个点旋转后的坐标</h3><p>如果。。。我们来画一条线，让它以线段的一段为轴旋转，应该如何做呢？<br>画线函数很简单，只需要两个端点的位置就行，为轴的端点是不动的，而我们要求的是另一端，而已知的是线段长。<br>首先我们建立一个游戏对象。<br>line = {<br>    ox = 0,<br>    oy = 0,<br>    len = 100 –(lenth)<br>    rot = 0,<br>    tx = 0,<br>    ty = -100<br>}<br>很容易看出，一端在原点0,0 长100，旋转为0的线段的另一端的坐标为0,-100。是如何计算的,其他旋转如何呢？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">line.tx = math.sin(line.rot)*line.len</div><div class="line">line.ty = -math.cos(line.rot)*line.len</div></pre></td></tr></table></figure></p>
 <p>这是个很容易的三角函数题，将端点T（相对于端点O）向两条坐标轴连辅助线，找到直角三角形，然后就找到函数关系了。</p>
 <p>但是如果是端点O不在坐标原点该如何呢？有两种思想解决。<br>一个是算数计算，连接O点到两个坐标轴，其延长线与T点的辅助线的交点会形成一个直角三角形，然后计算。<br>另一个思想是移动坐标轴，先按o点位于0，0将t点的位置计算出来。然后把整个坐标系移动到o点的实际位置，也就是t点也要按移动规则移动，然后计算。无论那种，最后都会得出下面的代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">line.tx = line.ox + math.sin(line.rot)*line.len</div><div class="line">line.ty = line.oy - math.cos(line.rot)*line.len</div></pre></td></tr></table></figure></p>
-<h3 id="计算两个点之间的旋转"><a href="#计算两个点之间的旋转" class="headerlink" title="计算两个点之间的旋转"></a>计算两个点之间的旋转</h3><p>比如，有一个坦克，坦克车辆的旋转由键盘控制，坦克的炮塔旋转由鼠标控制，那么，我们已知坦克的中心坐标和鼠标坐标，需要计算坦克的旋转了。实际上，整个过程就是上面过程的逆过程。用arc-tan（反正切）来计算结果。</p>
+<h3 id="计算两个点之间的旋转"><a href="#计算两个点之间的旋转" class="headerlink" title="计算两个点之间的旋转"></a>计算两个点之间的旋转</h3><p>比如，有一个坦克，坦克车辆的旋转由键盘控制，坦克的炮塔旋转由鼠标控制，那么，我们已知坦克的中心坐标和鼠标坐标，需要计算坦克的旋转了。实际上，整个过程就是上面过程的逆过程。用arc-tan（反正切）来计算结果。<br>同样两种思想，这里不再赘述。得出一下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
 
         </div>
     
@@ -435,6 +435,39 @@
 <h4 id="negative"><a href="#negative" class="headerlink" title="negative"></a>negative</h4><p>love代码加密是一个问题，虽然可以制作成lua字节码，但反过来任何语言都可以被破解，不是么，当你的作品达到有人不嫌麻烦去破解，说明你已经成功了。<br>love的游戏开发到发布还没有一个统一的一次性解决方案，当然也有很多第三方工具可以选择，不过相比其他引擎还是比较麻烦。<br>love的运行效率相比cocos2d仍有一定差距，love的主循环都是基于lua的，而cocos本身只是一个cpp引擎的luabinding，其实他们的本质是不同的。<br>love过于灵活以至于代码范式、代码结构、代码质量千差万别。同样一个目的，实现的方式也是不一而同。对于企业，不太有可能把这种灵活性交给每个员工。<br>love由于没有上层概念，因此对于一些定式的游戏生产力略显不足。（当然你自己写的上层代码是可以复用的）<br>love没有内建不同平台分别的api，比如支付，积分榜等，需要用户自己针对平台单独绑定，这也是一些独立商业游戏的硬伤。<br>love的大多数库都是老外写的，对于中文可能支持不是很好，还有一些平台相关的中文导致的问题。<br>love的中文群体较小，教学资源略显不足，当然这两个方面是相互影响的，很少人愿意写教程只被十几个人看，也很少人愿意学习一个连教程都找不到的引擎。<br>love的主要用户还是说英文，如果你英文不是很给力的话，你将失去大量的库、源码、学习资源。<br>基于种种原因，没有一个企业会用love作为游戏引擎，也就是无论你love路走多远，它都不会直接的成为你找工作的工具。</p>
 <h3 id="如何学love2d"><a href="#如何学love2d" class="headerlink" title="如何学love2d"></a>如何学love2d</h3><p>核心中的核心：和学习任何编程语言一样，记住一句话no more talking, just<br>coding，是的空谈无益，踏踏实实写代码。你的能力永远跟代码量成正比，跟你看了多少教程关系不大。<br>善于利用wiki,它是我见过写的最为完整的wiki了，虽然是英文的（你可以编辑中文页面）。在里面可以查api及其使用实例以及一些提示性说明。<br>善于利用论坛，它也是我见过的最为友好的论坛之一，里面常年有大佬解答你各式各样的问题，当然提问前最好搜一下论坛，看看是不是已经有你想要的答案了。<br>善于利用git,love的价值核心在于开源，是的，你可以再github或者bitbucket上搜索到大量的love的东西，慢慢学习吧。<br>初学者可以不太在意代码结构，以达成效果为首要目的，随着你能力的提升，你自己就会意识到代码结构的重要性了，同时也有能力去改善你的代码结构。<br>虽然看源码是一个很好的事，不过很多代码不一定是你当前阶段能掌握的，更多的你要思考达到那个效果，我要怎么做。<br>我可以建议你去多少学点英文么？实际上游戏所涉及的英文单词很少很少，英文无障碍会给你带来巨大的优势。<br>我可以建议你去多少学点数学和物理么？数学是代码的基础，基本的几何公式是必须的，物理的一些牛二定律什么不用多说了。<br>初学者不要眼高手低，上去就要做自己的MMO，一定要把大的任务块分解到自己能够承受的范围内，然后去敲代码。<br>要提升自己的自学能力，虽然有句话说不会就问，但问题是不会的时候第一反应应该是问百度，问wiki，问论坛，然后再去问别人。这样你才能有解决问题的能力。</p>
 <p>还有别的么？ 暂时想不起，但还是要说一句话，no more talking, just coding</p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2016/01/01/about/">
+                about
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016-01-01</span>
+            
+            
+
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h1 id="about"><a href="#about" class="headerlink" title="about"></a>about</h1><h2 id="Love2d"><a href="#Love2d" class="headerlink" title="Love2d"></a>Love2d</h2><p>或许你已经知道了，LÖVE <a href="https://www.love2d.org/" target="_blank" rel="external">https://www.love2d.org/</a><br>是一个使用 Lua 作为编程语言的 2D 游戏框架。LÖVE是完全免费的，能用在任何友好的开源项目，或者卓越的闭源的商业项目。 </p>
+<h2 id="Alexar"><a href="#Alexar" class="headerlink" title="Alexar"></a>Alexar</h2><p>一个外语专业的文科生，一个LÖVE的爱好者，业余游戏开发者，没什么好成品，半成品demo一大堆。喜欢开发些新鲜玩意。</p>
+<h2 id="本博客"><a href="#本博客" class="headerlink" title="本博客"></a>本博客</h2><p>本博客由github page + hexo 生成。暂时没有被百度收录。如果有人原意捐献一个域名的话。。。^^</p>
+<h2 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h2><p>Alexar Email: alexar@foxmail.com QQ: 1643386616<br>love2d群：104785979</p>
+<h2 id="版权"><a href="#版权" class="headerlink" title="版权"></a>版权</h2><p>本博客内容版权归Alexar所有，未经作者许可禁止任何转发和商业用途，作者保留一切权力。</p>
 
         </div>
     
