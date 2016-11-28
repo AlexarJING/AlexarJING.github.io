@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="描述">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="AlexarJING">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="第3章 角度，方向以及旋转"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="描述" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Alexar的Love2d实战教程"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>第3章 角度，方向以及旋转 - Alexar的Love2d实战教程</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2016/11/28/chapter3/">
+                第3章 角度，方向以及旋转
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016-11-28</span>
+            
+            <a href="#disqus_thread" class="comments">评论</a>
+            
+                <span class="category">
+                    <a href="/categories/初级教程/">初级教程</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h1 id="角度，方向以及旋转"><a href="#角度，方向以及旋转" class="headerlink" title="角度，方向以及旋转"></a>角度，方向以及旋转</h1><p>上一节课，我们学习了如何让物体（游戏对象）动起来。但是这种移动是“平移”，物体沿着一条直线移动,而直线的角度是固定不变的。而本次课我们将学到如何让物体按任意角度移动。</p>
+<p>对于平移而言，许多游戏都可以胜任了，比如超级玛丽中的马里奥人物移动，跳跃。实际上马里奥这个游戏对象并不涉及“角度”这个属性，虽然看起来它会按不同的角度跳跃。这是因为，有关它移动的方向都是固定的，只是大小不同，重力永远向下，而跳跃永远向上，移动也只有指向左和右。但是超级玛丽中，有一个游戏对象是必须引入角度这个参数，那就是火花吐出的火球（子弹），因为火球的移动速度是固定的，而方向是在发出时对准游戏角色的。其他例子比如俯视游戏角色移动（俯视赛车），几乎所有可以瞄准的子弹等等，换句话么，任何可以转向的游戏对象都需要引入角度这个属性。</p>
+<h2 id="角度、弧度初步"><a href="#角度、弧度初步" class="headerlink" title="角度、弧度初步"></a>角度、弧度初步</h2><p>一旦提到角度了，我们不得不说数学中的三角函数了。因为他们就是解决边角关系的工具。我们这里主要解决的是各种角和坐标轴之间的关系。<br>我们在love引擎中用到的角度一般以弧度制为准，即180度相当于弧度中的Pi（3.14…）,你可以使用math.rad 和math.deg进行相互转化。<br>一般而言，角度实际上指的是一个物体的方向和y轴负方向之间的角度差异。旋转为0时，方向指向y轴负方向，同理旋转为Pi/2时，也就是90度时，指的是x轴正方向。<br>角度对于我们游戏有什么帮助呢？我们如何使用它呢？我们用个简单的例子。<br>首先建立一个简单的游戏对象，我们之前学过的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">local rect = &#123;</div><div class="line">	x = 100,</div><div class="line">	y = 100,</div><div class="line">	image = love.graphics.newImage(&quot;test.png&quot;)</div><div class="line">	rot = 0</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里要讲解两点，首先，对于lua来讲，尽量使用局部变量来减少你变量的影响范围，能够提升效率的同时，方便debug，因为很很可能不知何时在某个函数中就对一个全局变量不小心赋值（覆盖）了。<br>第二，我们游戏对象多了一个rot属性，实际上就是旋转–rotation的缩写，看老外的代码你很可能用上这些英文和缩写，所以自己先用上吧。</p>
+<p>然后，我们希望让球转起来，同移动类似，就是每帧或者每秒对rot进行修改。所以在update中有如下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rect.rot = rect.rot + 0.2</div></pre></td></tr></table></figure></p>
+<p>记住，你的rot单位是弧度，每帧如果变化正好是2*Pi(6.28)你是看不出它旋转的,因为正好转了一整圈，所以要习惯弧度的尺度。<br>然后，绘制这个图片<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">love.graphics.draw(rect.image,rect.x,rect.y,rect.rot,1,1,rect.image:getWidth()/2,rect.image:getHeight()/2)</div></pre></td></tr></table></figure></p>
+<p>这里我们按draw的参数填入相应的数据，注意我们是如何得到一个图片的锚点中心的。最好的做法是先把这两个值得到，而不必没帧都去计算。这是你需要一直保持注意的习惯。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">--in load</div><div class="line">rect.ox = rect.image:getWidth()/2</div><div class="line">rect.oy = rect.image:getHeight()/2</div><div class="line"></div><div class="line">--in draw</div><div class="line">love.graphics.draw(rect.image,rect.x,rect.y,rect.rot,1,1,rect.ox,rect.oy)</div></pre></td></tr></table></figure></p>
+<p>完整的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">local rect</div><div class="line"></div><div class="line">function love.load()</div><div class="line">	rect = &#123;</div><div class="line">		x = 100,</div><div class="line">		y = 100,</div><div class="line">		image = love.graphics.newImage(&quot;test.png&quot;)</div><div class="line">		rot = 0</div><div class="line">	&#125; </div><div class="line">	rect.ox = rect.image:getWidth()/2</div><div class="line">	rect.oy = rect.image:getHeight()/2</div><div class="line">end</div><div class="line"></div><div class="line">function love.update()</div><div class="line">	rect.rot = rect.rot + 0.2</div><div class="line">end</div><div class="line"></div><div class="line">function love.draw()</div><div class="line">	love.graphics.draw(rect.image,rect.x,rect.y,rect.rot,1,1,rect.ox,rect.oy)</div><div class="line">end</div></pre></td></tr></table></figure>
+<p>我们会看到这个图片开始旋转啦。</p>
+<h3 id="计算某个点绕另一个点旋转后的坐标"><a href="#计算某个点绕另一个点旋转后的坐标" class="headerlink" title="计算某个点绕另一个点旋转后的坐标"></a>计算某个点绕另一个点旋转后的坐标</h3><p>如果。。。我们来画一条线，让它以线段的一段为轴旋转，应该如何做呢？<br>画线函数很简单，只需要两个端点的位置就行，为轴的端点是不动的，而我们要求的是另一端，而已知的是线段长。<br>首先我们建立一个游戏对象。<br>line = {<br>    ox = 0,<br>    oy = 0,<br>    len = 100 –(lenth)<br>    rot = 0,<br>    tx = 0,<br>    ty = -100<br>}<br>很容易看出，一端在原点0,0 长100，旋转为0的线段的另一端的坐标为0,-100。是如何计算的,其他旋转如何呢？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">line.tx = math.sin(line.rot)*line.len</div><div class="line">line.ty = -math.cos(line.rot)*line.len</div></pre></td></tr></table></figure></p>
+<p>这是个很容易的三角函数题，将端点T（相对于端点O）向两条坐标轴连辅助线，找到直角三角形，然后就找到函数关系了。</p>
+<p>但是如果是端点O不在坐标原点该如何呢？有两种思想解决。<br>一个是算数计算，连接O点到两个坐标轴，其延长线与T点的辅助线的交点会形成一个直角三角形，然后计算。<br>另一个思想是移动坐标轴，先按o点位于0，0将t点的位置计算出来。然后把整个坐标系移动到o点的实际位置，也就是t点也要按移动规则移动，然后计算。无论那种，最后都会得出下面的代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">line.tx = line.ox + math.sin(line.rot)*line.len</div><div class="line">line.ty = line.oy - math.cos(line.rot)*line.len</div></pre></td></tr></table></figure></p>
+<h3 id="计算两个点之间的旋转"><a href="#计算两个点之间的旋转" class="headerlink" title="计算两个点之间的旋转"></a>计算两个点之间的旋转</h3><p>比如，有一个坦克，坦克车辆的旋转由键盘控制，坦克的炮塔旋转由鼠标控制，那么，我们已知坦克的中心坐标和鼠标坐标，需要计算坦克的旋转了。实际上，整个过程就是上面过程的逆过程。用arc-tan（反正切）来计算结果。</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="love2d" data-title="love2d" data-url="alexarjing.github.io"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"love2d"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+    </div>
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>关于</h2>
+                <p>
+                    This theme was developed by <a href="https://github.com/klugjo">Jonathan Klughertz</a>. The source code is available on Github. Create Websites. Make Magic.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>最近发表</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2016/11/28/chapter3/">第3章 角度，方向以及旋转</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2016/11/25/chapter2/">第2章 让画面动起来</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2016/11/25/chapter1/">第1章 游戏的基本元素</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2016/11/24/chapter0-5/">第0.5章 相关资料</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>分类</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/初级教程/">初级教程</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/klugjo/hexo-theme-alpha-dust">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-instagram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://dribbble.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-dribbble"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.behance.net/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-behance"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://500px.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-500px"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:alexar@foxmail.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    本文作者Alexar alexar@foxmail.com; 原创内容禁止转载。作者保留一切权利。
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+
+
+</body>
+
+</html>
