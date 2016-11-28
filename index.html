@@ -139,6 +139,38 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2016/11/28/chapter4/">
+                第4章 碰撞检测及反馈
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016-11-28</span>
+            
+            
+
+            
+            
+                <span class="category">
+                    <a href="/categories/初级教程/">初级教程</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2016/11/28/chapter3/">
                 第3章 角度，方向以及旋转
             </a>
@@ -170,7 +202,8 @@
 <p>完整的代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">local rect</div><div class="line"></div><div class="line">function love.load()</div><div class="line">	rect = &#123;</div><div class="line">		x = 100,</div><div class="line">		y = 100,</div><div class="line">		image = love.graphics.newImage(&quot;test.png&quot;)</div><div class="line">		rot = 0</div><div class="line">	&#125; </div><div class="line">	rect.ox = rect.image:getWidth()/2</div><div class="line">	rect.oy = rect.image:getHeight()/2</div><div class="line">end</div><div class="line"></div><div class="line">function love.update()</div><div class="line">	rect.rot = rect.rot + 0.2</div><div class="line">end</div><div class="line"></div><div class="line">function love.draw()</div><div class="line">	love.graphics.draw(rect.image,rect.x,rect.y,rect.rot,1,1,rect.ox,rect.oy)</div><div class="line">end</div></pre></td></tr></table></figure>
 <p>我们会看到这个图片开始旋转啦。</p>
-<h3 id="计算某个点绕另一个点旋转后的坐标"><a href="#计算某个点绕另一个点旋转后的坐标" class="headerlink" title="计算某个点绕另一个点旋转后的坐标"></a>计算某个点绕另一个点旋转后的坐标</h3><p>如果。。。我们来画一条线，让它以线段的一段为轴旋转，应该如何做呢？<br>画线函数很简单，只需要两个端点的位置就行，为轴的端点是不动的，而我们要求的是另一端，而已知的是线段长。<br>首先我们建立一个游戏对象。<br>line = {<br>    ox = 0,<br>    oy = 0,<br>    len = 100 –(lenth)<br>    rot = 0,<br>    tx = 0,<br>    ty = -100<br>}<br>很容易看出，一端在原点0,0 长100，旋转为0的线段的另一端的坐标为0,-100。是如何计算的,其他旋转如何呢？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">line.tx = math.sin(line.rot)*line.len</div><div class="line">line.ty = -math.cos(line.rot)*line.len</div></pre></td></tr></table></figure></p>
+<h3 id="计算某个点绕另一个点旋转后的坐标"><a href="#计算某个点绕另一个点旋转后的坐标" class="headerlink" title="计算某个点绕另一个点旋转后的坐标"></a>计算某个点绕另一个点旋转后的坐标</h3><p>如果。。。我们来画一条线，让它以线段的一段为轴旋转，应该如何做呢？<br>画线函数很简单，只需要两个端点的位置就行，为轴的端点是不动的，而我们要求的是另一端，而已知的是线段长。<br>首先我们建立一个游戏对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">line = &#123;</div><div class="line">	ox = 0,</div><div class="line">	oy = 0,</div><div class="line">	len = 100 --(lenth)</div><div class="line">	rot = 0,</div><div class="line">	tx = 0,</div><div class="line">	ty = -100</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>很容易看出，一端在原点0,0 长100，旋转为0的线段的另一端的坐标为0,-100。是如何计算的,其他旋转如何呢？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">line.tx = math.sin(line.rot)*line.len</div><div class="line">line.ty = -math.cos(line.rot)*line.len</div></pre></td></tr></table></figure></p>
 <p>这是个很容易的三角函数题，将端点T（相对于端点O）向两条坐标轴连辅助线，找到直角三角形，然后就找到函数关系了。</p>
 <p>但是如果是端点O不在坐标原点该如何呢？有两种思想解决。<br>一个是算数计算，连接O点到两个坐标轴，其延长线与T点的辅助线的交点会形成一个直角三角形，然后计算。<br>另一个思想是移动坐标轴，先按o点位于0，0将t点的位置计算出来。然后把整个坐标系移动到o点的实际位置，也就是t点也要按移动规则移动，然后计算。无论那种，最后都会得出下面的代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">line.tx = line.ox + math.sin(line.rot)*line.len</div><div class="line">line.ty = line.oy - math.cos(line.rot)*line.len</div></pre></td></tr></table></figure></p>
 <h3 id="速度的分解"><a href="#速度的分解" class="headerlink" title="速度的分解"></a>速度的分解</h3><p>实际上上面的代码也适合速度分解，设想一个小车的速度为100，他的角度是Pi/6,那么它在x,y轴的速度分量分别是多少呢？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">car.speed = 100</div><div class="line">car.rot = math.pi/6</div><div class="line">car.vx = math.sin(car.rot)*car.speed</div><div class="line">car.vy = -math.cos(car.rot)*car.speed</div></pre></td></tr></table></figure></p>
@@ -499,6 +532,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2016/11/28/chapter4/">第4章 碰撞检测及反馈</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2016/11/28/chapter3/">第3章 角度，方向以及旋转</a>
             </li>
             
@@ -508,10 +545,6 @@
             
             <li>
                 <a class="footer-post" href="/2016/11/25/chapter1/">第1章 游戏的基本元素</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2016/11/24/chapter0-5/">第0.5章 相关资料</a>
             </li>
             
         </ul>

@@ -4,12 +4,12 @@
 
     
   <url>
-    <loc>http://yoursite.com/2016/11/28/chapter3/</loc>
-    <lastmod>2016-11-28T08:38:31.877Z</lastmod>
+    <loc>http://yoursite.com/2016/11/25/chapter2/</loc>
+    <lastmod>2016-11-28T09:05:20.310Z</lastmod>
     <data>
         <display>
-        <title>第3章 角度，方向以及旋转</title>
-        <pubTime>2016-11-28T01:33:23.000Z</pubTime>
+        <title>第2章 让画面动起来</title>
+        <pubTime>2016-11-25T06:53:56.000Z</pubTime>
         
          
            
@@ -22,12 +22,30 @@
 
     
   <url>
-    <loc>http://yoursite.com/2016/11/25/chapter2/</loc>
-    <lastmod>2016-11-28T06:54:47.887Z</lastmod>
+    <loc>http://yoursite.com/2016/11/28/chapter4/</loc>
+    <lastmod>2016-11-28T09:05:19.001Z</lastmod>
     <data>
         <display>
-        <title>第2章 让画面动起来</title>
-        <pubTime>2016-11-25T06:53:56.000Z</pubTime>
+        <title>第4章 碰撞检测及反馈</title>
+        <pubTime>2016-11-28T09:01:44.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="初级教程" url="http://yoursite.com/categories/%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2016/11/28/chapter3/</loc>
+    <lastmod>2016-11-28T09:05:17.001Z</lastmod>
+    <data>
+        <display>
+        <title>第3章 角度，方向以及旋转</title>
+        <pubTime>2016-11-28T01:33:23.000Z</pubTime>
         
          
            
