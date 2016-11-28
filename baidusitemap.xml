@@ -4,6 +4,78 @@
 
     
   <url>
+    <loc>http://yoursite.com/2016/11/24/chapter0/</loc>
+    <lastmod>2016-11-28T09:41:29.692Z</lastmod>
+    <data>
+        <display>
+        <title>第0章 环境设置</title>
+        <pubTime>2016-11-24T05:18:18.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="初级教程" url="http://yoursite.com/categories/%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2016/11/28/chapter3/</loc>
+    <lastmod>2016-11-28T09:41:29.608Z</lastmod>
+    <data>
+        <display>
+        <title>第3章 角度，方向以及旋转</title>
+        <pubTime>2016-11-28T01:33:23.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="初级教程" url="http://yoursite.com/categories/%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2016/11/25/chapter2/</loc>
+    <lastmod>2016-11-28T09:41:06.443Z</lastmod>
+    <data>
+        <display>
+        <title>第2章 让画面动起来</title>
+        <pubTime>2016-11-25T06:53:56.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="初级教程" url="http://yoursite.com/categories/%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2016/11/24/chapter0-5/</loc>
+    <lastmod>2016-11-28T09:40:51.444Z</lastmod>
+    <data>
+        <display>
+        <title>第0.5章 相关资料</title>
+        <pubTime>2016-11-24T06:08:58.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="初级教程" url="http://yoursite.com/categories/%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2016/11/28/chapter4/</loc>
     <lastmod>2016-11-28T09:18:38.446Z</lastmod>
     <data>
@@ -22,84 +94,12 @@
 
     
   <url>
-    <loc>http://yoursite.com/2016/11/28/chapter3/</loc>
-    <lastmod>2016-11-28T09:18:25.442Z</lastmod>
-    <data>
-        <display>
-        <title>第3章 角度，方向以及旋转</title>
-        <pubTime>2016-11-28T01:33:23.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="初级教程" url="http://yoursite.com/categories/%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2016/11/25/chapter2/</loc>
-    <lastmod>2016-11-28T09:17:53.766Z</lastmod>
-    <data>
-        <display>
-        <title>第2章 让画面动起来</title>
-        <pubTime>2016-11-25T06:53:56.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="初级教程" url="http://yoursite.com/categories/%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yoursite.com/2016/11/25/chapter1/</loc>
     <lastmod>2016-11-28T09:17:29.886Z</lastmod>
     <data>
         <display>
         <title>第1章 游戏的基本元素</title>
         <pubTime>2016-11-25T00:43:54.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="初级教程" url="http://yoursite.com/categories/%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2016/11/24/chapter0/</loc>
-    <lastmod>2016-11-28T09:17:10.595Z</lastmod>
-    <data>
-        <display>
-        <title>第0章 环境设置</title>
-        <pubTime>2016-11-24T05:18:18.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="初级教程" url="http://yoursite.com/categories/%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2016/11/24/chapter0-5/</loc>
-    <lastmod>2016-11-28T09:16:55.398Z</lastmod>
-    <data>
-        <display>
-        <title>第0.5章 相关资料</title>
-        <pubTime>2016-11-24T06:08:58.000Z</pubTime>
         
          
            
