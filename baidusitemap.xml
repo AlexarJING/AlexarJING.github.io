@@ -4,44 +4,8 @@
 
     
   <url>
-    <loc>http://yoursite.com/2016/11/25/chapter2/</loc>
-    <lastmod>2016-11-28T09:05:20.310Z</lastmod>
-    <data>
-        <display>
-        <title>第2章 让画面动起来</title>
-        <pubTime>2016-11-25T06:53:56.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="初级教程" url="http://yoursite.com/categories/%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2016/11/28/chapter4/</loc>
-    <lastmod>2016-11-28T09:05:19.001Z</lastmod>
-    <data>
-        <display>
-        <title>第4章 碰撞检测及反馈</title>
-        <pubTime>2016-11-28T09:01:44.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="初级教程" url="http://yoursite.com/categories/%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yoursite.com/2016/11/28/chapter3/</loc>
-    <lastmod>2016-11-28T09:05:17.001Z</lastmod>
+    <lastmod>2016-11-28T09:11:15.766Z</lastmod>
     <data>
         <display>
         <title>第3章 角度，方向以及旋转</title>
@@ -59,11 +23,47 @@
     
   <url>
     <loc>http://yoursite.com/2016/11/24/chapter0/</loc>
-    <lastmod>2016-11-28T01:51:57.200Z</lastmod>
+    <lastmod>2016-11-28T09:10:20.499Z</lastmod>
     <data>
         <display>
         <title>第0章 环境设置</title>
         <pubTime>2016-11-24T05:18:18.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="初级教程" url="http://yoursite.com/categories/%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2016/11/28/chapter4/</loc>
+    <lastmod>2016-11-28T09:07:59.089Z</lastmod>
+    <data>
+        <display>
+        <title>第4章 碰撞检测及反馈</title>
+        <pubTime>2016-11-28T09:01:44.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="初级教程" url="http://yoursite.com/categories/%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2016/11/25/chapter2/</loc>
+    <lastmod>2016-11-28T09:05:20.310Z</lastmod>
+    <data>
+        <display>
+        <title>第2章 让画面动起来</title>
+        <pubTime>2016-11-25T06:53:56.000Z</pubTime>
         
          
            
