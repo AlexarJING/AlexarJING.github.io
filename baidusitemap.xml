@@ -4,6 +4,24 @@
 
     
   <url>
+    <loc>http://yoursite.com/2016/11/25/chapter1/</loc>
+    <lastmod>2016-11-28T09:55:12.305Z</lastmod>
+    <data>
+        <display>
+        <title>第1章 游戏的基本元素</title>
+        <pubTime>2016-11-25T00:43:54.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="初级教程" url="http://yoursite.com/categories/%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2016/11/28/chapter4/</loc>
     <lastmod>2016-11-28T09:54:15.373Z</lastmod>
     <data>
@@ -100,24 +118,6 @@
         <display>
         <title>第0.5章 相关资料</title>
         <pubTime>2016-11-24T06:08:58.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="初级教程" url="http://yoursite.com/categories/%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2016/11/25/chapter1/</loc>
-    <lastmod>2016-11-28T09:17:29.886Z</lastmod>
-    <data>
-        <display>
-        <title>第1章 游戏的基本元素</title>
-        <pubTime>2016-11-25T00:43:54.000Z</pubTime>
         
          
            
