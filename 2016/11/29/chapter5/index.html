@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="描述">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="AlexarJING">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="第5章 游戏对象"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="描述" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Alexar的Love2d实战教程"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>第5章 游戏对象 - Alexar的Love2d实战教程</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2016/11/29/chapter5/">
+                第5章 游戏对象
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016-11-29</span>
+            
+            <a href="#disqus_thread" class="comments">评论</a>
+            
+                <span class="category">
+                    <a href="/categories/初级教程/">初级教程</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h1 id="游戏对象"><a href="#游戏对象" class="headerlink" title="游戏对象"></a>游戏对象</h1><p>从我们教程的第一章开始，我们就接触到了游戏对象。游戏对象就像一个集合，包含了游戏的各种数据。而本章我们的道路有了分叉，我们将了解一些OOP（面向对象编程）和EOP（面向组件编程）之间的那点事。<br><a id="more"></a></p>
+<h2 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h2><p>关于OOP的资料，请自行百度。OOP的核心概念是“类”,可以说一切都是从类衍生出来的，比如各种库都是类，而你如果要使用它，就必须从类中实例化一个实例出来使用。类的核心就是继承。我们可以复用/重写从父类继承的各种方法。这就提升了代码效率。比如，车是一个基类，而赛车是其子类，赛车自然而然的继承了车的前进，后退，转向等方法，只是车的配置不同而已。<br>lua本身并不提供“类”的概念，也更不要求“一切皆类”（累）。但是lua的metatable的特性，使得做一个类变得十分容易。我们举一个简单的例子。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">person = &#123;</div><div class="line">	name = &quot;unknown&quot;,</div><div class="line">	say = function(self)</div><div class="line">		print(&quot;my name is &quot;..self.name)</div><div class="line">	end</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个是个简单的对象。它不具备任何拓展和继承能力。我们再看下面代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function person.new(name)</div><div class="line">	local new = &#123;&#125;</div><div class="line">	setmetatable(new,person)</div><div class="line">	person.__index = person --这里一定要注意，index方法要用在metatable上，而非实例上。</div><div class="line">	return new</div><div class="line">end</div><div class="line"></div><div class="line">local Alexar = person.new(&quot;Alexar&quot;)</div><div class="line">Alexar:say()</div></pre></td></tr></table></figure>
+<p>上面就是一个最简单的lua类编写过程，其中person是类，而Alexar是其一个实例。关于lua类的其他内容，请自行百度。</p>
+<h2 id="面向组件编程"><a href="#面向组件编程" class="headerlink" title="面向组件编程"></a>面向组件编程</h2><p>面向对象编程可以说在程序领域，几乎是一手遮天的，每天敲的都是各种class加{}，不过在游戏领域，面向组件式编程也比较流行。面向组件式编程的核心在于，任何游戏对象仅仅是数据，不含任何方法。而游戏组件是一系列方法，我们需要把游戏对象传入组件，才能实现其作用。一般，还有一个组件控制器，来控制游戏对象向相应组件的注册，删除以及遍历。<br>实际上，我们之前几章都是用的组件式的模式写的。我们再来举个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function translate(object)</div><div class="line">	object.vx = object.vx + object.ax</div><div class="line">	object.vy = object.vy + object.ay</div><div class="line">	object.vrot = object.vrot + object.arot</div><div class="line">	object.x = object.x + object.vx</div><div class="line">	object.y = object.y + object.vy</div><div class="line">	object.rot = object.rot + object.vrot</div><div class="line">end</div><div class="line"></div><div class="line">local ball1 = &#123;</div><div class="line">	... --不再详细写了</div><div class="line">&#125;</div><div class="line"></div><div class="line">local ball2 = &#123;</div><div class="line">	... --不再详细写了</div><div class="line">&#125;</div><div class="line"></div><div class="line">translate(ball1)</div><div class="line">translate(ball2)</div></pre></td></tr></table></figure></p>
+<p>上面translate是一个组件，实际上unity的组件也差不多是这么玩的。实际情形要再复杂写。</p>
+<h2 id="对象式和组件式的选择。"><a href="#对象式和组件式的选择。" class="headerlink" title="对象式和组件式的选择。"></a>对象式和组件式的选择。</h2><p>对象式的优点在于方便继承，逻辑条理比较清晰。缺点在于，数据和方法混搭，不容易存储；容易产生一些临时性的数据；不太适合编辑器；<br>组件式的优点在于复用方便，便于统一协调，除了游戏对象的数据，不会有额外的输出产生，比较安全可靠；十分方便的导出和导入数据，配合编辑器使用很合适；缺点在于，逻辑上稍微有些复杂，不符合人思维的习惯，需要单独配置组件控制系统。组件注册、删除比较麻烦；<br>当然还有一种是混合了两种方法的，游戏对象还是用类的形式，而对象的方法直接来自组件方法。然后就不需要单独的组件控制，仅仅使用类实例控制即可。不过这种方法，往往被两种编程模式爱好者所不齿，指责代码不规范。不过，关键在于好用就行。</p>
+<h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><p>lua的oop中，并不需要所谓的单例模式，因为你在创建类的时候，只要不写new方法，仅仅使用一个表盛装这个单例就行了。因为我们并不是真正的oop编程。</p>
+<h2 id="游戏对象的复制"><a href="#游戏对象的复制" class="headerlink" title="游戏对象的复制"></a>游戏对象的复制</h2><p>对于oop来讲，直接实例化就行了。这个是最容易的，因为类本身就是模板。而对于组件式的话，需要复制一个表。关于表的复制，这里不多说。有几个小技巧。<br>对于序列表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">copy = &#123;unpack(tab)&#125;</div></pre></td></tr></table></figure></p>
+<p>对于一般的表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">function table.copy(source,copyto,ifcopyfunction)</div><div class="line">	copyto=copyto or &#123;&#125;</div><div class="line">	for k, v in pairs(source or &#123;&#125;) do</div><div class="line">		if type(v) == &quot;table&quot; then</div><div class="line">			copyto[k] = table.copy(v,copyto[k])          </div><div class="line">		elseif type(v) == &quot;function&quot; then </div><div class="line">			if ifcopyfunction then</div><div class="line">				copyto[k] = v</div><div class="line">			end</div><div class="line">		else </div><div class="line">			copyto[k] = v</div><div class="line">		end</div><div class="line">	end</div><div class="line">	return copyto</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>注意，这里并没有进行循环检测，也就是如果你的表架构中有连接连回来,将是一个死循环哦。</p>
+<h2 id="游戏对象的循环"><a href="#游戏对象的循环" class="headerlink" title="游戏对象的循环"></a>游戏对象的循环</h2><p>我们希望所有的游戏对象都是活的，因此，我们在每一帧都要给它一个更新的机会，就是游戏对象的update方法。而这个方法需要在love.update中让所有注册的游戏对象都调用，于是有下面代码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">-- GO为一个游戏对象类</div><div class="line">function love.load()</div><div class="line">	game = &#123;&#125;</div><div class="line">	game.objects = &#123;&#125;</div><div class="line">	for i = 1,100 do</div><div class="line">		table.insert(game.objects,GO())</div><div class="line">	end</div><div class="line">end</div><div class="line"></div><div class="line">function love.update()</div><div class="line">	for i = #game.objects,1 ,-1 do</div><div class="line">		local go = game.objects[i]</div><div class="line">		go:update()</div><div class="line">		if go.destroyed then table.remove(game.objects,i) end</div><div class="line">	end</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>这里有一些需要值得关注的。个人习惯把游戏的沙盒定义为一个全局的game表。我们每一个需要加入的实例都加入game.objects。在遍历的时候，需要注意的是，在遍历过程中删除正在遍历表（有序表）中的元素是十分危险的行为，因此采用逆序遍历的方式。具体原理请百度一下。</p>
+<h2 id="类库和组件库"><a href="#类库和组件库" class="headerlink" title="类库和组件库"></a>类库和组件库</h2><p>类库的种类比较多，个人比较喜欢middleclass，因为它支持的功能较多，当然比较简单的有log30,hump.class等等。关于类的用法请自行参阅相关库的文本。这里以middleclass为例。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">Class = require &quot;middleclass&quot;</div><div class="line"></div><div class="line">Man = Class(&quot;man&quot;) --参数为变量名，可以任意指定</div><div class="line">Man.test = &quot;abc&quot; --类属性</div><div class="line">function Man:initialize(name) --笔者平时把这个方法替换成了init，为了方便。。。</div><div class="line">	self.name = name --初始化</div><div class="line">	self.test = self.class.test --Man.test也可以</div><div class="line">end</div><div class="line"></div><div class="line">function Man:say() --类方法</div><div class="line">	print(&quot;my name is &quot;..self.name)</div><div class="line">end</div><div class="line"></div><div class="line">local man_a = Man(&quot;a&quot;) --类的实例化</div><div class="line">man_a:say() --调用方法</div><div class="line"></div><div class="line">Youth = Class(&quot;youth&quot;,Man) --继承</div><div class="line">function Youth:say() --重写</div><div class="line">	self.super.say(self) -- 调用父类方法</div><div class="line">	print(&quot;I am young &quot;..self.name)</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>love的组件库较少，比较全面的是tiny-ecs 。由于我个人对组件式编程并不是很擅长。这里就不多介绍了，请自行看文档。</p>
+<h2 id="编程时间"><a href="#编程时间" class="headerlink" title="编程时间"></a>编程时间</h2><p>我们这次继续第三章的案例，对就是那个坦克，感觉缺点什么？ 是的，坦克要开炮的，我们来做子弹啦。</p>
+<h3 id="设计阶段"><a href="#设计阶段" class="headerlink" title="设计阶段"></a>设计阶段</h3><p>我们本次要完成两个内容，一个是制作一个子弹类，并且坦克可以按其炮塔角度发射子弹。另外一个内容是把子弹加入到游戏的对象系列中方便更新。</p>
+<ol>
+<li>建立子弹类</li>
+<li>初始化子弹属性，位置为发射的炮口位置。</li>
+<li>子弹有一个translate方法，让子弹按其角度匀速前进。</li>
+<li>子弹需要能够被绘制，这里用圆来代替。</li>
+<li>在全局建立一个game沙盒，把tank和子弹分别放入沙盒中。</li>
+</ol>
+<h3 id="实施阶段。"><a href="#实施阶段。" class="headerlink" title="实施阶段。"></a>实施阶段。</h3><p>子弹类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">class = require &quot;middleclass&quot;</div><div class="line">Bullet = class(&quot;bullet&quot;)</div><div class="line">Bullet.fireCD = 1</div><div class="line">Bullet.radius = 10</div><div class="line">Bullet.speed = 5</div><div class="line"></div><div class="line">function Bullet:init(parent)</div><div class="line">	self.parent = parent --实例化时，把坦克传进来，便于计算开炮位置。</div><div class="line">	self.rot = self.parent.cannon.rot</div><div class="line">	self.x = self.parent.x + math.sin(self.rot)*self.parent.cannon.h --简单的数学方法</div><div class="line">	self.y = self.parent.x - math.cos(self.rot)*self.parent.cannon.h</div><div class="line">	self.vx = self.speed * math.sin(self.rot)</div><div class="line">	self.vy = -self.speed * math.cos*(self.rot)</div><div class="line">end</div><div class="line"></div><div class="line">function Bullet:update(dt)</div><div class="line">	self.x = self.x + self.vx</div><div class="line">	self.y = self.y + self.vy</div><div class="line">	if self.x &gt; 800 or self.x&lt;0 or self.y&lt;0 or self.y &gt; 600 then --边界判断</div><div class="line">		self.destroyed = true</div><div class="line">	end</div><div class="line">end</div><div class="line"></div><div class="line">function Bullet:draw()</div><div class="line">	love.graphics.setColor(255,255,0,255)</div><div class="line">	love.graphics.circle(&quot;fill&quot;,self.x,self.y,self.radius)</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>游戏对象的加入方法这里不多说了，现在对tank对象加一个开火函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function love.mousereleased(x,y,key)</div><div class="line">	table.insert(game.objects,Bullet(tank))</div><div class="line">end</div></pre></td></tr></table></figure>
+<p>其他都没有什么复杂的东西。都是以前学过的知识。</p>
+<h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><ol>
+<li>把坦克改写为类，其中玩家控制的，是从坦克基类中继承的，额外添加一些控制坦克的函数。</li>
+<li>加入一些障碍物，也改写成类，命名为block</li>
+<li>为坦克，子弹，障碍绑定碰撞盒。坦克无法穿越障碍，子弹和障碍碰撞后双方均销毁。</li>
+</ol>
+<h2 id="本章代码"><a href="#本章代码" class="headerlink" title="本章代码"></a>本章代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div></pre></td><td class="code"><pre><div class="line">class = require &quot;middleclass&quot;</div><div class="line">Bullet = class(&quot;bullet&quot;)</div><div class="line">Bullet.fireCD = 1</div><div class="line">Bullet.radius = 10</div><div class="line">Bullet.speed = 5</div><div class="line"></div><div class="line">function Bullet:init(parent)</div><div class="line">	self.parent = parent --实例化时，把坦克传进来，便于计算开炮位置。</div><div class="line">	self.rot = self.parent.cannon.rot</div><div class="line">	self.x = self.parent.x + math.sin(self.rot)*self.parent.cannon.h --简单的数学方法</div><div class="line">	self.y = self.parent.x - math.cos(self.rot)*self.parent.cannon.h</div><div class="line">	self.vx = self.speed * math.sin(self.rot)</div><div class="line">	self.vy = -self.speed * math.cos*(self.rot)</div><div class="line">end</div><div class="line"></div><div class="line">function Bullet:update(dt)</div><div class="line">	self.x = self.x + self.vx</div><div class="line">	self.y = self.y + self.vy</div><div class="line">	if self.x &gt; 800 or self.x&lt;0 or self.y&lt;0 or self.y &gt; 600 then --边界判断</div><div class="line">		self.destroyed = true</div><div class="line">	end</div><div class="line">end</div><div class="line"></div><div class="line">function Bullet:draw()</div><div class="line">	love.graphics.setColor(255,255,0,255)</div><div class="line">	love.graphics.circle(&quot;fill&quot;,self.x,self.y,self.radius)</div><div class="line">end</div><div class="line"></div><div class="line">function love.load()</div><div class="line">	tank = &#123;</div><div class="line">		x = 400, --放到屏幕中心</div><div class="line">		y = 300,</div><div class="line">		w = 60, </div><div class="line">		h = 100,</div><div class="line">		speed = 1,</div><div class="line">		rot = 0,</div><div class="line">		cannon = &#123;</div><div class="line">			w = 10,</div><div class="line">			h = 50,</div><div class="line">			radius = 20</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	target = &#123;</div><div class="line">		x = 0,</div><div class="line">		y = 0</div><div class="line">	&#125;</div><div class="line">end</div><div class="line"></div><div class="line">function keyControl()</div><div class="line">	local down = love.keyboard.isDown --方便书写，而且会加快一些速度</div><div class="line">	if down(&quot;a&quot;) then</div><div class="line">		tank.rot = tank.rot - 0.1</div><div class="line">	elseif down(&quot;d&quot;) then</div><div class="line">		tank.rot = tank.rot + 0.1</div><div class="line">	elseif down(&quot;w&quot;) then</div><div class="line">		tank.x = tank.x + tank.speed*math.sin(tank.rot) --速度直接叠加，就不加入vx变量了</div><div class="line">		tank.y = tank.y - tank.speed*math.cos(tank.rot)</div><div class="line">	elseif down(&quot;s&quot;) then</div><div class="line">		tank.x = tank.x - tank.speed*math.sin(tank.rot) --倒车</div><div class="line">		tank.y = tank.y + tank.speed*math.cos(tank.rot)</div><div class="line">	end</div><div class="line">end</div><div class="line"></div><div class="line">function getRot(x1,y1,x2,y2)</div><div class="line">	if x1==x2 and y1==y2 then return 0 end </div><div class="line">	local angle=math.atan((x2-x1)/(y2-y1))</div><div class="line">	if y1-y2&lt;0 then angle=angle-math.pi end</div><div class="line">	if angle&gt;0 then angle=angle-2*math.pi end</div><div class="line">	return -angle</div><div class="line">end</div><div class="line"></div><div class="line">function mouseControl()</div><div class="line">	target.x,target.y = love.mouse.getPosition()</div><div class="line">	local rot =  getRot(target.x,target.y,tank.x,tank.y)</div><div class="line">	tank.cannon.rot = rot --大炮的角度为坦克与鼠标连线的角度</div><div class="line">end</div><div class="line"></div><div class="line">function love.update(dt)</div><div class="line">	keyControl()</div><div class="line">	mouseControl()</div><div class="line">end</div><div class="line"></div><div class="line">function drawTank()</div><div class="line">	--车身</div><div class="line">	love.graphics.push()</div><div class="line">	love.graphics.translate(tank.x,tank.y)</div><div class="line">	love.graphics.rotate(tank.rot)</div><div class="line">	love.graphics.setColor(128,128,128)</div><div class="line">	love.graphics.rectangle(&quot;fill&quot;,-tank.w/2,-tank.h/2,tank.w,tank.h) --以0，0为中心</div><div class="line">	love.graphics.pop()</div><div class="line"></div><div class="line">	--炮塔</div><div class="line">	love.graphics.push()</div><div class="line">	love.graphics.translate(tank.x,tank.y)</div><div class="line">	love.graphics.rotate(tank.cannon.rot)</div><div class="line">	love.graphics.setColor(0,255,0)</div><div class="line">	love.graphics.circle(&quot;fill&quot;,0,0,tank.cannon.radius)</div><div class="line">	love.graphics.setColor(0,255,255)</div><div class="line">	love.graphics.rectangle(&quot;fill&quot;,-tank.cannon.w/2,0,tank.cannon.w,tank.cannon.h)</div><div class="line">	love.graphics.pop()</div><div class="line"></div><div class="line">	--激光</div><div class="line">	love.graphics.setColor(255,0,0)</div><div class="line">	love.graphics.line(tank.x,tank.y,target.x,target.y)</div><div class="line">end</div><div class="line"></div><div class="line">function love.draw()</div><div class="line">	drawTank()</div><div class="line">end</div></pre></td></tr></table></figure>
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="love2d" data-title="love2d" data-url="alexarjing.github.io"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"love2d"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+    </div>
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>关于</h2>
+                <p>
+                    本教程配套软件:<a href="https://alexarjing.github.io/tutorial.love">tutorial.love</a>. 请安装love环境使用。
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>最近发表</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2016/11/29/chapter5/">第5章 游戏对象</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2016/11/28/chapter4/">第4章 碰撞检测及反馈</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2016/11/28/chapter3/">第3章 角度，方向以及旋转</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2016/11/25/chapter2/">第2章 让画面动起来</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>分类</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/初级教程/">初级教程</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/klugjo/hexo-theme-alpha-dust">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-instagram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://dribbble.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-dribbble"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.behance.net/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-behance"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://500px.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-500px"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:alexar@foxmail.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    本文作者Alexar alexar@foxmail.com; 原创内容禁止转载。作者保留一切权利。
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+
+
+</body>
+
+</html>
