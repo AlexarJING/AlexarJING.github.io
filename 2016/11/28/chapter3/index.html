@@ -180,7 +180,7 @@
 <p>这里可以使用hump.vector-light库来解决问题，(顺带提一句，hump.vector和vector-light拥有同样的方法，只是前者是基于对象的，而后者只是方法。基于对象的在大量使用过程中会产生一些不必要的垃圾，不过影响不大)。关于向量本身的数学问题，这里暂时不多介绍，而方法在下面文档中记载的比较详细，如果有必要，我们后面会单独开设一个主题。<a href="http://hump.readthedocs.io/en/latest/vector-light.html" target="_blank" rel="external">http://hump.readthedocs.io/en/latest/vector-light.html</a></p>
 <p>另外，还有一种对于绘制来讲的旋转方法。因为矢量绘图并不提供图像旋转，因此，想要旋转一个矩形，比较麻烦，需要首先矩形转换为多边形，然后就每一个顶点以旋转中心进行坐标旋转，然后再绘制。不过使用love提供的绘图坐标系系统就很容易来解决。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">--使用计算法来旋转</div><div class="line">local rect = &#123;0,0,200,100&#125; --x,y,w,h</div><div class="line">local polygon = &#123;0,0,200,0,200,100,0,100&#125; --转换为四个顶点</div><div class="line">local verts=  坐标旋转(polygon,math.pi/3,100,50) --pi/3 为旋转弧度,100,50为旋转中心</div><div class="line">love.graphics.polygon(&quot;line&quot;,verts) --绘制多边形 </div><div class="line"></div><div class="line">--使用坐标系发旋转</div><div class="line">love.graphics.push()</div><div class="line">love.graphics.translate(100,50)</div><div class="line">love.graphics.rotate(math.pi/3)</div><div class="line">love.graphics.rectangle(0,0,200,100)</div><div class="line">love.graphics.pop()</div></pre></td></tr></table></figure></p>
 <p>很明显，使用坐标系旋转可以避免很多计算问题，不过这种方法有可能导致一些库不兼容（比如一些摄像机，一些canvas变换等等）。关于坐标系部分，我们将在摄像机相关章节进一步讲解。<br>另外，还有一种方法是，把矢量图形转化为mesh或canvas等作为绘制对象来处理。这个属于较为高级的内容，这里不再详细讲解。</p>
-<h2 id="love编程时间"><a href="#love编程时间" class="headerlink" title="love编程时间"></a>love编程时间</h2><p>上面讲解了一些关于角度和旋转的内容，实际上很多东西在初中数学都讲过，之所以这么详细的讲解，是希望大家能够通过这样的讲解有能力自己把一些数学问题转化为编程思想。下面进行我们本次课的实践。</p>
+<p>上面讲解了一些关于角度和旋转的内容，实际上很多东西在初中数学都讲过，之所以这么详细的讲解，是希望大家能够通过这样的讲解有能力自己把一些数学问题转化为编程思想。下面进行我们本次课的实践。</p>
 <h3 id="设计阶段"><a href="#设计阶段" class="headerlink" title="设计阶段"></a>设计阶段</h3><p>这次我们希望做一个更复杂的东西，一个坦克，这个坦克能够使用键盘的w,s来前进和倒退，a,d来进行转向。然后还有一个炮塔，炮塔的方向始终指向鼠标方向。坦克的速度是个固定值。<br>wow是不是很酷，感觉很快很快，我们就拥有一个俯视的坦克游戏了。别着急，我们先从基础的开始。</p>
 <ol>
 <li>keydown w,s按坦克当前方向前进和后退</li>
@@ -253,7 +253,7 @@ var duoshuoQuery = {short_name:"love2d"};
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
                 <h2>关于</h2>
                 <p>
-                    This theme was developed by <a href="https://github.com/klugjo">Jonathan Klughertz</a>. The source code is available on Github. Create Websites. Make Magic.
+                    本教程配套软件:<a href="https://alexarjing.github.io/tutorial.love">tutorial.love</a>. 请安装love环境使用。
                 </p>
             </div>
             
