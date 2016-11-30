@@ -5,11 +5,29 @@
     
   <url>
     <loc>http://yoursite.com/2016/11/30/chapter6/</loc>
-    <lastmod>2016-11-30T08:56:32.711Z</lastmod>
+    <lastmod>2016-11-30T10:02:50.124Z</lastmod>
     <data>
         <display>
-        <title>动画与音效</title>
+        <title>第6章 动画与音效</title>
         <pubTime>2016-11-30T02:45:33.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="初级教程" url="http://yoursite.com/categories/%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2016/11/30/chapter7/</loc>
+    <lastmod>2016-11-30T10:02:11.867Z</lastmod>
+    <data>
+        <display>
+        <title>chapter7</title>
+        <pubTime>2016-11-30T08:48:51.000Z</pubTime>
         
          
            
