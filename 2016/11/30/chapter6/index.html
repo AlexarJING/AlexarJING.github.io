@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="描述">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="AlexarJING">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="动画与音效"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="描述" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Alexar的Love2d实战教程"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>动画与音效 - Alexar的Love2d实战教程</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2016/11/30/chapter6/">
+                动画与音效
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016-11-30</span>
+            
+            <a href="#disqus_thread" class="comments">评论</a>
+            
+                <span class="category">
+                    <a href="/categories/初级教程/">初级教程</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h1 id="动画与音效"><a href="#动画与音效" class="headerlink" title="动画与音效"></a>动画与音效</h1><p>通过之前几章的学习，我们学到了大多数游戏所需的东西，你现在完全可以做一些小游戏了。比如FC游戏小蜜蜂（Galaxian）。或者坦克大战等等。但是，现在还不太好玩，因为画面比较生硬，而且没有声音，现在，我们就开始介绍如何做出动画效果及播放声音。<br><a id="more"></a></p>
+<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><p>动画能够很好的提高画面的可视性，当然，动画不单单是一个单纯的贴图替换的过程，也可能包含图片颜色的改变，位置的改变，形状的改变等等。就平时常用的而言，动画分为下面几种：帧动画，骨骼动画，粒子效果，mesh变形等等。他们并没有一个完全严格意义的概念划分，只是我们在使用时的人为划分。</p>
+<h3 id="帧动画"><a href="#帧动画" class="headerlink" title="帧动画"></a>帧动画</h3><p>帧动画是2d游戏中最常用的动画形式，因为它简单易用，基本不涉及什么计算，画面表现丰富。当然，它也有相应的缺点，比如贴图占据空间大，越流畅、精细的画面，占据内存空间越大，绘制比较麻烦，因为每一帧几乎等于重绘。<br>帧动画还有一种变体，是将动画的各个部分划分为小的动画，比如头部，手臂等，然后把他们通过固定的位置拼接在一起。这种好处是可以替换某个部分来实现换装备，换武器或者一个类型的动画可以组装多种人物等等。</p>
+<h3 id="骨骼动画"><a href="#骨骼动画" class="headerlink" title="骨骼动画"></a>骨骼动画</h3><p>骨骼动画是比较复杂的动画，但是它有很多优点，比如可以复用贴图，不用画很多帧，方便控制，可以结合mesh动画等。目前比较流行的有spine和dragonbone两个骨骼动画编辑器。其中spine有对应love2d的运行时，所以一般使用骨骼动画都用spine，不过spine本身是收费的，而且不便宜。骨骼动画的原理是将一个人物分为若干块骨头，我们主要控制骨头的长短，角度，位置等，然后骨头上绑定贴图，就可以了，所以最简单的骨骼动画记录的是随时间变化各个骨骼的位置和角度。<br>刚刚提到的帧动画变体实际上有时也可以加入骨骼动画，只不过一般不太设计关节角度的继承关系，而是直接用绝对位置和绝对角度。因为他们的编辑比较复杂，或者没有一个统一的定式，这里不多讲，后面可以针对性的自己试着实现。</p>
+<h3 id="粒子效果"><a href="#粒子效果" class="headerlink" title="粒子效果"></a>粒子效果</h3><p>实际上，粒子效果本身不太算动画部分，但是因为他们也涉及贴图，位置，角度，大小等的变化，所以放在这里将。粒子效果实际上是一大批的小图片，按照预先设计好的存在时间，位置，速度，角度，加速度，颜色等等（很多有随机成分），加入到场景，并当存在时间到时时自动消失。我们常用见的比如，魔法效果，火星，灰尘，闪光，火焰等，均可由粒子效果来模拟。对了，加一句计算机图形的名言“这个东西看起来是真的，那它就是真的”。</p>
+<h3 id="mesh动画"><a href="#mesh动画" class="headerlink" title="mesh动画"></a>mesh动画</h3><p>也可以叫做mesh的动态形变。如果知道些绘图原理或者3d渲染的同学，应该理解什么是mesh，它是计算机渲染图片的形式，计算机会把欲绘制的位置与纹理的位置做一个对应关系，一般至少要3个点来完成。一个方形的贴图一般需要4个点，即两个三角形来完成渲染。而mesh动画则是把一个贴图布满mesh网格，每个单元都是三角形。然后通过控制这些单元的顶点位置来达到变形效果。这种变形往往比较有张力，而且立体。比如一个软球，一个飘动的旗子，一些透视形变等等。这种效果一般也会结合骨骼动画来实现，比如spine。所以有时，spine能做出以假乱真的3d效果。</p>
+<p>本章仅具体介绍一下帧动画的原理和库，骨骼动画可以到spine的运行时的github上找到案例（去找一个角love2d的branch），粒子效果可以找一些粒子工具来体验一下感觉，其实所有的参数都是通用的。mesh动画就还是找spine运行时。</p>
+<h2 id="帧动画原理及实现。"><a href="#帧动画原理及实现。" class="headerlink" title="帧动画原理及实现。"></a>帧动画原理及实现。</h2><h3 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h3><p>帧动画的基本远离实际上跟电影胶片差不多，就是利用人的视觉残像原理，以及人脑自动补全的原理的，通过快速的切换一些画面的显示来达到某个图片看起来像在动一样。<br>帧动画一般涉及几个要素，一个是帧序列，就是一组图片。一个是延迟时间，帧与帧之间的延迟间隔。还有一个是循环模式，比如单次，顺序循环，乒乓循环几种。</p>
+<h3 id="多图帧动画"><a href="#多图帧动画" class="headerlink" title="多图帧动画"></a>多图帧动画</h3><p>多图是比较简单的方式，每个图片是已经切割好的纹理，我们按正常的方法建立一组image对象，然后通过一个timer来控制播放即可。下面通过代码演示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">local images = &#123;&#125;</div><div class="line">local cd = 1/20</div><div class="line">local timer = cd</div><div class="line">local index = 1</div><div class="line">for i = 1, 10 do</div><div class="line">	images[i] =  love.graphics.newImage(&quot;res/image&quot;..i..&quot;.png&quot;)</div><div class="line">end</div><div class="line"></div><div class="line">function Animation_update(dt)</div><div class="line">	timer = timer - dt</div><div class="line">	if timer&lt;0 then</div><div class="line">		timer = cd</div><div class="line">		index = index + 1 </div><div class="line">		if index&gt;#images then</div><div class="line">			index = 1</div><div class="line">		end</div><div class="line">	end</div><div class="line">end</div><div class="line"></div><div class="line">function Animation_draw()</div><div class="line">	love.graphics.draw(images[index])</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>上面的代码比较简单，唯一需要注意的是引入image对象时，对文件名的处理，可以用string.format进行格式化。</p>
+<h3 id="spritesheet帧动画"><a href="#spritesheet帧动画" class="headerlink" title="spritesheet帧动画"></a>spritesheet帧动画</h3><p>精灵表帧动画的原理实际跟上面是没有区别的，只是由于如果图片不是二次幂（自己百度）的话，它实际占用的显存要高于图片本身。所以一般把图片整理后放到一个大图片中，这个图片叫做精灵清单，压制这种图片的工具比较多，比较著名的是spritepacker，额，也是个收费工具。在love论坛中有对其文件格式解读的工具，由于笔者并不用这个软件，所以请自行查阅。另外，在网上还有很多并没有给出具体拆分方式的精灵清单。如果他们的间隔是固定的，(比如一些人做的是64*64大小，每个精灵之间再额外间隔2个像素),这种就比较容易处理。不过有素材，可能是从某些游戏导出的，原本是存在一个清单的，但是导出时没能找到，这种情况就需要手动切图，在重新排布了。常用的有比如photoshop,graphicgale等。<br>从代码实现上，与上面的代码的区别在于需要引入love的另一个对象叫做quad。它可以用来作为draw的第二个参数，从而告诉draw函数要绘制目标的哪个矩形区域。<br>quad在定义时，需要x,y,w,h参数，另外还需要一个图片整体大小。需要说明的是，像素的起点是0，0 而非1，1 所以宽100，高100的图片，实际x的取值范围是0,99。<br>所以有下面代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">local image = love.graphics.newImage(&quot;res/imagesheet.png&quot;)</div><div class="line">local imageW,imageH = image:getDimensions()</div><div class="line">local cd = 1/20</div><div class="line">local timer = cd</div><div class="line">local index = 1</div><div class="line">local frames = &#123;&#125;</div><div class="line">for i = 1, 10 do</div><div class="line">	frames[i] =  love.graphics.newQuad((i-1)*64-1,0,64,64,imageW,imageH)</div><div class="line">end</div><div class="line"></div><div class="line">function Animation_update(dt)</div><div class="line">	timer = timer - dt</div><div class="line">	if timer&lt;0 then</div><div class="line">		timer = cd</div><div class="line">		index = index + 1 </div><div class="line">		if index&gt;#images then</div><div class="line">			index = 1</div><div class="line">		end</div><div class="line">	end</div><div class="line">end</div><div class="line"></div><div class="line">function Animation_draw()</div><div class="line">	love.graphics.draw(image,frames[index])</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<h3 id="帧动画库"><a href="#帧动画库" class="headerlink" title="帧动画库"></a>帧动画库</h3><p>常用的帧动画库anim8,它建立动画分为两个步骤，首先建立一个网格，然后通过网格建立动画，具体用法可以自行github。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">local anim8 = require &apos;anim8&apos;</div><div class="line"></div><div class="line">local image, animation</div><div class="line"></div><div class="line">function love.load()</div><div class="line">  image = love.graphics.newImage(&apos;path/to/image.png&apos;)</div><div class="line">  local g = anim8.newGrid(32, 32, image:getWidth(), image:getHeight())</div><div class="line">  animation = anim8.newAnimation(g(&apos;1-8&apos;,1), 0.1)</div><div class="line">end</div><div class="line"></div><div class="line">function love.update(dt)</div><div class="line">  animation:update(dt)</div><div class="line">end</div><div class="line"></div><div class="line">function love.draw()</div><div class="line">  animation:draw(image, 100, 200)</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>另外，笔者也自己写了一个简单的animation库，可以在笔者github上找到。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">local Animation = require &quot;animation&quot;</div><div class="line">local anim = Animation:new(img,fx,fy,w,h,offx,offy,lx,ly,delay,count)</div><div class="line">function love.update(dt)</div><div class="line">	anim:update(dt)</div><div class="line">end</div><div class="line">function love.draw()</div><div class="line">	anim:draw()</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>其中参数img为图片对象，fx,fy为含有动画的第一帧左上角位置，w,h为每个帧的尺寸，offx,offy为帧之间的间隔，lx,ly为最后一帧右下角的位置，delay为帧延迟时间，count为取这个动画中的前多少帧（可以缺省为最多）。这个库包含一些基本的回调。因为很简单，所以自己看源码就看得懂。</p>
+<h2 id="声音"><a href="#声音" class="headerlink" title="声音"></a>声音</h2><p>在love2d里，声音对象是由love.audio.newSource来导入的，因为很简单下面仅举个例子。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">local music = love.audio.newSource(&quot;love.mp3&quot;)</div><div class="line">music:play()</div><div class="line">-- love.audio.play(music)</div></pre></td></tr></table></figure></p>
+<p>有两点要说明，newSource的参数的第二个为类型，有两种，一种是静态一种是流式，前者比较快，但占内存，后者相反。缺省为流式。如果像类似机枪那种连续的播放某个声音的话，需要建立多个声音对象，如果仅一个的话，只能在这个声音完全播完，才能再次播放。</p>
+<h2 id="编程时间"><a href="#编程时间" class="headerlink" title="编程时间"></a>编程时间</h2><p>这次我们的坦克再次升级啦，改为飞机了，现在给坦克披上飞机的皮，它就是飞机了，不过炮塔也没有了，用鼠标来操控飞机的方向。</p>
+<h3 id="设计阶段"><a href="#设计阶段" class="headerlink" title="设计阶段"></a>设计阶段</h3>
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="love2d" data-title="love2d" data-url="alexarjing.github.io"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"love2d"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+    </div>
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>关于</h2>
+                <p>
+                    本教程配套软件:<a href="https://alexarjing.github.io/tutorial.love">tutorial.love</a>. 请安装love环境使用。
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>最近发表</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2016/11/30/chapter6/">动画与音效</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2016/11/29/chapter5/">第5章 游戏对象</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2016/11/28/chapter4/">第4章 碰撞检测及反馈</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2016/11/28/chapter3/">第3章 角度，方向以及旋转</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>分类</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/初级教程/">初级教程</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/klugjo/hexo-theme-alpha-dust">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-instagram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://dribbble.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-dribbble"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.behance.net/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-behance"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://500px.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-500px"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:alexar@foxmail.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    本文作者Alexar alexar@foxmail.com; 原创内容禁止转载。作者保留一切权利。
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+
+
+</body>
+
+</html>
