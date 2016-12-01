@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="chapter7"/>
+        <meta property="og:title" content="第7章 文档结构和库"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>chapter7 - Alexar的Love2d实战教程</title>
+    <title>第7章 文档结构和库 - Alexar的Love2d实战教程</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -152,7 +152,7 @@
     <div class="post-header">
         <h1 class="title">
             <a href="/2016/11/30/chapter7/">
-                chapter7
+                第7章 文档结构和库
             </a>
         </h1>
         <div class="post-info">
@@ -191,12 +191,32 @@
 <p>解读一下上面的代码，首先定义了两个state，他们相当于两个场景，他们都有各自的load,update,draw方法，对应着love的回调，但是又多了一个enter方法和一个leave方法。他们意思是进入和退出场景时的回调。<br>然后对每一个场景进行load，当然，你也可以动态的load，只不过尚未读取的场景是不能被使用的。<br>接下来是设置场景的方法setState，从函数内部我们可以看出，它实际上是动态的赋予love.update和love.draw于我们场景对应的方法，从而实现场景跳转。当然，还有从上一个场景离开和新场景进入的方法。<br>上面的代码仅仅是为了解释场景的工作原理，除了update,draw之外，所有love回调都需要被重新定向。比较完整的场景库之一hump.gamestate是笔者比较喜欢的场景库，下面有一段我惯用的导入场景的方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">gamestate= require &quot;lib/hump/gamestate&quot;</div><div class="line">function love.load()</div><div class="line">    gameState=&#123;&#125;</div><div class="line">    for _,name in ipairs(love.filesystem.getDirectoryItems(&quot;scene&quot;)) do</div><div class="line">        local filename = name:sub(1,-5) --“.lua”四个字符</div><div class="line">        gameState[filename]=require(&quot;scene.&quot;..filename)</div><div class="line">    end</div><div class="line">    gamestate.registerEvents()</div><div class="line">    gamestate.switch(gameState.splash)</div><div class="line">end</div></pre></td></tr></table></figure></p>
 <p>上面的代码的含义是我们从scene文件夹中读取所有文件，除去.lua四个字符为名字，定义场景。然后跳转场景到splash场景。这里有个filesystem的方法。这里只知道含义即可。</p>
 <ol>
-<li><p>文件夹<br>上面说到了scene文件夹，我们就系统说一下我的一般项目文件夹的排布，当然并不是统一的，根据自己的喜好来。<br>首先，我们知道main.lua和conf.lua只有放在根目录下才能发挥作用。这个不变。<br>然后是library目录，里面存放第三方或者自己写的库文件。至于库文件的规范待会说。<br>然后是scene目录，存放各种场景文件。<br>接下来asset目录，存放各种资源，包括image,sound,mucis,font,tile,spine等子目录。<br>然后是object目录，存放游戏对象的类模板。<br>最后是misc目录，各种各样的单个脚本，或者不适合放在其他目录的文件。<br>当然，上面是以类型为分类的，也可以以游戏对象为分类，把一种游戏对象的资源放在一个文件夹下。如game目录，player目录，enemy目录等，将类文件，素材文件，读取脚本等都放在一起。</p>
-</li>
-<li><p>文件和库的导入。<br>lua的require机制需要比较熟悉，require的参数为一个lua文件，且不含.lua文件拓展名。其实现的实际上是下面代码：<br>local abc = require “file” 等价于<br>local func = function()  文件内容 end<br>local abc = func(path/to/file)<br>你需要理解的是:<br>首先，任何单独的lua文件都是被看做一个function的，如果你在文件中不注册全局变量也没有返回值，那他不会对其他文件产生污染。也就是要么你在文件中写个全局变量或者注册在全局变量下，比如love.yourlib,要么你需要有一个返回值return，不然你的文件等于0。<br>然后，通过require引入的文件具有唯一性，就是无论你引入多少次require该文件，它返回的都是同一个引用（ref/指针）</p>
-</li>
+<li>文件夹<br>上面说到了scene文件夹，我们就系统说一下我的一般项目文件夹的排布，当然并不是统一的，根据自己的喜好来。<br>首先，我们知道main.lua和conf.lua只有放在根目录下才能发挥作用。这个不变。<br>然后是library目录，里面存放第三方或者自己写的库文件。至于库文件的规范待会说。<br>然后是scene目录，存放各种场景文件。<br>接下来asset目录，存放各种资源，包括image,sound,mucis,font,tile,spine等子目录。<br>然后是object目录，存放游戏对象的类模板。<br>最后是misc目录，各种各样的单个脚本，或者不适合放在其他目录的文件。<br>当然，上面是以类型为分类的，也可以以游戏对象为分类，把一种游戏对象的资源放在一个文件夹下。如game目录，player目录，enemy目录等，将类文件，素材文件，读取脚本等都放在一起。</li>
 </ol>
-
+<h2 id="文件和库的导入。"><a href="#文件和库的导入。" class="headerlink" title="文件和库的导入。"></a>文件和库的导入。</h2><p>lua的require机制需要比较熟悉，require的参数为一个lua文件，且不含.lua文件拓展名。其实现的实际上是下面代码：<br>local abc = require “file” 等价于<br>local func = function()  文件内容 end<br>local abc = func(path/to/file)<br>你需要理解的是:<br>首先，任何单独的lua文件都是被看做一个function的，如果你在文件中不注册全局变量也没有返回值，那他不会对其他文件产生污染。也就是要么你在文件中写个全局变量或者注册在全局变量下，比如love.yourlib,要么你需要有一个返回值return，不然你的文件等于0。<br>然后，通过require引入的文件具有唯一性，就是无论你引入多少次require该文件，它返回的都是同一个引用（ref/指针）,所以,你无法使用这种方法来作为模板复制。但是有下面几种情况：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">--in the file</div><div class="line">return function()</div><div class="line">	local tab = &#123;</div><div class="line">		test = &quot;123&quot;</div><div class="line">	&#125;</div><div class="line">	return tab</div><div class="line">end</div><div class="line">-- in main</div><div class="line">local test = require(&quot;file&quot;)()</div></pre></td></tr></table></figure></p>
+<p>这种是返回一个function，所以在使用时，还需要再call一下。<br>如果希望每次都返回不同的ref的话，需要使用另一种方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">local func = loadstring(love.filesystem.read(&quot;abc.lua&quot;))</div><div class="line">local func = loadfile(&quot;abc.lua&quot;)</div><div class="line">local test = func()</div></pre></td></tr></table></figure></p>
+<p>刚刚讲了，一个文件的本质是一个function，所以上面的方法的返回值也是function需要再call一下才能发挥作用。<br>另外一个很神奇的函数setfenv(func,env),它可以对一个函数指定外部环境，也就是说，把这个func放在env块下。但是，注意的是，如果使用这个，env是个很纯净的空间，是没有任何love和lua自带环境的，所以，你需要手动导入或者设置metatable.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">-- in the file</div><div class="line">abc = &quot;123&quot;</div><div class="line">-- in main</div><div class="line">local func = loadfile(&quot;abc.lua&quot;)</div><div class="line">local test = &#123;&#125;</div><div class="line">setfenv(func,test)</div><div class="line">print(test.abc,abc)</div></pre></td></tr></table></figure></p>
+<p>我们会发现，文件中的abc并没有污染到全局变量，而是成为了test的变量。这种形式比较适合在abc.lua中写脚本，因为书写会比较方便。而且不会污染外部。</p>
+<h2 id="库"><a href="#库" class="headerlink" title="库"></a>库</h2><p>库是love的一个使用核心，因为Love本身不提供高级功能，而库是已经用原始语言编写好的一些具有一定功能的代码块。通过引入他们可以方便的形成一些游戏功能。它也是代码复用的一种形式。另外，虽然love的luajit支持动态链接库，但由于我们希望一套代码对应所有平台，因此，尽量使用lua为语言的库。当然，lua功能无法支持到的函数或者某些比较需要效率的函数，就只能外部引入c库了。<br>下面介绍一种库的形式</p>
+<h3 id="单例库"><a href="#单例库" class="headerlink" title="单例库"></a>单例库</h3><p>这种库一般在游戏中只需要一个实例，或者仅仅是一个表，表下有若干的函数。这种库，直接用一个本地变量传入就可以了。比如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">local lib = require &quot;math&quot;</div><div class="line">local test = lib.add(1,2)</div></pre></td></tr></table></figure></p>
+<p>这种库有时候也会自动的在全局里面注册一个变量来承载他们。但是这种做法并不推荐，因为我们一般不看库内部的文件，而内部注册的东西很有可能被外部某个同名变量覆盖，所以，不要这么做。</p>
+<h3 id="即时库"><a href="#即时库" class="headerlink" title="即时库"></a>即时库</h3><p>这种库是最爽的了，所谓即时（IMM）式，是它在内部，几乎不（或者完全不）存储来自外部的数据，而是在每帧把数据手动的传入到库中，使其发挥作用，类似于面向组件编程那样。 这种库要求每帧都要将数据传入库中，可能对于用惯oop的人不太适应，但是它的优点在于，它太干净了。我完全不用担心什么东西没有被释放。只要不向里面传东西，这个对象就不存在。比较有名的包括：UI库suit和多边形碰撞库hardoncollider，他们是同一个人写的（hump也是他写的），文档十分详细。</p>
+<h3 id="对象库"><a href="#对象库" class="headerlink" title="对象库"></a>对象库</h3><p>这是最常见的一种库，他本身是一个类，通过call或者new方法来产生实例。而实例具有我们有用的方法，原理就是lua的metatable大法。这种库太多了，比如我们之前用到的bump,vector,tween等。</p>
+<h3 id="补丁库"><a href="#补丁库" class="headerlink" title="补丁库"></a>补丁库</h3><p>这也是比较常见的一种做法。通过库里的代码，扩充现有的功能。比如math库，string库，love库等等。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function math.sign(x)</div><div class="line">	if x&gt;0 then return 1</div><div class="line">	elseif x&lt;0 then return -1</div><div class="line">	else return 0 end</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>上面是个简单的例子。这种库，直接require即可。另外还有一些快捷方式的补丁：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">lg = love.graphics</div><div class="line">lm = love.math</div><div class="line">gprint = love.graphics.print</div></pre></td></tr></table></figure></p>
+<h3 id="猴子补丁"><a href="#猴子补丁" class="headerlink" title="猴子补丁"></a>猴子补丁</h3><p>首先可以百度一下这种补丁是如何从大猩猩到猴子的^^,首先要说的是，这种补丁很灵活，也很危险。它是动态的替换一些原来系统已经存在的功能，使其具有另一项功能。因为lua中的所有值（表和函数）都是承接在__G（全局）中，修改一个内建函数跟改其他表的键值是一样的。这里举个简单的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">local _print = print</div><div class="line">print = function(...)</div><div class="line">	_print(&quot;monkey printing: &quot;, ...)</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>以后调用print的你就了猴子-。-;另一个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">local _circle = love.graphics.circle</div><div class="line">function love.graphics.circle(mode,...)</div><div class="line">	if mode == &quot;outline&quot; then</div><div class="line">		local r,g,b,a = love.graphics.getColor()</div><div class="line">		_circle(&quot;line&quot;,...)</div><div class="line">		love.graphics.setColor(r,g,b,a/3)</div><div class="line">		_circle(&quot;fill&quot;,...)</div><div class="line">		love.graphics.setColor(r,g,b,a)</div><div class="line">	else</div><div class="line">		_circle(mode,...)</div><div class="line">	end</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>上面的函数就对circle进行了补丁，使其支持”outline”作为参数。</p>
+<h3 id="自定义库"><a href="#自定义库" class="headerlink" title="自定义库"></a>自定义库</h3><p>用户可以自己写库，或者根据某些现有的库来加入自己的功能。或者仅仅是自己常用的代码段。在自己写库时，要遵循下面几个原则。</p>
+<ol>
+<li>不必要时，不要污染全局变量。</li>
+<li>尽量不要产生额外的数据，而是利用传入的数据。比如在库中经常出现（function() return {} end）这种形式的代码。</li>
+<li>如果使用多文件形式的库，需要建立库名文件夹，库的入口在init.lua中，另外还要注意，多文件相互引用时，需要对文件位置做判断，常见的方法 local BASE = (…) .. ‘.’,base为当前目录。</li>
+<li>尽量少做猴子补丁，除非你清除这意味着什么。因为它会极大降低程序的兼容性，以及给debug添乱。</li>
+</ol>
+<h2 id="编程时间"><a href="#编程时间" class="headerlink" title="编程时间"></a>编程时间</h2><p>本单元不再进行新的内容了，而是完成之前的飞机游戏为一个完整的游戏。</p>
+<h3 id="设计阶段"><a href="#设计阶段" class="headerlink" title="设计阶段"></a>设计阶段</h3><p>本游戏定位为一个生存类射击游戏。玩家使用鼠标控制飞机移动，鼠标按下时发射子弹。敌人会随机的从地图外围进入场地，并以当前玩家位置，按固定角度飞行，期间自动发射子弹，敌人离开外围时重新生成一个。子弹在离开外围时销毁。子弹玩家或敌人扣减生命值，敌人死亡则销毁，玩家加分，玩家分数100，200，500，1000时武器会升级。玩家生命为0 游戏结束。显示分数。<br>1级武器 单发子弹<br>2级武器 并列双发子弹<br>3级武器 放射3发子弹<br>4级武器 平列双发加2个放射<br>子弹威力 = 30 +- 10 + 等级<em>5</em>random(0~1）<br>敌人每波放出10+wave*2数敌人,每波敌人全部消灭进入下一波，每秒放出1个飞机。飞机hp = 100+ 波数<br>每波结束，飞机回复30%生命，游戏暂停5秒。</p>
+<h3 id="代码阶段"><a href="#代码阶段" class="headerlink" title="代码阶段"></a>代码阶段</h3><h2 id="本章代码"><a href="#本章代码" class="headerlink" title="本章代码"></a>本章代码</h2>
     </div>
 
     
@@ -256,7 +276,7 @@ var duoshuoQuery = {short_name:"love2d"};
         <ul>
             
             <li>
-                <a class="footer-post" href="/2016/11/30/chapter7/">chapter7</a>
+                <a class="footer-post" href="/2016/11/30/chapter7/">第7章 文档结构和库</a>
             </li>
             
             <li>
