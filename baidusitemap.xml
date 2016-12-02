@@ -5,11 +5,47 @@
     
   <url>
     <loc>http://yoursite.com/2016/11/30/chapter7/</loc>
-    <lastmod>2016-12-01T09:44:09.418Z</lastmod>
+    <lastmod>2016-12-02T06:56:32.930Z</lastmod>
     <data>
         <display>
         <title>第7章 文档结构和库</title>
         <pubTime>2016-11-30T08:48:51.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="初级教程" url="http://yoursite.com/categories/%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2016/11/28/chapter3/</loc>
+    <lastmod>2016-12-02T06:31:06.120Z</lastmod>
+    <data>
+        <display>
+        <title>第3章 角度，方向以及旋转</title>
+        <pubTime>2016-11-28T01:33:23.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="初级教程" url="http://yoursite.com/categories/%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2016/11/30/chapter6/</loc>
+    <lastmod>2016-12-02T06:06:29.532Z</lastmod>
+    <data>
+        <display>
+        <title>第6章 动画与音效</title>
+        <pubTime>2016-11-30T02:45:33.000Z</pubTime>
         
          
            
@@ -28,24 +64,6 @@
         <display>
         <title>第1章 游戏的基本元素</title>
         <pubTime>2016-11-25T00:43:54.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="初级教程" url="http://yoursite.com/categories/%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2016/11/30/chapter6/</loc>
-    <lastmod>2016-12-01T04:09:07.017Z</lastmod>
-    <data>
-        <display>
-        <title>第6章 动画与音效</title>
-        <pubTime>2016-11-30T02:45:33.000Z</pubTime>
         
          
            
@@ -82,24 +100,6 @@
         <display>
         <title>第4章 碰撞检测及反馈</title>
         <pubTime>2016-11-28T09:01:44.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="初级教程" url="http://yoursite.com/categories/%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2016/11/28/chapter3/</loc>
-    <lastmod>2016-12-01T04:07:51.502Z</lastmod>
-    <data>
-        <display>
-        <title>第3章 角度，方向以及旋转</title>
-        <pubTime>2016-11-28T01:33:23.000Z</pubTime>
         
          
            
