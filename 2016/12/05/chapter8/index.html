@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="描述">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="AlexarJING">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="第8章 用户界面"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="描述" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Alexar的Love2d实战教程"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>第8章 用户界面 - Alexar的Love2d实战教程</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+    <script>
+		(function(){
+		    var bp = document.createElement('script');
+		    var curProtocol = window.location.protocol.split(':')[0];
+		    if (curProtocol === 'https') {
+		        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+		    }
+		    else {
+		        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		    }
+		    var s = document.getElementsByTagName("script")[0];
+		    s.parentNode.insertBefore(bp, s);
+		})();
+	</script>
+
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2016/12/05/chapter8/">
+                第8章 用户界面
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016-12-05</span>
+            
+            <a href="#disqus_thread" class="comments">评论</a>
+            
+                <span class="category">
+                    <a href="/categories/中级教程/">中级教程</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>本章将介绍游戏中常用的用户界面分类及原理，以及love常用的UI库。<br><a id="more"></a></p>
+<h1 id="用户界面"><a href="#用户界面" class="headerlink" title="用户界面"></a>用户界面</h1><p>说用户界面感觉有点生硬，莫不如说UI可能大家认识的多一些。用户界面可以说是游戏中很重要的一个组成部分，好的用户界面可以很赚眼球，方便操作，但用户界面绝对不是游戏的核心，更多是的美术功夫。广义的用户界面是除了游戏的核心绘图部分（一般由相机控制）外，其他所有的与用户交互的图形界面（当然，命令行界面也算）。狭义的用户界面仅仅指在一定框架下的用户交互图形界面，这个框架一般有其固定的绘图风格。</p>
+<h2 id="用户界面原理"><a href="#用户界面原理" class="headerlink" title="用户界面原理"></a>用户界面原理</h2><h3 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h3><p>标签是最基本的用户界面，由于它是单向传递信息，而不具备交互能力（实际上也可以），它也是最为简单的。最简单的，相信你已经用过了。比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">love.graphics.printf(&quot;hello world&quot;,0,300,800,&quot;center&quot;)</div></pre></td></tr></table></figure></p>
+<p>之所以用printf是因为它更容易排版，当然这里仅仅给出了横向排版，实际纵向的可以通过取字体高度来得到排版位置。当然你也可以通过猴子补丁来让他支持纵向排版比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">love.graphics.printf(&quot;hello world&quot;,0,0,800,600,&quot;center&quot;,&quot;center&quot;)</div></pre></td></tr></table></figure></p>
+<p>让他上下都居中，至于内部实现很简单，可以看别的ui库如何实现，这里不说了。<br>标签的变体还有文字框，输入编辑框，多行输入编辑框等等。</p>
+<h3 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h3><p>与其说是ui，还不如说是背景图片。实际上就是画一个方框，或者将图片缩放到方框的尺寸。还用举例么？0.0<br>框架的变体还有窗体，选项卡等。</p>
+<h3 id="按钮"><a href="#按钮" class="headerlink" title="按钮"></a>按钮</h3><p>按钮是最为常见的UI了，因为它具备的基本的交互属性。这些虚拟按键，实际上也可以说是可视性比较好的实体按键。放在屏幕上一目了然，具有美观性和动态性，也拓展了键盘的不足，比如触摸屏或者按键绑定复杂。<br>按钮的逻辑实际上跟按键是一样的，它是通过碰撞盒的点检测来实现的。比如下面代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">local button = &#123;&#125;</div><div class="line">function button:testInQuad()</div><div class="line">	-- 此处省略若干字-。-</div><div class="line">end</div><div class="line"></div><div class="line">function button:update()</div><div class="line">	self.hover = self:testInQuad()</div><div class="line">	self.down = self.hover and love.mouse.isDown(1)</div><div class="line">	if not self.pressed and self.down then</div><div class="line">		self.pressed = true</div><div class="line">		if self.onPress then self:onPress() end</div><div class="line">	elseif self.pressed and not self.down then</div><div class="line">		self.pressed = false</div><div class="line">		if self.onRelease then self:onRelease() end</div><div class="line">	end</div><div class="line"></div><div class="line">	if self.down and self.onHolding then</div><div class="line">		self:onHolding()</div><div class="line">	end</div><div class="line">end</div><div class="line"></div><div class="line">function button:draw()</div><div class="line">	love.graphics.setColor(255,255,255,255)</div><div class="line">	love.graphics.rectangle(self.x,self.y,self.w,self.h)</div><div class="line">	love.graphics.setColor(0,0,0,255)</div><div class="line">	if self.text then</div><div class="line">		love.graphics.setFont(self.font or love.graphics.getFont())</div><div class="line">		love.graphics.printf(&quot;hello world&quot;,self.x,self.y,self.w,self.h,&quot;center&quot;,&quot;center&quot;)</div><div class="line">	end</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>上面的代码应该是一个最基本的按键架构了，定义部分暂时不说了，响应部分主要是对鼠标悬停，按下，释放和按住几个状态进行判断，然后进入相应的回调中。这里突然想起来一个对于win编程很常用的一个词，钩子，实际上我们之前常说的猴子补丁其实跟钩子是同样的原理。就是一个代码转向的问题。比如我们在按下回调中下一个钩子是什么样的呢：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">if button.onPress then</div><div class="line">	local onPress = button.onPress</div><div class="line">	button.onPress = function(self)</div><div class="line">		--你想要添加的代码</div><div class="line">		onPress(self)</div><div class="line">	end</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>按键的变体还有切换型按键，多选框，单选框。</p>
+<h3 id="进度条"><a href="#进度条" class="headerlink" title="进度条"></a>进度条</h3><p>进度条也很常用，因为它不仅仅是用于读取进度，还能够表示数据大小。最简单的比如我们之前用到的飞机血条的表示方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">bar = &#123;&#125;</div><div class="line">function bar:draw()</div><div class="line">	love.graphics.setColor(100, 255, 100, 50)</div><div class="line">	love.graphics.rectangle(&quot;fill&quot;, self.x,self.y,self.w,self.h)</div><div class="line">	love.graphics.setColor(100, 255, 100, 250)</div><div class="line">	love.graphics.rectangle(&quot;fill&quot;, self.x , self. y, self.w*self.value/self.valueMax,self.h)</div><div class="line">	love.graphics.setColor(200, 255, 200, 250)</div><div class="line">	love.graphics.rectangle(&quot;line&quot;, self.x,self.y,self.w,self.h)</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>它真的很简单仅仅需要一个value/maxvalue就足够了，如果想显示数值可以仿造上面标签的形式。它可以不用矩形而用弧形，就用画arc那一套就行了。其他形状可以用图像剪切来做，以后再说。所有显示数值的都可以用它，因为比较直观。</p>
+<h3 id="滚动条"><a href="#滚动条" class="headerlink" title="滚动条"></a>滚动条</h3><p>这里就不说了，就是一个移动的按键配合两个固定的按键，在按键的holding状态绑定其y轴的移动位置，再根据maxValue,currentLenth,currentValue来决定实际的位置。</p>
+<p>按照个人的看法，有了上面几个，实际上对于游戏来讲就基本足够了，不过有一些人比较较真，喜欢全套的ui体系，就像我们之前vb里各种控件那样。实际上，是可以的，只是，除非你用于十分个别的情形，不然都是没有什么用处的。</p>
+<h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><p>说到UI就要说UI的布局了，他的作用类似于把ui附着在一个虚拟的框架中，让他们的排列更加有序，也方便你控制。当设计分辨率更改的时候，ui能够对应的分布。布局能够有多种形式，有列表式的，直接像excel那样画出单元格，然后往里面填入相应的内容，你还可以控制单元格合并。还有一种是继承式的，首先你规定下一个位置的大小，然后每当新建一个新的ui时,按照你上一次规定的继承下来。当然，只有在你UI组织很有规律的情况下才用得到布局，一般而言手动的修改就够了。</p>
+<h3 id="9patch-九宫格贴图"><a href="#9patch-九宫格贴图" class="headerlink" title="9patch 九宫格贴图"></a>9patch 九宫格贴图</h3><p>9宫格贴图是为了方便图片拉伸，避免拉伸时产生变形的一种方法，它通过规定不能拉伸的部分和可以拉伸的部分来划分拉伸。之所以称为9九宫格，是因为要把图片切为＃字型，其中四个角是不能拉伸的，左右边只能y轴拉伸，上下只能x轴拉伸，中间是任意拉伸。至于如何切分九宫格，有两种方法，一种是图片外的数据，就是在设计时，把能切分的部分用另外的文件标记出来，随着图片一起，以便读取。另一种是图片内标记，把图片最外一个框的一个像素作为标记，有像素标记的作为九宫格的切割起止点。（一般而言任何UI贴图都不会满格显示图片的，所以最外面的像素可以直接利用。）</p>
+<h2 id="常用的UI库"><a href="#常用的UI库" class="headerlink" title="常用的UI库"></a>常用的UI库</h2><p>下面罗列一些常用的UI库，方便大家选择。</p>
+<h3 id="loveframes"><a href="#loveframes" class="headerlink" title="loveframes"></a>loveframes</h3><p>笔者最早接触的love的UI库之一，记得作者是从某个js的UI库转码过来的，这个库最大的特点是比较全面，包含了几乎所有的桌面系统的控件，基本的不说了，复杂的比如选项卡，下拉菜单，右键菜单子菜单，提示框等都有集成。而且，而且也可以高度自由的定制主题（皮肤）表现。不过，对于一般游戏而言，用不上这么全面的UI系统啦。而且从内部实现上也比较复杂，存在一些已知bug,当然，它是纯lua的，你可以改成你想要的样子。作者已经明确表示不再更新了，所以现在能够看到的是别人的fork版本。</p>
+<h3 id="GOOi"><a href="#GOOi" class="headerlink" title="GOOi"></a>GOOi</h3><p>个人比较喜欢的一套UI，虽然是安卓向的，但是桌面用起来也挺舒服的。而且它的文本具有多语言支持，代码支持连续调用，等等。文档也比较全，该有的也都有。所以比较推荐。</p>
+<h3 id="SUIT"><a href="#SUIT" class="headerlink" title="SUIT"></a>SUIT</h3><p>个人另一个很喜欢的UI,它是立即式的，或者叫组件式的，他不会返回任何所谓对象，而是数据间的交换。基于这一点，他UI组件的注册和删除就很方便，只要你不加入到update回调中，它就不存在。没有什么烦人的表的加入，删除控制。虽然它真的很好，但是估计很多人用不太习惯它。</p>
+<h2 id="对于UI的注意事项"><a href="#对于UI的注意事项" class="headerlink" title="对于UI的注意事项"></a>对于UI的注意事项</h2><p>上面的代码要注意到UI对中文的兼容问题。有的ui并没有对语言进行检测，所以可能会出现排版问题。<br>中文的输入框和选字框，跟love的窗体不太兼容，导致看不到输入框的存在，而且不同版本的window这个问题的表现也不一样。所以对于有中文输入需求的同学，有几种方案，用FFI去获取选字框和输入框的列表，然后在游戏内部窗体重建。这种做法类似于很多大型游戏，比如魔兽，lol等，还有一种是内建输入法，并且屏蔽掉中文输入法。已知这些问题存在win平台的各个版本，目前尚未知mac平台的表现，android和ios由于使用虚拟键盘，也无此问题。<br>另外，还有个别中文字体显示乱码的，是因为目前版本的FreeType库存在一些问题，如果无法避免，可以用0.9.2版本love。（目前兼容性最好的版本）<br>对于某些游戏UI，与其使用第三方库，再动一次手术才能很好使用的，还不如单独的实现一些简化版本，必须血条，人物头像，人物状态栏,装备栏等等。<br>由于一般的UI会绘制在最顶层，有些时候还要考虑到点击穿透的问题，一定要注意。</p>
+<h2 id="编程时间"><a href="#编程时间" class="headerlink" title="编程时间"></a>编程时间</h2><p>实现一个虚拟摇杆。虚拟摇杆在移动端是一个十分常见的虚拟设备，通过触摸来进行控制。其实原理也很简单。</p>
+<h3 id="设计阶段"><a href="#设计阶段" class="headerlink" title="设计阶段"></a>设计阶段</h3><ol>
+<li>虚拟摇杆仅在屏幕左下角的触碰有反馈。</li>
+<li>虚拟摇杆可以任意指定起始位置，而对偏离位置进行反馈。（滑动）</li>
+<li>虚拟摇杆会移动到允许范围内最大的位置。（为了更好的反馈转向）</li>
+<li>虚拟摇杆放开时隐藏虚拟摇杆。<br>这个虚拟摇杆比一般固定式的有一个好处是，玩家不需要用眼睛来寻找虚拟要改的位置，它只检测你手指的相对滑动来判断摇杆的偏移程度。另外，摇杆可以跟随手指的位置并达到最大的响应位置，这样，在玩家变换摇杆方向时会基于你手指位置进行，而不是最初的接触位置，更加灵敏。<h3 id="代码阶段"><a href="#代码阶段" class="headerlink" title="代码阶段"></a>代码阶段</h3></li>
+<li>摇杆的初始化<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function joystick:init()</div><div class="line">	self.working=false</div><div class="line">	self.limit=50</div><div class="line">	self.stickSize=30</div><div class="line">end</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>摇杆的working状态是为了标记摇杆的状态数据是否有效，因为摇杆在不接触时数据也是0，0。<br>limit是摇杆的最大偏移限制。size是高干中心球的大小。</p>
+<ol>
+<li>一些有用的方法<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">function joystick:inBound()</div><div class="line">	if  love.mouse.getX()&lt; love.graphics.getWidth()/2 and</div><div class="line">	 love.mouse.getY()&gt; love.graphics.getHeight()/2 then</div><div class="line">	 	return true</div><div class="line">	end</div><div class="line"></div><div class="line">end</div><div class="line"></div><div class="line">function joystick:limitToRound()</div><div class="line">	local dist=math.getDistance(self.cx,self.cy,self.sx,self.sy)</div><div class="line">	if  dist&gt;self.limit then</div><div class="line">		local dx = (self.sx-self.cx)* self.limit/dist</div><div class="line">		local dy = (self.sy-self.cy)* self.limit/dist</div><div class="line">		self.sx= self.cx+(self.sx-self.cx)* self.limit/dist</div><div class="line">		self.sy= self.cy+(self.sy-self.cy)* self.limit/dist</div><div class="line">		self.cx=self.cx+(self.sx-self.cx)* self.limit/dist/10</div><div class="line">		self.cy=self.cy+(self.sy-self.cy)* self.limit/dist/10</div><div class="line">	end</div><div class="line">end</div><div class="line"></div><div class="line">function joystick:getValue()</div><div class="line">	if self.working then </div><div class="line">		self.vx= (self.sx-self.cx)/self.limit</div><div class="line">		self.vy= -(self.sy-self.cy)/self.limit</div><div class="line">	else</div><div class="line">		self.vx= 0</div><div class="line">		self.vy= 0</div><div class="line">	end</div><div class="line">end</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>inBound方法是标记接触位置是否在左下角。如果不在这不响应摇杆。<br>limitToRound是让摇杆停留在里圆心最大的偏移上，如果大于偏移，则让摇杆缓缓移动向偏移位置。<br>getValue很简单了，获取当前摇杆的偏移值，用的是摇杆的位置和中心位置之差与最大位置的比值。所以结果是一个-1，1的小数。而放开摇杆，则返回0，0</p>
+<ol>
+<li>更新原理<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">function joystick:update()</div><div class="line">	if self.working then</div><div class="line">		if not love.mouse.isDown(1) then</div><div class="line">			self.cx=nil</div><div class="line">			self.working=false</div><div class="line">			return </div><div class="line">		end</div><div class="line">		self.sx,self.sy = love.mouse.getPosition()</div><div class="line">		self:limitToRound()</div><div class="line">	else</div><div class="line">		self.working=love.mouse.isDown(1) and self:inBound()</div><div class="line">		if self.working  then	</div><div class="line">			self.cx,self.cy = love.mouse.getPosition()</div><div class="line">			self.sx,self.sy = self.cx, self.cy</div><div class="line">		end</div><div class="line">	end</div><div class="line">	self:getValue()</div><div class="line">end</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>首先要类似按钮一样，判断是不是not working到working。也就是按下状态。<br>如果是按下状态，那么定一个中心位置，并暂时的把摇杆位置定为与中心位置重合。<br>如果是按住状态，则实时的更新摇杆位置，并把中心位置移向摇杆位置的最大偏移。<br>如果是松开状态，则删除中心位置。标记not working.</p>
+<ol>
+<li>绘制阶段<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function joystick:draw()</div><div class="line">	if self.working then</div><div class="line">		love.graphics.setColor(255, 255, 255, 255)</div><div class="line">		love.graphics.circle(&quot;line&quot;, self.cx, self.cy, self.limit)</div><div class="line">		love.graphics.setColor(200, 200,200, 255)</div><div class="line">		love.graphics.circle(&quot;fill&quot;, self.sx, self.sy, self.stickSize)</div><div class="line">	end</div><div class="line">	--love.graphics.print(string.format(&quot;axis x: %0.2f; axis y: %0.2f&quot;,self.vx,self.vy),100,100)</div><div class="line">end</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>如果处于按下或者按住状态（working）则绘制，对于中心使用线框，对于摇杆，使用填充圆。颜色自订。你也可以打印一下debug信息。string.format虽然是效率不是很高的函数，但很有用，请多加使用。</p>
+<h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><ol>
+<li>根据自己的喜好，选择几种UI库，对着教程案例进行尝试，找到一个你比较喜欢的类型。</li>
+<li>查看你喜欢的UI的源码，理解它的基本原理。并根据自己的需求做出合理的修改。</li>
+<li>为之前我们做的飞机游戏做一点UI内容吧，比如飞机血量，可以把飞机和血条固定在左上角。分数固定在右下角，时间固定在右上角。你可以给飞机几条生命，固定在左下角。</li>
+<li>把虚拟摇杆放到游戏中，并把飞机的控制方式改为摇杆控制。</li>
+<li>把开炮放在虚拟按键上，然后弄一个炸弹。效果为全屏的敌机全部销毁，全屏的子弹全部销毁。做一个原型的进度条放在这个按钮上。cd为30秒。</li>
+</ol>
+<h2 id="本章代码"><a href="#本章代码" class="headerlink" title="本章代码"></a>本章代码</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">local</span> joystick=class(<span class="string">"joystick"</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">joystick:init</span><span class="params">()</span></span></div><div class="line">	self.working=<span class="keyword">false</span></div><div class="line">	self.limit=<span class="number">50</span></div><div class="line">	self.stickSize=<span class="number">30</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">joystick:inBound</span><span class="params">()</span></span></div><div class="line">	<span class="keyword">if</span>  love.mouse.getX()&lt; love.graphics.getWidth()/<span class="number">2</span> <span class="keyword">and</span></div><div class="line">	 love.mouse.getY()&gt; love.graphics.getHeight()/<span class="number">2</span> <span class="keyword">then</span></div><div class="line">	 	<span class="keyword">return</span> <span class="keyword">true</span></div><div class="line">	<span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">joystick:limitToRound</span><span class="params">()</span></span></div><div class="line">	<span class="keyword">local</span> dist=<span class="built_in">math</span>.getDistance(self.cx,self.cy,self.sx,self.sy)</div><div class="line">	<span class="keyword">if</span>  dist&gt;self.limit <span class="keyword">then</span></div><div class="line">		<span class="keyword">local</span> dx = (self.sx-self.cx)* self.limit/dist</div><div class="line">		<span class="keyword">local</span> dy = (self.sy-self.cy)* self.limit/dist</div><div class="line">		self.sx= self.cx+(self.sx-self.cx)* self.limit/dist</div><div class="line">		self.sy= self.cy+(self.sy-self.cy)* self.limit/dist</div><div class="line">		self.cx=self.cx+(self.sx-self.cx)* self.limit/dist/<span class="number">10</span></div><div class="line">		self.cy=self.cy+(self.sy-self.cy)* self.limit/dist/<span class="number">10</span></div><div class="line">	<span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">joystick:getValue</span><span class="params">()</span></span></div><div class="line">	<span class="keyword">if</span> self.working <span class="keyword">then</span> </div><div class="line">		self.vx= (self.sx-self.cx)/self.limit</div><div class="line">		self.vy= -(self.sy-self.cy)/self.limit</div><div class="line">	<span class="keyword">else</span></div><div class="line">		self.vx= <span class="number">0</span></div><div class="line">		self.vy= <span class="number">0</span></div><div class="line">	<span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">joystick:update</span><span class="params">()</span></span></div><div class="line">	<span class="keyword">if</span> self.working <span class="keyword">then</span></div><div class="line">		<span class="keyword">if</span> <span class="keyword">not</span> love.mouse.isDown(<span class="number">1</span>) <span class="keyword">then</span></div><div class="line">			self.cx=<span class="keyword">nil</span></div><div class="line">			self.working=<span class="keyword">false</span></div><div class="line">			<span class="keyword">return</span> </div><div class="line">		<span class="keyword">end</span></div><div class="line">		self.sx,self.sy = love.mouse.getPosition()</div><div class="line">		self:limitToRound()</div><div class="line">	<span class="keyword">else</span></div><div class="line">		self.working=love.mouse.isDown(<span class="number">1</span>) <span class="keyword">and</span> self:inBound()</div><div class="line">		<span class="keyword">if</span> self.working  <span class="keyword">then</span>	</div><div class="line">			self.cx,self.cy = love.mouse.getPosition()</div><div class="line">			self.sx,self.sy = self.cx, self.cy</div><div class="line">		<span class="keyword">end</span></div><div class="line">		</div><div class="line">	<span class="keyword">end</span></div><div class="line">	self:getValue()</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">joystick:draw</span><span class="params">()</span></span></div><div class="line">	<span class="keyword">if</span> self.working <span class="keyword">then</span></div><div class="line">		love.graphics.setColor(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)</div><div class="line">		love.graphics.circle(<span class="string">"line"</span>, self.cx, self.cy, self.limit)</div><div class="line">		love.graphics.setColor(<span class="number">200</span>, <span class="number">200</span>,<span class="number">200</span>, <span class="number">255</span>)</div><div class="line">		love.graphics.circle(<span class="string">"fill"</span>, self.sx, self.sy, self.stickSize)</div><div class="line">	<span class="keyword">end</span></div><div class="line">	<span class="comment">--love.graphics.print(string.format("axis x: %0.2f; axis y: %0.2f",self.vx,self.vy),100,100)</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="keyword">return</span> joystick</div><div class="line"></div></pre></td></tr></table></figure>
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="love2d" data-title="love2d" data-url="alexarjing.github.io"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"love2d"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+    </div>
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>关于</h2>
+                <p>
+                    本教程配套软件:<a href="https://alexarjing.github.io/tutorial.love">tutorial.love</a>. 请安装love环境使用。
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>最近发表</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2016/12/05/chapter8/">第8章 用户界面</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2016/12/05/interlude/">插曲：你的独立游戏生涯</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2016/11/30/chapter7/">第7章 文档结构和库</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2016/11/30/chapter6/">第6章 动画与音效</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>分类</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/中级教程/">中级教程</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/初级教程/">初级教程</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/klugjo/hexo-theme-alpha-dust">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-instagram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://dribbble.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-dribbble"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.behance.net/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-behance"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://500px.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-500px"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:alexar@foxmail.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    本文作者Alexar alexar@foxmail.com; 原创内容禁止转载。作者保留一切权利。
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+
+
+</body>
+
+</html>
