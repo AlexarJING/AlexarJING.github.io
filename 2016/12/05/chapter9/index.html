@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="描述">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="AlexarJING">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="高级绘图（I）——Scissor，Stencil，Blender"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="描述" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Alexar的Love2d实战教程"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>高级绘图（I）——Scissor，Stencil，Blender - Alexar的Love2d实战教程</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+    <script>
+		(function(){
+		    var bp = document.createElement('script');
+		    var curProtocol = window.location.protocol.split(':')[0];
+		    if (curProtocol === 'https') {
+		        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+		    }
+		    else {
+		        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		    }
+		    var s = document.getElementsByTagName("script")[0];
+		    s.parentNode.insertBefore(bp, s);
+		})();
+	</script>
+
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2016/12/05/chapter9/">
+                高级绘图（I）——Scissor，Stencil，Blender
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016-12-05</span>
+            
+            <a href="#disqus_thread" class="comments">评论</a>
+            
+                <span class="category">
+                    <a href="/categories/中级教程/">中级教程</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>本章开始的接下来几章，将介绍一下love2d的一些高级绘图概念。所谓高级绘图，也就是给你更多的工具来让画面更好看，当然并不是说会了高级绘图你就能会画出更好的效果，还需要你有一颗审美的心0.0<br>本章将介绍scissor,stencil,blender,colorMask以及对于绘图对象的filter和wrapMode。<br><a id="more"></a></p>
+<h1 id="高级绘图（I）"><a href="#高级绘图（I）" class="headerlink" title="高级绘图（I）"></a>高级绘图（I）</h1><p>很早之前，我就向各位传递了一个概念，就是love绘图实际上就是一个动态的Photoshop绘图，你用自动化的手段来控制photoshop的各种画笔和功能。当然，有的人可能photoshop还不太熟悉，个人建议很有必要学习一下，对于基础应用来讲，ps不难，而且是图形化界面而非love的各种api，所以更容易理解和记忆。而且，对于游戏人来讲，你拿到的素材很可能需要你用ps再次处理一下；甚至你以后给你女朋友P照片，不还得需要这技能。所以，不会的赶紧去学两下。</p>
+<h2 id="scissor-选区"><a href="#scissor-选区" class="headerlink" title="scissor 选区"></a>scissor 选区</h2><p>虽然这个单词直译过来叫做剪切，但是从理解来讲，个人认为叫做选区比较合适。在love中，可以像ps里面那样进行框选出一片矩形区域，来作为选区，在设定选区的内部，任何绘图的范围都限定选区之中，不会影响到选区外面。而且这个选区是屏幕坐标系的，love的世界坐标系转换对它没有影响。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">love.graphics.setScissor( x, y, width, height )</div><div class="line">-- draw calls</div><div class="line">love.graphics.setScissor()</div></pre></td></tr></table></figure></p>
+<p>具有影响范围的一类函数，他们的格式是上面这样的，当有参数时，他们开启这个功能，当无参数调用时，关闭这个功能。我们会在后文见到类似的用法。<br>还有一个函数是love.graphics.intersectScissor( x, y, width, height ),当它存在于一个选区之中时，进行的操作是交选（交集选区），而如果没有选区则是跟普通选区相同。<br>对了，还有一个要十分注意的，千万别忘了用完就把setScissor关掉，其他类似格式的操作也一样，如果不关掉会出现比较大的错误。</p>
+<h2 id="stencil-蒙版"><a href="#stencil-蒙版" class="headerlink" title="stencil 蒙版"></a>stencil 蒙版</h2><p>用过ps的同学，应该对蒙版的感念比较清楚，当然，对于ps而言，蒙版也是个比较高级的用法，可能一般使用也不太能用得上。下面，我简单的介绍一下蒙版。<br>首先用一块不透明的胶片作为蒙版的基础放到屏幕前方，此时屏幕被完全遮挡。<br>然后，在胶片上画图形，注意，这个画笔实际上只有画与没画两种，没有颜色之分。如果设置多层蒙版，就多加几层胶片。每层胶片也可以设置权重分值，默认为1,比如某一层的权重为5。实际上，你也可以把某个蒙版分值设为负数。<br>之后，我们定义一下蒙版制作的规则，比如“权重分为1的”,“权重分大于等于3的”等。然后开始用剪刀把符合规则的区域剪下来。<br>然后，我们用这个蒙版绘图，你的笔触和图片仅仅限制到扣开的区域，而无法影响到没有扣开的区域。<br>最后，我们把蒙版扔掉，就不再受到蒙版影响了。<br>在love中定义一个蒙版也分为四个步骤。</p>
+<ol>
+<li><p>制作蒙版胶片</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">local function myStencilFunction()</div><div class="line">   love.graphics.rectangle(&quot;fill&quot;, 225, 200, 350, 300)</div><div class="line">end</div></pre></td></tr></table></figure>
+</li>
+<li><p>指定蒙版胶片权重分数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">love.graphics.stencil(myStencilFunction, &quot;replace&quot;, 1)</div></pre></td></tr></table></figure>
+</li>
+<li><p>指定蒙版规则，并剪切蒙版。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">love.graphics.setStencilTest(&quot;greater&quot;, 0)</div></pre></td></tr></table></figure>
+</li>
+<li><p>抛弃蒙版。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">love.graphics.setStencilTest()</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>我们可以在步骤3和步骤4之间加入任何绘图代码来绘制受蒙版限制的图片。同时，你也可以制作多个第1，2步来建立多重蒙版，或者在绘图中多次绘制（drawcall），每绘制一次，就相当于按此规则叠加一次。<br>注意，这里有个隐含的“蒙版分数”，stencil的最后一个参数是，是是否保留最后一次蒙版值（默认为不保留）。如果想建立多重蒙版，就需要在除第一张胶片外的其他胶片设置保留蒙版值来继承上一次的分数，否则将被最后一次覆盖。目前版本暂时无法取得蒙版值，以及直接设置蒙版值（可以通过canvas来保留，以后再讲，未来可能出一个mask对象也说不定）。</p>
+<h2 id="Blender-混色"><a href="#Blender-混色" class="headerlink" title="Blender 混色"></a>Blender 混色</h2><p>blender的意义是混色器，也就是不同绘图（drawcall）的颜色是如何相互影响的。从PS的角度讲，我们曾经说过，每个drawcall就相当于ps中的一个图层，而混色就相当于图层间的混色关系（ps中，右下角，图层透明度旁边的下拉菜单）。</p>
+<h3 id="颜色值"><a href="#颜色值" class="headerlink" title="颜色值"></a>颜色值</h3><p>我们之前接触过颜色值，它是由四个0，255之间的数值组成的，即 r,g,b,a 分别表示红，绿，蓝，透明度（权重）。当然，因为lua中的数值都是浮点数，所以0，255（8位）这种并不能真正的表示它内存的具体存在，所以在0.11版本的love中，颜色数值回归了它数值的本源0，1之间的浮点数。颜色还有一种表示方法叫做，HSV，色调，饱和度，明度，关于他们之间的转换方法，请自行百度。HSV的好处之一在于很容易的表达颜色色调渐变（比如彩虹）。</p>
+<h3 id="混色方法"><a href="#混色方法" class="headerlink" title="混色方法"></a>混色方法</h3><p>混色实际上是一种基于数学的方法，而其中一个重要的角色就是alpha。笼统的说，alpha叫做透明度，但是对于其他混色方法而言，他更多的叫做权重值。而数学方法涉及两个颜色，一个是画面已经绘制的颜色dst，另一个是当前设置的颜色src 。而结果为res,它将作为下一次判断的画面颜色。下面讲解的数值均取新版的0，1范围，而非0，255范围。<br>alpha模式，默认。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">res.r = dst.r * (1 - src.a) + src.r * src.a</div><div class="line">res.g = dst.g * (1 - src.a) + src.g * src.a</div><div class="line">res.b = dst.b * (1 - src.a) + src.b * src.a</div><div class="line">res.a = dst.a * (1 - src.a) + src.a</div></pre></td></tr></table></figure></p>
+<p>它是默认模式，从这个方法可以很容易理解，比如红色而言，结果颜色是设置颜色<em>透明度，和原有颜色</em>（1-透明度）之和。<br>它是我们的颜色默认用法，这种用法可以保证色彩正常的混合，由alpha的权重叠加。<br>add模式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">res.r = dst.r + (src.r * src.a)</div><div class="line">res.g = dst.g + (src.g * src.a)</div><div class="line">res.b = dst.b + (src.b * src.a)</div><div class="line">res.a = dst.a</div></pre></td></tr></table></figure></p>
+<p>就是图层模式中的“增加”，颜色将直接叠加，高于1的保留到1。比如你想让画面看起来更亮，你仅仅需要add一个比较淡的白色即可。而不是增加原来的颜色。这里注意的是，颜色的色相是r,g,b所占的比例，而增加是一个加法，因此，如果要是增加一个纯白，会导致色彩偏差。<br>subtract模式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">res.r = dst.r - (src.r * src.a)</div><div class="line">res.g = dst.g - (src.g * src.a)</div><div class="line">res.b = dst.b - (src.b * src.a)</div><div class="line">res.a = dst.a</div></pre></td></tr></table></figure></p>
+<p>也叫做”减少”模式，是add的反方法。<br>replace模式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">res.r = src.r * src.a</div><div class="line">res.g = src.g * src.a</div><div class="line">res.b = src.b * src.a</div><div class="line">res.a = src.a</div></pre></td></tr></table></figure></p>
+<p>替换模式，也就是无视之前的绘图，直接用当前颜色覆盖。<br>multiply 相乘<br>这个模式颜色会跟之前的相乘，一般而言它用作阴影处理。<br>darken 变暗<br>取屏幕颜色和设置颜色之间更暗的（数值更低）。<br>lighten 变亮<br>取屏幕颜色和设置颜色之间更亮的（数值更高）。<br>screen 屏幕<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">res.r = dst.r * (1 - src.r) + src.r</div><div class="line">res.g = dst.g * (1 - src.g) + src.g</div><div class="line">res.b = dst.b * (1 - src.b) + src.b</div><div class="line">res.a = dst.a * (1 - src.a) + src.a</div></pre></td></tr></table></figure></p>
+<p>屏幕混色相当于对原色进行alpha处理，对设置色进行叠加处理。</p>
+<h3 id="预乘"><a href="#预乘" class="headerlink" title="预乘"></a>预乘</h3><p>对于混色而言，还有一个是否预乘的方法，所谓预乘就是将alpha值，先分别乘以自身的r,g,b值之后，再进入混色。关于预乘的概念，请自行百度。</p>
+<h3 id="gamma矫正"><a href="#gamma矫正" class="headerlink" title="gamma矫正"></a>gamma矫正</h3><p>Love提供gamma矫正的功能，不过事先你需要再conf里进行设置。关于gamma矫正请自行百度。</p>
+<h2 id="colorMask"><a href="#colorMask" class="headerlink" title="colorMask"></a>colorMask</h2><p>色彩通道，跟ps中的色彩通道类似，它将仅允许目标通道的颜色进入绘制。而其他颜色不发生改变。（相当于alpha模式下，该通道的数值变化为0，保持底色）<br>它也是个开关函数。通过无参数调用来关闭该功能。</p>
+<h2 id="绘图对象filter"><a href="#绘图对象filter" class="headerlink" title="绘图对象filter"></a>绘图对象filter</h2><p>绘图对象，比如image对象（不是imageData）,在进行缩放时，用filter方法来指定缩放的模式。<br>linear模式（默认），它将采用线性插值的方法来补全由于放大或缩小造成的像素差异。它将让图像看起来更加平滑，但是也更加模糊。对于一般的背景图，地图等，如果我们不希望图片出现马赛克，就需要使用线性模式。<br>nearest模式，就近模式，它直接使用其相邻的像素的颜色补全。这种模式多用于低像素素材的放大。如果使用线性模式，由于放大的倍数较高，整个图片将模糊成一大片。</p>
+<h2 id="绘图对象wrapMode"><a href="#绘图对象wrapMode" class="headerlink" title="绘图对象wrapMode"></a>绘图对象wrapMode</h2><p>对于绘图对象而言，还有一种叫做环绕模式或者填充模式，它的作用是，如果我们绘制目标（quad），大于你图片大小时，对于大的部分如何处理。<br>clamp 拉伸模式，最边缘的像素延伸到目标区域边缘。<br>repeat 重复模式，以区域中心为中心，重复的填充纹理，这种填充是最右边的像素接着图像最左边的像素。<br>clampzero 剪切模式，仅绘制在区域中心，其他地方以无alpha的黑色填充。<br>mirroredrepeat 镜像重复模式，头对头，尾对尾的镜像重复，这种对于左右非连续的纹理来讲，效果比顺序重复要好。<br>warpMode可以用纹理来填充一个形状等等。也可以用来做滚动字幕（像素化后）。</p>
+<h2 id="编程时间"><a href="#编程时间" class="headerlink" title="编程时间"></a>编程时间</h2><p>由于本章的知识点比较散，因此分别对学习内容进行代码演示，而不是整体了。</p>
+<h3 id="设计阶段"><a href="#设计阶段" class="headerlink" title="设计阶段"></a>设计阶段</h3><ol>
+<li>做一个走马灯效果的字符框，文字可以滚动。</li>
+<li>利用一个左右可以拼接的地图，做一个滚动的地图效果。</li>
+<li>利用一个像素风格的动画，拉伸4倍，同时利用平行畸变来做一个影子。</li>
+<li>在蒙版上绘制四个圆形相互交叠的图片，并且分别展示绘制次数为1，2，3的情形。<br>走马灯效果，主要利用我们学到的scissor来减去框以外的文字来实现。这里是一种比较简单的情形。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">local ScrollText = &#123;&#125;</div><div class="line">function ScrollText:new(text,width,rollSpeed,wrapMode,font)</div><div class="line">	local new = &#123;</div><div class="line">		text = text,</div><div class="line">		rollSpeed = rollSpeed or 100,</div><div class="line">		wrapMode = wrapMode or &quot;left&quot;,</div><div class="line">		font = font or love.graphics.getFont(),</div><div class="line">		current = 0</div><div class="line">	&#125;</div><div class="line">	new.width = new.width or new.font:getWidth(new.text)*1.5</div><div class="line">	new.height = new.height or new.font:getHeight(new.text)</div><div class="line">	self.__index = self</div><div class="line">	setmetatable(new, self)</div><div class="line">	return new</div><div class="line">end</div><div class="line"></div><div class="line">function ScrollText:update(dt)</div><div class="line">	self.current = self.current - self.rollSpeed*dt</div><div class="line">	if self.current &lt; - self.width then</div><div class="line">		self.current = 0</div><div class="line">	end</div><div class="line">end</div><div class="line"></div><div class="line">function ScrollText:draw(x,y)</div><div class="line">	love.graphics.setScissor(x,y,self.width,self.height)</div><div class="line">	love.graphics.print(self.text,x+self.current,y)</div><div class="line">	love.graphics.print(self.text,x+self.current+self.width,y)</div><div class="line">	love.graphics.setScissor()</div><div class="line">	love.graphics.rectangle(&quot;line&quot;, x, y, self.width, self.height)</div><div class="line">end</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>当然，有很多东西还没有实现，这里仅展现原理。<br>无限滚动地图，利用的是我们学的，wrapmode的repeat实现的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">local ScrollMap = &#123;&#125;</div><div class="line">function ScrollMap:new(path,w)</div><div class="line">	local image = love.graphics.newImage(path)</div><div class="line">	image:setWrap(&quot;repeat&quot;)</div><div class="line">	local sw , sh = image:getDimensions()</div><div class="line">	w = w or sw/ 2</div><div class="line">	local new = &#123;</div><div class="line">		image = image,</div><div class="line">		rollSpeed = rollSpeed or 100,</div><div class="line">		wrapMode = wrapMode or &quot;left&quot;,</div><div class="line">		current = 0,</div><div class="line">		sw = sw,</div><div class="line">		sh = sh,</div><div class="line">		w = w</div><div class="line">	&#125;</div><div class="line">	new.quad = love.graphics.newQuad(new.current, 0, w, sh, sw, sh)</div><div class="line">	self.__index = self</div><div class="line">	setmetatable(new, self)</div><div class="line">	return new</div><div class="line">end</div><div class="line"></div><div class="line">function ScrollMap:update(dt)</div><div class="line">	self.current = self.current + self.rollSpeed*dt</div><div class="line">	-- 这里与文字是反向的，因为参考系不同</div><div class="line">	self.quad = love.graphics.newQuad(self.current, 0, self.w, self.sh, self.sw, self.sh)</div><div class="line">end</div><div class="line"></div><div class="line">function ScrollMap:draw(x,y)</div><div class="line">	love.graphics.draw(self.image, self.quad ,x, y)</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>内部实现，跟滚动文字很像。只是Update的时候，对quad进行更新。因为这里的current指的是原图的x起始点，因此方向是相反的。<br>动画这个实际很简单了，只是用上了我们之前没用过的平行畸变。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">catTexture:setFilter(&quot;nearest&quot;,&quot;nearest&quot;)</div><div class="line">love.graphics.setColor(0, 0, 0, 255)</div><div class="line">catAnim:draw(catTexture,500,300,0,4,4,22,64,1,0) --影子</div><div class="line">love.graphics.setColor(255, 255, 255, 255)</div><div class="line">catAnim:draw(catTexture,500,300,0,4,4,32,64)</div><div class="line">catTexture:setFilter(&quot;linear&quot;,&quot;linear&quot;)</div><div class="line">catAnim:draw(catTexture,600,300,0,4,4,32,64)</div></pre></td></tr></table></figure></p>
+<p>这里特意加上了一个效果对比图，来说明filter对图片的影响。</p>
+<p>最后利用stencil来绘图，比较有意思，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">local function myStencilFunction()</div><div class="line">	love.graphics.circle(&quot;fill&quot;, 600, 500, 30)</div><div class="line">	love.graphics.circle(&quot;fill&quot;, 600, 500+20, 30)</div><div class="line">	love.graphics.circle(&quot;fill&quot;, 600+20, 500+20, 30)</div><div class="line">	love.graphics.circle(&quot;fill&quot;, 600+20, 500, 30)</div><div class="line">end</div><div class="line"></div><div class="line">for i = 1, 4 do</div><div class="line">	love.graphics.stencil(myStencilFunction, &quot;increment&quot;)</div><div class="line">	love.graphics.setStencilTest(&quot;equal&quot;, i)</div><div class="line">	love.graphics.setColor(255, 50*i, 50*i, 255)</div><div class="line">	love.graphics.rectangle(&quot;fill&quot;, 500, 400, 200, 200)</div><div class="line">	love.graphics.setStencilTest()</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>这个我们可以看到，被绘制的次数越多，颜色越淡。由于是四个图形交叠，最多被绘制4次，最少1次。<br>通过上面图，应该可以清楚的理解到stencil的用法。</p>
+<h2 id="作业："><a href="#作业：" class="headerlink" title="作业："></a>作业：</h2><ol>
+<li>画一个安卓机器人（或者你喜欢的其他图形），并用love的logo填充到机器人中。</li>
+<li>仅使用stencil来绘制生化危害（生化危机）的那个图标。利用不同的绘制次数来标记颜色。</li>
+<li>在网上找一个世界地图，制作一个能够滚动的地图，利用鼠标拖动来滚动地图。</li>
+<li>使用stencil+wrapMode来用任意地图材质填充多边形。（需要使用到绘制多边形以及love.math.trianglate三角形化。）</li>
+</ol>
+<h2 id="本章代码："><a href="#本章代码：" class="headerlink" title="本章代码："></a>本章代码：</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">local</span> font = love.graphics.newFont(<span class="number">20</span>)</div><div class="line"><span class="keyword">local</span> text = love.graphics.newText(font,<span class="string">"hello world"</span>)</div><div class="line"><span class="keyword">local</span> quad = love.graphics.newQuad(<span class="number">0</span>, <span class="number">0</span>, <span class="number">300</span>, <span class="number">300</span>, text:getWidth(),text:getHeight())</div><div class="line"><span class="keyword">local</span> logo  = love.graphics.newImage(<span class="string">"assets/res/logo.png"</span>)</div><div class="line"></div><div class="line"><span class="keyword">local</span> ScrollText = &#123;&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ScrollText:new</span><span class="params">(text,width,rollSpeed,wrapMode,font)</span></span></div><div class="line">	<span class="keyword">local</span> new = &#123;</div><div class="line">		text = text,</div><div class="line">		rollSpeed = rollSpeed <span class="keyword">or</span> <span class="number">100</span>,</div><div class="line">		wrapMode = wrapMode <span class="keyword">or</span> <span class="string">"left"</span>,</div><div class="line">		font = font <span class="keyword">or</span> love.graphics.getFont(),</div><div class="line">		current = <span class="number">0</span></div><div class="line">	&#125;</div><div class="line">	new.width = new.width <span class="keyword">or</span> new.font:getWidth(new.text)*<span class="number">1.5</span></div><div class="line">	new.height = new.height <span class="keyword">or</span> new.font:getHeight(new.text)</div><div class="line">	self.__index = self</div><div class="line">	<span class="built_in">setmetatable</span>(new, self)</div><div class="line">	<span class="keyword">return</span> new</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ScrollText:update</span><span class="params">(dt)</span></span></div><div class="line">	self.current = self.current - self.rollSpeed*dt</div><div class="line">	<span class="keyword">if</span> self.current &lt; - self.width <span class="keyword">then</span></div><div class="line">		self.current = <span class="number">0</span></div><div class="line">	<span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ScrollText:draw</span><span class="params">(x,y)</span></span></div><div class="line">	love.graphics.setScissor(x,y,self.width,self.height)</div><div class="line">	love.graphics.<span class="built_in">print</span>(self.text,x+self.current,y)</div><div class="line">	love.graphics.<span class="built_in">print</span>(self.text,x+self.current+self.width,y)</div><div class="line">	love.graphics.setScissor()</div><div class="line">	love.graphics.rectangle(<span class="string">"line"</span>, x, y, self.width, self.height)</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">local</span> ScrollMap = &#123;&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ScrollMap:new</span><span class="params">(path,w)</span></span></div><div class="line">	<span class="keyword">local</span> image = love.graphics.newImage(path)</div><div class="line">	image:setWrap(<span class="string">"repeat"</span>)</div><div class="line">	<span class="keyword">local</span> sw , sh = image:getDimensions()</div><div class="line">	w = w <span class="keyword">or</span> sw/ <span class="number">2</span></div><div class="line">	<span class="keyword">local</span> new = &#123;</div><div class="line">		image = image,</div><div class="line">		rollSpeed = rollSpeed <span class="keyword">or</span> <span class="number">100</span>,</div><div class="line">		wrapMode = wrapMode <span class="keyword">or</span> <span class="string">"left"</span>,</div><div class="line">		current = <span class="number">0</span>,</div><div class="line">		sw = sw,</div><div class="line">		sh = sh,</div><div class="line">		w = w</div><div class="line">	&#125;</div><div class="line">	new.quad = love.graphics.newQuad(new.current, <span class="number">0</span>, w, sh, sw, sh)</div><div class="line">	self.__index = self</div><div class="line">	<span class="built_in">setmetatable</span>(new, self)</div><div class="line">	<span class="keyword">return</span> new</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ScrollMap:update</span><span class="params">(dt)</span></span></div><div class="line">	self.current = self.current + self.rollSpeed*dt</div><div class="line">	<span class="comment">-- 这里与文字是反向的，因为参考系不同</span></div><div class="line">	self.quad = love.graphics.newQuad(self.current, <span class="number">0</span>, self.w, self.sh, self.sw, self.sh)</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ScrollMap:draw</span><span class="params">(x,y)</span></span></div><div class="line">	love.graphics.draw(self.image, self.quad ,x, y)</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">local</span> st</div><div class="line"><span class="keyword">local</span> sm</div><div class="line"><span class="keyword">local</span> anim8 = <span class="built_in">require</span> <span class="string">"assets/anim8"</span></div><div class="line"><span class="keyword">local</span> grid64 = anim8.newGrid(<span class="number">64</span>,<span class="number">64</span>,<span class="number">1024</span>,<span class="number">1024</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)</div><div class="line"><span class="keyword">local</span> catTexture = love.graphics.newImage(<span class="string">"assets/res/cat_basic.png"</span>)</div><div class="line">catTexture:setFilter(<span class="string">"nearest"</span>,<span class="string">"nearest"</span>)</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">love.load</span><span class="params">()</span></span></div><div class="line">	love.graphics.setBackgroundColor(<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">255</span>)</div><div class="line">	st = ScrollText:new(<span class="string">"hello world"</span>)</div><div class="line">	sm = ScrollMap:new(<span class="string">"assets/res/terrain.png"</span>)</div><div class="line">	catAnim = anim8.newAnimation(grid64(<span class="string">"1-4"</span>,<span class="number">1</span>),<span class="number">0.1</span>)</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">love.update</span><span class="params">(dt)</span></span></div><div class="line">	st:update(dt)</div><div class="line">	sm:update(dt)</div><div class="line">	catAnim:update(dt)</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="keyword">local</span> <span class="function"><span class="keyword">function</span> <span class="title">myStencilFunction</span><span class="params">()</span></span></div><div class="line">	love.graphics.circle(<span class="string">"fill"</span>, <span class="number">600</span>, <span class="number">500</span>, <span class="number">30</span>)</div><div class="line">	love.graphics.circle(<span class="string">"fill"</span>, <span class="number">600</span>, <span class="number">500</span>+<span class="number">20</span>, <span class="number">30</span>)</div><div class="line">	love.graphics.circle(<span class="string">"fill"</span>, <span class="number">600</span>+<span class="number">20</span>, <span class="number">500</span>+<span class="number">20</span>, <span class="number">30</span>)</div><div class="line">	love.graphics.circle(<span class="string">"fill"</span>, <span class="number">600</span>+<span class="number">20</span>, <span class="number">500</span>, <span class="number">30</span>)</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">love.draw</span><span class="params">()</span></span></div><div class="line">	love.graphics.setColor(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)</div><div class="line">	love.graphics.draw(text)</div><div class="line">	love.graphics.setColor(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">50</span>)</div><div class="line">	love.graphics.draw(logo,<span class="number">300</span>,<span class="number">100</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">32</span>,<span class="number">64</span>,<span class="number">1</span>,<span class="number">0</span>)</div><div class="line">	love.graphics.setColor(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)</div><div class="line">	love.graphics.draw(logo,<span class="number">300</span>,<span class="number">100</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">32</span>,<span class="number">64</span>)</div><div class="line"></div><div class="line">	st:draw(<span class="number">500</span>,<span class="number">100</span>)</div><div class="line">	sm:draw(<span class="number">100</span>,<span class="number">300</span>)</div><div class="line">	catTexture:setFilter(<span class="string">"nearest"</span>,<span class="string">"nearest"</span>)</div><div class="line">	love.graphics.setColor(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>)</div><div class="line">	catAnim:draw(catTexture,<span class="number">500</span>,<span class="number">300</span>,<span class="number">0</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">22</span>,<span class="number">64</span>,<span class="number">1</span>,<span class="number">0</span>) <span class="comment">--影子</span></div><div class="line">	love.graphics.setColor(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)</div><div class="line">	catAnim:draw(catTexture,<span class="number">500</span>,<span class="number">300</span>,<span class="number">0</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">32</span>,<span class="number">64</span>)</div><div class="line">	catTexture:setFilter(<span class="string">"linear"</span>,<span class="string">"linear"</span>)</div><div class="line">	catAnim:draw(catTexture,<span class="number">600</span>,<span class="number">300</span>,<span class="number">0</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">32</span>,<span class="number">64</span>)</div><div class="line"></div><div class="line">	<span class="keyword">for</span> i = <span class="number">1</span>, <span class="number">4</span> <span class="keyword">do</span></div><div class="line">		love.graphics.stencil(myStencilFunction, <span class="string">"increment"</span>)</div><div class="line">		love.graphics.setStencilTest(<span class="string">"equal"</span>, i)</div><div class="line">		love.graphics.setColor(<span class="number">255</span>, <span class="number">50</span>*i, <span class="number">50</span>*i, <span class="number">255</span>)</div><div class="line">		love.graphics.rectangle(<span class="string">"fill"</span>, <span class="number">500</span>, <span class="number">400</span>, <span class="number">200</span>, <span class="number">200</span>)</div><div class="line">		love.graphics.setStencilTest()</div><div class="line">	<span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div></pre></td></tr></table></figure>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="love2d" data-title="love2d" data-url="alexarjing.github.io"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"love2d"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+    </div>
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>关于</h2>
+                <p>
+                    本教程配套软件:<a href="https://alexarjing.github.io/tutorial.love">tutorial.love</a>. 请安装love环境使用。
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>最近发表</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2016/12/05/chapter9/">高级绘图（I）——Scissor，Stencil，</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2016/12/05/chapter8/">第8章 用户界面</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2016/12/05/interlude/">插曲：你的独立游戏生涯</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2016/11/30/chapter7/">第7章 文档结构和库</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>分类</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/中级教程/">中级教程</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/初级教程/">初级教程</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/klugjo/hexo-theme-alpha-dust">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-instagram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://dribbble.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-dribbble"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.behance.net/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-behance"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://500px.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-500px"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:alexar@foxmail.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    本文作者Alexar alexar@foxmail.com; 原创内容禁止转载。作者保留一切权利。
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+
+
+</body>
+
+</html>

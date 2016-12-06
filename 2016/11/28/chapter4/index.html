@@ -183,7 +183,8 @@
 <h2 id="碰撞盒"><a href="#碰撞盒" class="headerlink" title="碰撞盒"></a>碰撞盒</h2><p>碰撞盒是最常见的碰撞形式了，经常听到的AABB指的就是它，就是把物体的轮廓抽象为矩形，并用它来检测跟其他碰撞盒的互动。<br>碰撞盒需要提供的是，物体所在的矩形，实际上需求的是ltrb(left,top,right,bottom),即左上角和右下角的坐标。而判断的方式很简单，就是作比较。</p>
 <p>一个点和碰撞盒进行碰撞检测。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function pointTest(x,y,l,t,r,b)</div><div class="line">	if x&lt; l or x&gt; r or y&lt; t or y&gt;b then return end</div><div class="line">	return true</div><div class="line">end</div></pre></td></tr></table></figure></p>
 <p>这里有个小技巧就是“提前退出”,有的时候，不需要把所有情况都计算到，能提早结束就提早结束。所以使用or而非使用and.<br>两个碰撞盒间碰撞。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function bodyTest(Al,At,Ar,Ab,Bl,Bt,Br,Bb)</div><div class="line">	if pointTest(Al,At,Bl,Bt,Br,Bb) </div><div class="line">		or pointTest(Ar,At,Bl,Bt,Br,Bb) </div><div class="line">		or pointTest(Al,Ab,Bl,Bt,Br,Bb) </div><div class="line">		or pointTest(Ar,Ab,Bl,Bt,Br,Bb)  then</div><div class="line">		return true</div><div class="line">	end</div><div class="line">end</div></pre></td></tr></table></figure></p>
-<p>意思是，对于A来讲，任意一个点如果跟B发生碰撞则碰撞。当然，还要考虑到包含关系，如果A正好圈到B外面，那么A的所有点跟B都不会碰撞，但是他们会交叠，因此，要以较大的形状作为点测试对象。</p>
+<p>意思是，对于A来讲，任意一个点如果跟B发生碰撞则碰撞。当然，还要考虑到包含关系，如果A正好圈到B外面，那么A的所有点跟B都不会碰撞，但是他们会交叠，因此，要以较大的形状作为点测试对象。以及要考虑那种两个矩形无顶点交叠只有中间交叠的情况。更标准的做法是用轴检测：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function bodyTest(Al,At,Ar,Ab,Bl,Bt,Br,Bb)</div><div class="line">	if Ab &lt; Bt or Bb &lt; At then return end</div><div class="line">	if Ar &gt; Bl or Br &lt; Al then return end</div><div class="line">	return true</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>这里还是提前退出机制，如果a顶在b顶之上，而a的底还在b的顶之上则，a整个图形都在b之上，不相交。<br>同理，</p>
 <p>碰撞盒的射线，这里暂时不写，之所以给出上面一些代码，并不是说让你们在实际游戏中直接拿来用，而是将通一些原理，方便你能够更好的理解别人的库，以及自己做些简单的应用库。</p>
 <h2 id="多边形碰撞"><a href="#多边形碰撞" class="headerlink" title="多边形碰撞"></a>多边形碰撞</h2><p>多边形碰撞实际上更加符合现实的情形，只不过对于一般游戏而言，往往不必要那么精确，因为精确意味着更大的计算量，更大的散热，甚至游戏的卡顿。由于多边形的碰撞更加复杂，这里暂时对原理部分不再过多阐述了，仅仅提供一个常用的多边形点测试。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">function pointTest(x,y,verts)</div><div class="line">	local pX=&#123;&#125;</div><div class="line">	local pY=&#123;&#125;</div><div class="line">	for i=1,#verts,2 do</div><div class="line">		table.insert(pX, verts[i])</div><div class="line">		table.insert(pY, verts[i+1])</div><div class="line">	end</div><div class="line">	local oddNodes=false</div><div class="line">	local pCount=#pX</div><div class="line">	local j=pCount</div><div class="line">	for i=1,pCount do</div><div class="line">		if ((pY[i]&lt; y and pY[j]&gt;=y) or (pY[j]&lt; y and pY[i]&gt;=y))</div><div class="line">			and (pX[i]&lt;=x or pX[j]&lt;=x) then</div><div class="line">			if pX[i]+(y-pY[i])/(pY[j]-pY[i])*(pX[j]-pX[i])&lt; x then</div><div class="line">				oddNodes=not oddNodes</div><div class="line">			end</div><div class="line">		end</div><div class="line">		j=i</div><div class="line">	end</div><div class="line">	return oddNodes</div><div class="line">end</div></pre></td></tr></table></figure>
@@ -288,6 +289,10 @@ var duoshuoQuery = {short_name:"love2d"};
         <ul>
             
             <li>
+                <a class="footer-post" href="/2016/12/05/chapter9/">高级绘图（I）——Scissor，Stencil，</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2016/12/05/chapter8/">第8章 用户界面</a>
             </li>
             
@@ -297,10 +302,6 @@ var duoshuoQuery = {short_name:"love2d"};
             
             <li>
                 <a class="footer-post" href="/2016/11/30/chapter7/">第7章 文档结构和库</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2016/11/30/chapter6/">第6章 动画与音效</a>
             </li>
             
         </ul>
