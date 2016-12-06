@@ -4,8 +4,26 @@
 
     
   <url>
+    <loc>http://yoursite.com/2016/12/06/chapter10/</loc>
+    <lastmod>2016-12-06T10:01:02.628Z</lastmod>
+    <data>
+        <display>
+        <title>高级绘图（II）—— Mesh, Canvas, SpriteBatch</title>
+        <pubTime>2016-12-06T08:07:29.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="中级教程" url="http://yoursite.com/categories/%E4%B8%AD%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2016/12/05/chapter9/</loc>
-    <lastmod>2016-12-06T08:02:06.877Z</lastmod>
+    <lastmod>2016-12-06T08:05:18.865Z</lastmod>
     <data>
         <display>
         <title>高级绘图（I）——Scissor，Stencil，Blender</title>
