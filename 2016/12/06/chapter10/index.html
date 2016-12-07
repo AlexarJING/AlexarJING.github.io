@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="高级绘图（II）—— Mesh, Canvas, SpriteBatch"/>
+        <meta property="og:title" content="第10章 高级绘图（II）—— Mesh, Canvas, SpriteBatch"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>高级绘图（II）—— Mesh, Canvas, SpriteBatch - Alexar的Love2d实战教程</title>
+    <title>第10章 高级绘图（II）—— Mesh, Canvas, SpriteBatch - Alexar的Love2d实战教程</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -152,7 +152,7 @@
     <div class="post-header">
         <h1 class="title">
             <a href="/2016/12/06/chapter10/">
-                高级绘图（II）—— Mesh, Canvas, SpriteBatch
+                第10章 高级绘图（II）—— Mesh, Canvas, SpriteBatch
             </a>
         </h1>
         <div class="post-info">
@@ -210,25 +210,10 @@
 <li>使用canvas做一个绘图板，鼠标拖动时，在图片上画出轨迹。</li>
 <li>使用imageData的mapPixel来制作一个圆形图案，离圆心距离越近，颜色越黑。<br>分析： 第一个目标很容易，是无素材绑定的mesh，只需要6个顶点（因为有3段渐变，色带上下各一个顶点），用strip模式来组成三角形。然后把颜色值放进去就行了，uv用0,0即可（因为没有贴图）。第二个目标，跟第一个一样，只是要学会如何使用uv绑定贴图。因为没有颜色渐变，所以使用白色255,255,255，uv因为他们是比例值，所以要计算每个点在图片的位置比例，加入即可。这里logo的半径是30，素材大小是64。使用“fan”模式加入顶点。第三个目标是canvas的基本用法，只要每帧向画布上画画笔的位置即可。但是，千万别忘了，你用鼠标的轨迹，实际上是非连续的，还记得之前说的么，所以简单的画点是不行的，需要把上一帧的位置和当前帧的位置连线才行。第四个目标稍微复杂一些，因为可能大家还不太习惯这种逐像素遍历的做法和数学思想。这里关键的是用距离函数。</li>
 </ol>
-<h3 id="代码阶段"><a href="#代码阶段" class="headerlink" title="代码阶段"></a>代码阶段</h3><ol>
-<li>渐变色带<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">local colorVert = &#123;</div><div class="line">		&#123;0,0,0,0,255,0,0,255&#125;,</div><div class="line">		&#123;0,1,0,0,255,0,0,255&#125;,</div><div class="line">		&#123;0.5,0,0,0,0,255,0,255&#125;,</div><div class="line">		&#123;0.5,1,0,0,0,255,0,255&#125;,</div><div class="line">		&#123;1,0,0,0,0,0,255,255&#125;,</div><div class="line">		&#123;1,1,0,0,0,0,255,255&#125;</div><div class="line">	&#125;</div><div class="line">	colorMesh = love.graphics.newMesh(colorVert, &quot;strip&quot;)  --quest 1</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>这里唯一注意的是，由于mesh和任何绘图模式一样可以任意拉伸，而且是无损的，所以一般我们把mesh都写成单位长度1,方便我们设置宽和高。</p>
-<ol>
-<li>绑定贴图mesh<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">local circleVert = &#123;&#125;</div><div class="line">circleVert[1] = &#123;0,0,0.5,0.5&#125;</div><div class="line">for i = 0,30 do</div><div class="line">	local rad = i*2*math.pi/30</div><div class="line">	local x = math.sin(rad)</div><div class="line">	local y = math.cos(rad)</div><div class="line">	table.insert(circleVert,&#123;x,y,(32+x*30)/64,(32+y*32)/64&#125;)</div><div class="line">end</div><div class="line">circleMesh = love.graphics.newMesh(circleVert,&quot;fan&quot;) --quest 2</div><div class="line">local logo = love.graphics.newImage(&quot;assets/res/logo.png&quot;)</div><div class="line">circleMesh:setTexture(logo)</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>这里要说的有两点，一个是圆的本质，我们一般画圆的时候，第四个参数那个取值一般为默认，而现在我们知道了，是那个30。画圆实际不是真实的圆，而是像上面方法一样生成多边形。实际上，真实的画圆在每一次circle函数时都要进行上面的计算，因此用mesh画圆的效率要比直接circle要高（当然更占内存，功是一样的，区别在于力和力距^^）。另一个需要注意的，是”fan”的第一个顶点是圆心，千万别忘了。而且最后的一个顶点一定要回归到第二个顶点，这样才是完整的图形，而不是一个带缺口的圆。</p>
-<ol>
-<li>绘图画板<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">paintCanvas = love.graphics.newCanvas()</div><div class="line">pen = &#123;ox=0,oy=0,x=0,y=0&#125;</div><div class="line">function love.update()</div><div class="line">	if love.mouse.isDown(1) then</div><div class="line">		if pen.drawing then</div><div class="line">			pen.ox,pen.oy = pen.x,pen.y</div><div class="line">			pen.x,pen.y = love.mouse.getPosition()</div><div class="line">		else</div><div class="line">			pen.ox,pen.oy = love.mouse.getPosition()</div><div class="line">			pen.x,pen.y = pen.ox,pen.oy</div><div class="line">			pen.drawing = true</div><div class="line">		end</div><div class="line">	else</div><div class="line">		pen.drawing = false</div><div class="line">	end</div><div class="line">	if pen.drawing then</div><div class="line">		love.graphics.setCanvas(paintCanvas)</div><div class="line">		love.graphics.line(pen.ox,pen.oy,pen.x,pen.y)</div><div class="line">		love.graphics.setCanvas()</div><div class="line">	end</div><div class="line">end</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>在建立画板时，取全屏的默认值即可。而Update中，我们跟按钮的操作是一样的，在按下是，要把ox,oy的值设定了，否者将绘制出最后一次鼠标释放的位置的连线，这不是我们想要的。 另外，canvas绘制就很简单了，只有在有笔触时绘制，因为canvas是积累的，所以不用担心没有绘制就不被保存了。</p>
-<ol>
-<li>图片数据与mapPixel<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">local function dist(x,y,a,b)</div><div class="line">	return math.sqrt((x-a)^2+(y-b)^2)</div><div class="line">end</div><div class="line">local function mapFunc(x,y)</div><div class="line">	local color = dist(x,y,100,100)</div><div class="line">	local gray = color&gt;100 and 0 or 255 - color*2</div><div class="line">	return gray,gray,gray,255</div><div class="line">end </div><div class="line">local imageData = love.image.newImageData(200, 200)</div><div class="line">imageData:mapPixel(mapFunc)</div><div class="line">image = love.graphics.newImage(imageData)</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<h3 id="代码阶段"><a href="#代码阶段" class="headerlink" title="代码阶段"></a>代码阶段</h3><p>渐变色带<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">local colorVert = &#123;</div><div class="line">		&#123;0,0,0,0,255,0,0,255&#125;,</div><div class="line">		&#123;0,1,0,0,255,0,0,255&#125;,</div><div class="line">		&#123;0.5,0,0,0,0,255,0,255&#125;,</div><div class="line">		&#123;0.5,1,0,0,0,255,0,255&#125;,</div><div class="line">		&#123;1,0,0,0,0,0,255,255&#125;,</div><div class="line">		&#123;1,1,0,0,0,0,255,255&#125;</div><div class="line">	&#125;</div><div class="line">	colorMesh = love.graphics.newMesh(colorVert, &quot;strip&quot;)  --quest 1</div></pre></td></tr></table></figure></p>
+<p>这里唯一注意的是，由于mesh和任何绘图模式一样可以任意拉伸，而且是无损的，所以一般我们把mesh都写成单位长度1,方便我们设置宽和高。<br>绑定贴图mesh<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">local circleVert = &#123;&#125;</div><div class="line">circleVert[1] = &#123;0,0,0.5,0.5&#125;</div><div class="line">for i = 0,30 do</div><div class="line">	local rad = i*2*math.pi/30</div><div class="line">	local x = math.sin(rad)</div><div class="line">	local y = math.cos(rad)</div><div class="line">	table.insert(circleVert,&#123;x,y,(32+x*30)/64,(32+y*32)/64&#125;)</div><div class="line">end</div><div class="line">circleMesh = love.graphics.newMesh(circleVert,&quot;fan&quot;) --quest 2</div><div class="line">local logo = love.graphics.newImage(&quot;assets/res/logo.png&quot;)</div><div class="line">circleMesh:setTexture(logo)</div></pre></td></tr></table></figure></p>
+<p>这里要说的有两点，一个是圆的本质，我们一般画圆的时候，第四个参数那个取值一般为默认，而现在我们知道了，是那个30。画圆实际不是真实的圆，而是像上面方法一样生成多边形。实际上，真实的画圆在每一次circle函数时都要进行上面的计算，因此用mesh画圆的效率要比直接circle要高（当然更占内存，功是一样的，区别在于力和力距^^）。另一个需要注意的，是”fan”的第一个顶点是圆心，千万别忘了。而且最后的一个顶点一定要回归到第二个顶点，这样才是完整的图形，而不是一个带缺口的圆。<br>绘图画板<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">paintCanvas = love.graphics.newCanvas()</div><div class="line">pen = &#123;ox=0,oy=0,x=0,y=0&#125;</div><div class="line">function love.update()</div><div class="line">	if love.mouse.isDown(1) then</div><div class="line">		if pen.drawing then</div><div class="line">			pen.ox,pen.oy = pen.x,pen.y</div><div class="line">			pen.x,pen.y = love.mouse.getPosition()</div><div class="line">		else</div><div class="line">			pen.ox,pen.oy = love.mouse.getPosition()</div><div class="line">			pen.x,pen.y = pen.ox,pen.oy</div><div class="line">			pen.drawing = true</div><div class="line">		end</div><div class="line">	else</div><div class="line">		pen.drawing = false</div><div class="line">	end</div><div class="line">	if pen.drawing then</div><div class="line">		love.graphics.setCanvas(paintCanvas)</div><div class="line">		love.graphics.line(pen.ox,pen.oy,pen.x,pen.y)</div><div class="line">		love.graphics.setCanvas()</div><div class="line">	end</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>在建立画板时，取全屏的默认值即可。而Update中，我们跟按钮的操作是一样的，在按下是，要把ox,oy的值设定了，否者将绘制出最后一次鼠标释放的位置的连线，这不是我们想要的。 另外，canvas绘制就很简单了，只有在有笔触时绘制，因为canvas是积累的，所以不用担心没有绘制就不被保存了。<br>图片数据与mapPixel<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">local function dist(x,y,a,b)</div><div class="line">	return math.sqrt((x-a)^2+(y-b)^2)</div><div class="line">end</div><div class="line">local function mapFunc(x,y)</div><div class="line">	local color = dist(x,y,100,100)</div><div class="line">	local gray = color&gt;100 and 0 or 255 - color*2</div><div class="line">	return gray,gray,gray,255</div><div class="line">end </div><div class="line">local imageData = love.image.newImageData(200, 200)</div><div class="line">imageData:mapPixel(mapFunc)</div><div class="line">image = love.graphics.newImage(imageData)</div></pre></td></tr></table></figure></p>
 <p>dist方法很简单啦，就是两点间距离公式。我们来分析下map方法，如果距离大于100,就不绘制，否则灰度值从距离100,100为0的位置起从255 - 55之间渐变。我们知道，圆就是距离到圆心小于半径的点的集合。所以，上面的方法，实际上是绘制了一个圆。这个集合的思想一定要能够贯彻理解。因为后面我们的shader的主要的思想就是它。<br>最后imagedata并不能用于绘制，必须转化为image才可以。</p>
 <h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><ol>
 <li>做一个颜色渐变的圆。自己查询HSV与RGB公式，色调沿着圆周分布。</li>
@@ -296,11 +281,11 @@ var duoshuoQuery = {short_name:"love2d"};
         <ul>
             
             <li>
-                <a class="footer-post" href="/2016/12/06/chapter10/">高级绘图（II）—— Mesh, Canvas, </a>
+                <a class="footer-post" href="/2016/12/06/chapter10/">第10章 高级绘图（II）—— Mesh, Can</a>
             </li>
             
             <li>
-                <a class="footer-post" href="/2016/12/05/chapter9/">高级绘图（I）——Scissor，Stencil，</a>
+                <a class="footer-post" href="/2016/12/05/chapter9/">第9章 高级绘图（I）——Scissor，Sten</a>
             </li>
             
             <li>
