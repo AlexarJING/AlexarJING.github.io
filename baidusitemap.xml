@@ -4,8 +4,26 @@
 
     
   <url>
+    <loc>http://yoursite.com/2016/12/08/chapter16/</loc>
+    <lastmod>2016-12-08T08:07:00.562Z</lastmod>
+    <data>
+        <display>
+        <title>第16章 网络游戏初步</title>
+        <pubTime>2016-12-08T07:51:42.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="中级教程" url="http://yoursite.com/categories/%E4%B8%AD%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2016/12/08/chapter15/</loc>
-    <lastmod>2016-12-08T07:59:21.539Z</lastmod>
+    <lastmod>2016-12-08T08:05:15.027Z</lastmod>
     <data>
         <display>
         <title>第15章 游戏中的虚拟系统</title>
@@ -22,12 +40,12 @@
 
     
   <url>
-    <loc>http://yoursite.com/2016/12/08/chapter16/</loc>
-    <lastmod>2016-12-08T07:59:01.011Z</lastmod>
+    <loc>http://yoursite.com/2016/12/08/chapter13/</loc>
+    <lastmod>2016-12-08T08:03:11.480Z</lastmod>
     <data>
         <display>
-        <title>第16章 网络游戏初步</title>
-        <pubTime>2016-12-08T07:51:42.000Z</pubTime>
+        <title>第13章 游戏对象的行为</title>
+        <pubTime>2016-12-08T02:02:08.000Z</pubTime>
         
          
            
@@ -46,24 +64,6 @@
         <display>
         <title>第14章 文件的读写与数据保存</title>
         <pubTime>2016-12-08T07:34:32.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="中级教程" url="http://yoursite.com/categories/%E4%B8%AD%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2016/12/08/chapter13/</loc>
-    <lastmod>2016-12-08T07:33:39.384Z</lastmod>
-    <data>
-        <display>
-        <title>游戏对象的行为</title>
-        <pubTime>2016-12-08T02:02:08.000Z</pubTime>
         
          
            
