@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="描述">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="AlexarJING">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="第12章 地图编辑器及插件"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="描述" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Alexar的Love2d实战教程"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>第12章 地图编辑器及插件 - Alexar的Love2d实战教程</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+    <script>
+		(function(){
+		    var bp = document.createElement('script');
+		    var curProtocol = window.location.protocol.split(':')[0];
+		    if (curProtocol === 'https') {
+		        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+		    }
+		    else {
+		        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		    }
+		    var s = document.getElementsByTagName("script")[0];
+		    s.parentNode.insertBefore(bp, s);
+		})();
+	</script>
+
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2016/12/07/chapter12/">
+                第12章 地图编辑器及插件
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016-12-07</span>
+            
+            <a href="#disqus_thread" class="comments">评论</a>
+            
+                <span class="category">
+                    <a href="/categories/中级教程/">中级教程</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>本章将介绍一下一个很常用的地图编辑器tiled，及love2d的运行时，和插件等的使用和制作。<br><a id="more"></a></p>
+<h1 id="地图编辑器"><a href="#地图编辑器" class="headerlink" title="地图编辑器"></a>地图编辑器</h1><p>love2d的一大诟病就是它缺乏外围工具，所以有时候我们更喜欢把love2d当作是lua的一个库，而非独立的游戏引擎^^。不过，还有很多的第三方工具可以用来制作love2d游戏，下面我们来介绍一下。<br>地图编辑器可以可视化的观察到物体的摆放位置，添加属性。实际上，如果单纯从摆放对象来讲，一个photoshop就足够了。不过有其他编辑器会让他更加方便一些。</p>
+<h2 id="tile是什么"><a href="#tile是什么" class="headerlink" title="tile是什么"></a>tile是什么</h2><p>tile字面意思上是瓷砖，实际上是指由一些小的地图块拼接出大的地图来。拼接痕迹比较明显的比如超级马里奥，你可以看到砖头，问号等等图块。拼接不明显的比如魔兽争霸3,你几乎感觉不到是拼接出来的。</p>
+<p>tile制作游戏的好处是节省绘图成本，因为只需要画好一副tile图集就行了，剩下是拼接工作。压缩体积，提高渲染效率（记得精灵组么）。同时，一般tile可以直接绑定一些数据，碰撞盒等，方便我们跟游戏直接对接。</p>
+<h2 id="tiled"><a href="#tiled" class="headerlink" title="tiled"></a>tiled</h2><p>说到tile就不得不说tiled编辑器了。他几乎算是tile界的龙头老大了。首先，它免费（虽然到现在也没能征集到足够的捐款），然后十分简单易用，拓展性还比较好，所以一般独立游戏都很喜欢用它。其实对于一些大厂，以及大游戏，他们都有自己的编辑器。<br><a href="http://www.mapeditor.org/" target="_blank" rel="external">http://www.mapeditor.org/</a>tiled官方网站。</p>
+<p>tiled的特性有：<br>支持平视（正方形），正交（平行四边形），六边形tile。<br>可以给tile绑定属性。（每一类tile拥有相同的属性）<br>tile本身可以绑定帧动画。<br>拥有地形刷，配置好后，可以自动的将不同地形的过渡地带标记出来。<br>支持图像层，可以单独放置背景地图，蒙版等。<br>支持对象层，可以绘制形状（作为碰撞盒或者标记），和特殊tile。<br>可以导出为lua数据。</p>
+<p>下面链接为tiled英文视频教程，很不错：<br><a href="http://www.gamefromscratch.com/post/2015/10/14/Tiled-Map-Editor-Tutorial-Series.aspx" target="_blank" rel="external">链接</a></p>
+<h2 id="sti的使用"><a href="#sti的使用" class="headerlink" title="sti的使用"></a>sti的使用</h2><h2 id="sti-Simple-Tiled-Implementation-库"><a href="#sti-Simple-Tiled-Implementation-库" class="headerlink" title="sti-Simple-Tiled-Implementation 库"></a>sti-Simple-Tiled-Implementation 库</h2><p>STI实际上就是一个tiled的运行时，可以方便的从生成好的tiled数据和spritesheet读入到游戏中，这个库作者一直在更新，所以最新版的tiled应该都是ok的。<br>STI的使用最好自己下载git上的最新版，里面有运行案例，每个案例读一下源码就没有问题啦。</p>
+<h2 id="STI插件"><a href="#STI插件" class="headerlink" title="STI插件"></a>STI插件</h2><p>sti允许你对一些绑定了属性的tile自动生成一些特殊的绑定，比如物理碰撞绑定，光照绑定等。<br>sti插件的制作很简单，编辑一个表，表中含有你想要的功能。然后把这个表作为返回值就可以了。它将与sti的根合并，所以你仅仅使用sti.xxx即可调用他们。目前，sti内部绑定了box2d和bump两种碰撞，笔者自己写了个lightworld的绑定。实际上，它就是通过遍历所有具有特殊属性的块，通过调用他们的位置，多边形顶点来进行绑定的。使用的时候，需要手动的调用你插件的功能才可以。</p>
+<h2 id="Overlap2d"><a href="#Overlap2d" class="headerlink" title="Overlap2d"></a>Overlap2d</h2><p>overlap2d是另一个场景编辑器，它不同于tiled，它不使用图块拼接，而是使用游戏对象，包括ui,sprite,粒子效果等。它相比tiled在画面表现上更加丰富，而且在对象处理上更加简单方便。它能够导出xml，不过目前尚没有针对overlap2d的运行时。</p>
+<h2 id="defold"><a href="#defold" class="headerlink" title="defold"></a>defold</h2><p>defold是一个独立的2d引擎，是大名鼎鼎的king公司出品的，同样适用Lua作为脚本工具。它本身自带编辑器，可以对tiled,spine，帧动画，粒子效果，ui层等很多东西进行编辑。当然，我们可以用它的编辑器及编辑器生成的文件来导入到love中使用。甚至未来可以直接使用love作为debug工具。不过，原理上是可行的，只是仍然没有运行时。</p>
+<h2 id="个人制作编辑器"><a href="#个人制作编辑器" class="headerlink" title="个人制作编辑器"></a>个人制作编辑器</h2><p>如果你自己制作编辑器，实际上也是可行的，只不过需要加上一系列的ui成分，以及给所有的游戏对象一个鼠标互动的方法即可。然后将场景导出为数据。</p>
+<p>本章未完待续=、= 实在不知道还要说什么，我不太喜欢手把手的去教一个外部工具和sti的使用，因为很简单，而且利用数据，你可以做一切你想做的事。等回头有时间再去补完这章吧，我要跳过了。</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="love2d" data-title="love2d" data-url="alexarjing.github.io"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"love2d"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+    </div>
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>关于</h2>
+                <p>
+                    本教程配套软件:<a href="https://alexarjing.github.io/tutorial.love">tutorial.love</a>. 请安装love环境使用。
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>最近发表</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2016/12/08/chapter13/">游戏对象的行为</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2016/12/07/chapter12/">第12章 地图编辑器及插件</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2016/12/07/chapter11/">第11章 高级绘图（III）shader着色器</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2016/12/06/chapter10/">第10章 高级绘图（II）—— Mesh, Can</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>分类</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/中级教程/">中级教程</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/初级教程/">初级教程</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/klugjo/hexo-theme-alpha-dust">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-instagram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://dribbble.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-dribbble"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.behance.net/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-behance"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://500px.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-500px"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:alexar@foxmail.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    本文作者Alexar alexar@foxmail.com; 原创内容禁止转载。作者保留一切权利。
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+
+
+</body>
+
+</html>

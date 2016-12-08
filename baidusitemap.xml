@@ -4,6 +4,42 @@
 
     
   <url>
+    <loc>http://yoursite.com/2016/12/08/chapter13/</loc>
+    <lastmod>2016-12-08T03:06:59.967Z</lastmod>
+    <data>
+        <display>
+        <title>游戏对象的行为</title>
+        <pubTime>2016-12-08T02:02:08.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="中级教程" url="http://yoursite.com/categories/%E4%B8%AD%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2016/12/07/chapter12/</loc>
+    <lastmod>2016-12-08T02:01:23.720Z</lastmod>
+    <data>
+        <display>
+        <title>第12章 地图编辑器及插件</title>
+        <pubTime>2016-12-07T08:44:49.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="中级教程" url="http://yoursite.com/categories/%E4%B8%AD%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2016/12/07/chapter11/</loc>
     <lastmod>2016-12-07T07:46:25.324Z</lastmod>
     <data>
