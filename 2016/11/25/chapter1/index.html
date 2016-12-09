@@ -208,7 +208,7 @@
 <p>然后，根据设计，我们建立一个test对象，是的，lua table是我们最理想的对象形式，它融合了数组、构造、稀疏表等功能，他可以包容数字，字符，表以及函数等等。总之用它没错^^<br>我们给test一些属性，比如他的位置x,y,它的图像对象image，它的文字对象“hello lovers!”我们后面图像和位置都需要更新他们。<br>我们知道，设置部分要写在love.load里面,于是有一下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function love.load()</div><div class="line">	test = &#123;</div><div class="line">		x = 400, --屏幕中央</div><div class="line">		y = 300,</div><div class="line">	    image = love.graphics.newImage(&quot;images/love-ball.png&quot;),</div><div class="line">	    text = &quot;hello lovers!&quot;</div><div class="line">	&#125;</div><div class="line">end</div></pre></td></tr></table></figure></p>
 <p>关于lua的书写方面，我建议大家养成比较好的书写习惯，尽量避免用中文作为变量名（虽然这并不产生任何错误），比如合理的变量名，合理的空格和折行。总之好看就好。代码如果很乱的话，自己看也看不清，更何况别人了。</p>
 <p>实现键盘按住，在update中使用isDown函数，也就是每帧看看键盘是否按住，如果按住则进行纵向移动。<br>实现键盘按下，则不属于更新部分，因为无论是否有Update更新，这个回调都单独响应。于是在love.keyrelease下输入平移的判断。<br>实现鼠标点击随机移动，跟键盘按键类似。这里使用了随机函数，love.math.random,请自行查阅wiki。<br>插一句，love的窗体默认状态下是800*600垂直同步。你可以通过love.conf来初始设置。以及love.graphics.setMode来动态调整。<br>update的回调函数有个参数叫dt，我们之前说的帧时间，我们暂时不用。可以使用love.timer.getDelta来获取。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">function love.update(dt)</div><div class="line">	if love.keyboard.isDown(&quot;w&quot;) then</div><div class="line">		test.y = test.y - 1 --上</div><div class="line">	elseif love.keyboard.isDown(&quot;s&quot;) then</div><div class="line">		test.y = test.y + 1 --下</div><div class="line">	end</div><div class="line">end</div><div class="line"></div><div class="line">function love.keyreleased(key)</div><div class="line">	if key == &quot;a&quot; then</div><div class="line">		test.x = test.x - 100 --左</div><div class="line">	elseif key == &quot;d&quot; then</div><div class="line">		test.x = test.x + 100 --右</div><div class="line">	end</div><div class="line">end</div><div class="line"></div><div class="line">function love.mousereleased(key)</div><div class="line">	test.x = love.math.random(1,800) -- 1到800间随机取</div><div class="line">	test.y = love.math.random(1,600)</div><div class="line">end</div></pre></td></tr></table></figure></p>
-<p>接下来，我们让test呈现在我们屏幕上，绘制可能遇到的参数包括，x,y位置，r旋转，sx,sy按坐标轴缩放，ox,oy锚点位置，kx,ky平行畸变（暂时不要管他）<br>进阶：如果知道4*4Matrix的童鞋移动很清除，这些东西实际上只是矩阵的简单化。当然你也可以用矩阵方式重新做这些。<br>注意，锚点位置也会影响缩放中心和旋转中心，所以仅仅使用手动平移的画会有问题的。</p>
+<p>接下来，我们让test呈现在我们屏幕上，绘制可能遇到的参数包括，x,y位置，r旋转，sx,sy按坐标轴缩放，ox,oy锚点位置，kx,ky平行畸变（暂时不要管他）<br>进阶：如果知道4*4Matrix的童鞋应该能够理解，这些东西实际上只是矩阵的简单化。当然你也可以用矩阵方式重新做这些。<br>注意，锚点位置也会影响缩放中心和旋转中心，所以仅仅使用手动平移的画会有问题的。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function love.draw()</div><div class="line">	love.graphics.setColor(255, 255, 255, 255)</div><div class="line">	love.graphics.draw(test.image,test.x,test.y,0,1,1,32,32) --图片的宽高是64*64，如何查？请查阅image对象</div><div class="line">	--love.graphics.draw(test.image,test.x - 32,test.y - 32) --同样的效果，但是不方便未来的拓展。</div><div class="line">	love.graphics.setColor(255, 0, 0, 255)</div><div class="line">	love.graphics.circle(&quot;line&quot;, test.x, test.y, 100) --圆的中心当然是圆心了</div><div class="line">	love.graphics.setColor(0, 255, 255, 50)</div><div class="line">	love.graphics.rectangle(&quot;fill&quot;, test.x - 100, test.y - 100, 200, 200) --矩形的起点是他的左上角</div><div class="line">	love.graphics.setColor(255, 255, 255, 255)</div><div class="line">	love.graphics.print(test.text, test.x-100, test.y+100) --字的锚点也是左上角</div><div class="line">end</div></pre></td></tr></table></figure>
 <p>如果会用ps或则其他绘图软件的人，其实应该很容易理解，可以想象每个drawcall相当于ps中的一个图层，可以对图层进行颜色设置。而后面的图层会覆盖前面的图层，图层间也有相应的混合模式，矢量绘图实际上就是绘制路径，而绘制图片对象就相当于一个普通的像素图层。只不过我们用代码来控制他们绘制的位置。而且是实时控制的。是不是这样就会很容易理解游戏绘图的本质了？<br>当然，要注意的是，love在每次绘图时，都会用背景颜色重新填充整个屏幕，所以需要每一帧都重画。至于画一次静态图，就不需要每次都重绘，就需要用到canvas，这里先不做讲解，有兴趣的可以自己试试。</p>
 <p>上面的代码就包含了，做一个游戏所需的互动内容。是不是很简单？ 我们现在实现了第一步。接下来的一课，我们希望把游戏互动变得更加复杂和更有意思。就要在update里动手脚了。</p>
@@ -273,6 +273,10 @@ var duoshuoQuery = {short_name:"love2d"};
         <ul>
             
             <li>
+                <a class="footer-post" href="/2016/12/08/example01/">弹幕shooter(I)</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2016/12/08/chapter16/">第16章 网络游戏初步</a>
             </li>
             
@@ -282,10 +286,6 @@ var duoshuoQuery = {short_name:"love2d"};
             
             <li>
                 <a class="footer-post" href="/2016/12/08/chapter14/">第14章 文件的读写与数据保存</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2016/12/08/chapter13/">第13章 游戏对象的行为</a>
             </li>
             
         </ul>
@@ -299,11 +299,15 @@ var duoshuoQuery = {short_name:"love2d"};
     <ul>
         
         <li>
-            <a class="footer-post" href="/categories/中级教程/">中级教程</a>
+            <a class="footer-post" href="/categories/案例教程/">案例教程</a>
         </li>
         
         <li>
             <a class="footer-post" href="/categories/初级教程/">初级教程</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/中级教程/">中级教程</a>
         </li>
         
     </ul>

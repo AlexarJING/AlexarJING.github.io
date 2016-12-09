@@ -175,7 +175,37 @@
 
         <!-- Post Content -->
         <p>本章将介绍游戏中的虚拟系统，如对话系统，任务系统，道具系统，技能系统等。<br><a id="more"></a></p>
-<h1 id="游戏中的虚拟系统"><a href="#游戏中的虚拟系统" class="headerlink" title="游戏中的虚拟系统"></a>游戏中的虚拟系统</h1><h2 id="对话系统"><a href="#对话系统" class="headerlink" title="对话系统"></a>对话系统</h2><h2 id="任务系统"><a href="#任务系统" class="headerlink" title="任务系统"></a>任务系统</h2><h2 id="道具系统"><a href="#道具系统" class="headerlink" title="道具系统"></a>道具系统</h2><h2 id="技能系统"><a href="#技能系统" class="headerlink" title="技能系统"></a>技能系统</h2><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2>
+<h1 id="游戏中的虚拟系统"><a href="#游戏中的虚拟系统" class="headerlink" title="游戏中的虚拟系统"></a>游戏中的虚拟系统</h1><p>对于游戏而言，一些虚拟的系统，或者叫逻辑系统是十分重要的，比如看似简单的rpg游戏中的对话处理，多任务及游戏情节控制系统，背包、装备和道具系统，技能系统等。由于他们都是逻辑系统，实现起来往往没有一个定式，这里仅仅给出一些示例代码和建议，至于具体实现，还要跟你的项目中的其他系统相依赖。</p>
+<h2 id="对话系统"><a href="#对话系统" class="headerlink" title="对话系统"></a>对话系统</h2><p>对话系统对于几乎所有游戏都有用。他们的使用十分广泛，实现的形式也不尽相同。我们这里用一个简单的例子来引导大家实现自己的对话系统。<br>首先我们分析一下对话系统的组成部分：</p>
+<ol>
+<li>进入对话系统的触发条件，就是何时开启对话，比如rpg里的对话命令，一些NPC的自言自语，或者跑到玩家旁边触发（绑定在状态机中）。</li>
+<li>进入对话时，我要查找NPC身上所有的可用对话及条件，并返回第一个符合条件的对话。</li>
+<li>触发进入对话的相关控制，比如暂停一些游戏控制，对话涉及的人物进入“talking”状态。</li>
+<li>显示对话框，并进行对话框控制，比如逐字显示，跳过对话，图文混排，显示结束后等待等。根据句子类型。</li>
+<li>句子结束后，需要有结束控制，比如对话选项的话，打开选框，跳转，及其他触发（如表情），结束对话等。<br>上面是对话系统的流程，我们再看每个对话的数据结构：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">pool = &#123;&#125;</div><div class="line">pool[id] = &#123;</div><div class="line">	type = &quot;instant&quot;, -- or &quot;choise&quot; or &quot;wait&quot; or &quot;delay&quot;</div><div class="line">	content = &quot;test,test,test,test!&quot;,</div><div class="line">	choises = &#123;</div><div class="line">		&#123;content = &quot;&quot;, jump = &quot;id&quot;,script = function() end&#125;,</div><div class="line">		&#123;content = &quot;&quot;, jump = &quot;id&quot;,script = function() end&#125;,</div><div class="line">	&#125;,</div><div class="line">	delay = 3 --seconds</div><div class="line">	jump = &quot;id&quot;,</div><div class="line">	script = function() end</div><div class="line">	npc = true</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>id句子池的全局id，可以用来索引。<br>类型type: instant文字结束关闭对话框;choise多项选择；wait按任意键后继续；delay等待若干时间后继续。<br>内容content: 这个句子的内容。包括文字颜色，字体及图文混排。<br>选项choises: 当类型为选择时可用，列出选项，并给出每一个选项对应的跳转id和结束时触发的脚本。<br>跳转jump: 当有这个字段时跳转到指定字段，没有时跳转到本id的下一个id。<br>延迟delay: 当类型为延迟时可用。<br>脚本script: 本段对话结束时触发的脚本。<br>开关npc: 表示本句是否由npc发出。</p>
+<p>NPC身上的话题数据结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">npc.topics = &#123;</div><div class="line">	&#123;cond = function() end,id = &quot;&quot;&#125;,</div><div class="line">	&#123;cond = function() end,id = &quot;&quot;&#125;,</div><div class="line">&#125;</div><div class="line">for i,v in ipairs(topics) do</div><div class="line">	if v.cond() then</div><div class="line">		dialogSystem:newDiag(pool[id],&#123;player,self&#125;)</div><div class="line">		break</div><div class="line">	end</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>每个npc都有自己的话题，如果没有话题则无法触发对话。根据话题的条件来触发对应的话题。触发顺序为排列顺序。<br>触发对话时，要传入发生对话的对象。<br>下面是对话系统内部的控制：</p>
+<ol>
+<li>加入一个对话到current表，并标记对话的参与者。</li>
+<li>对于current表中每一个，逐字展现对话，如果有按键按下则速度加快。</li>
+<li>一个对话展现到末尾时，如果为choice类型或者wait类型则等待玩家回馈。否则跳转分支。</li>
+<li>如果回馈则跳转到指定分支。</li>
+<li>执行跳转的脚本。同时从current表移除自身。</li>
+</ol>
+<p>相关绘制系统这里暂不表述了。</p>
+<h2 id="任务系统"><a href="#任务系统" class="headerlink" title="任务系统"></a>任务系统</h2><p>任务系统也是游戏系统的重要组成。对于简单的游戏而言，唯一的任务就是通关或者打败某人。而对于多任务游戏而言，我们需要更复杂的控制。<br>我们把任务分为四个大的部分：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">local missions = &#123;</div><div class="line">	pool = &#123;&#125;,</div><div class="line">	active = &#123;&#125;,</div><div class="line">	done = &#123;&#125;,</div><div class="line">	failed =&#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>其中任务池是指所有尚未触发的任务，active是当前正在执行的任务，done是已经成功完成的任务，failed表示失败的任务。<br>下面是对于单个任务的数据结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">local mission = &#123;</div><div class="line">	name = &quot;test&quot;,</div><div class="line">	type = &quot;killtarget&quot;,</div><div class="line">	state = &quot;pool&quot;,</div><div class="line">	trigger = function() end,</div><div class="line">	success = function() end,</div><div class="line">	fail = function() end,</div><div class="line">	action = function() end,</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>name名称就是任务的名字啦，<br>type是任务的类型，你可以根据这个任务基类写一些子类，比如限时任务，采集任务，护送任务等。<br>state当前的任务状态<br>trigger是任务的触发条件，比如当玩家到达某个位置触发。触发时，任务移动到active里面。<br>success是任务胜利条件，当达到条件时，任务移动到done里面，并触发胜利脚本，也在这个函数中。<br>fail是任务失败条件，当达到条件时，任务移动到failed里面，触发失败脚本。<br>action是任务在active下的特殊脚本。比如护送任务下让npc移动，比如生成特殊的敌人等。</p>
+<p>任务控制系统实际上就是每次update(这个更新速度不必过快，没有必要)时，对上述的表进行操作，移动时进行相应的触发即可。</p>
+<h2 id="道具系统"><a href="#道具系统" class="headerlink" title="道具系统"></a>道具系统</h2><p>道具系统由道具数据，道具管理系统，道具用户界面构成。<br>道具的数据结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">item =&#123;</div><div class="line">	id = &quot;123&quot;,</div><div class="line">	name = &quot;绿色的帽子&quot;,</div><div class="line">	type = &quot;equipement&quot;, --&quot;consume&quot; 也可以为消耗品 --也可以为激活类的比如cost mana 10</div><div class="line">	part = &quot;head&quot;, --部位</div><div class="line">	tag = &quot;mission&quot;, 标签，可以是任务物品，食物等等</div><div class="line">	rarity = &quot;normal&quot;, --稀有度</div><div class="line">	description = &quot;装上他你就无敌了&quot;, --描述</div><div class="line">	price = 998, --价格</div><div class="line">	icon = image, --图标</div><div class="line">	effect = &#123;charm = 5, def = 10&#125;,</div><div class="line">	pile = 1, --堆叠层数</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>人物的道具系统<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">role.equipement = &#123;</div><div class="line">	head = xxx, </div><div class="line">	body = nil,</div><div class="line">&#125; --装备</div><div class="line"></div><div class="line">role.package = &#123;</div><div class="line">	item1,item2,... --其他道具</div><div class="line">&#125;</div><div class="line"></div><div class="line">role.package = &#123; --或者分几个背包，物品可以堆叠。</div><div class="line">	[1] = &#123;</div><div class="line">		&#123;item = xxx,count = 1&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>对于装备提供的额外属性，这里要注意，一定不能用叠加的形式，而是在每次重新计算。比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function role:resetProp()</div><div class="line">	for k,v in pairs(role.prop) do</div><div class="line">		role.prop[k] = role[k]</div><div class="line">	end</div><div class="line"></div><div class="line">	for i,v in ipairs(role.equipements) do</div><div class="line">		local effect = v.effect</div><div class="line">		for k,v in pairs(effect) do</div><div class="line">			role.prop[k] = role.prop[k] + v</div><div class="line">		end</div><div class="line">	end</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<h2 id="技能系统"><a href="#技能系统" class="headerlink" title="技能系统"></a>技能系统</h2><p>人物技能的一个数据结构示例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">ability = &#123;</div><div class="line">	id = 123,</div><div class="line">	name = &quot;火球&quot;,</div><div class="line">	description = &quot;一个巨大的火球，一定几率点燃目标&quot;</div><div class="line">	type = &quot;spell&quot;, --法术 也可以是被动等</div><div class="line">	costType = &quot;mana&quot;,</div><div class="line">	cost = 50,</div><div class="line">	price = 100, </div><div class="line">	spelltime = 1,</div><div class="line">	cd = 3,</div><div class="line">	lasttime = 0,</div><div class="line">	damageType = &quot;fire&quot;,</div><div class="line">	damage = 40,</div><div class="line">	script = function(self,target) if rnd()&lt;0.3 then self:cast(id or &quot;burn&quot;,target) end --30%几率造成点燃效果。</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>对于持续效果，实际上和上面装备是一样的，需要在改变是对数据重新计算。与装备不同，它的消失靠的是定时器。</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2>
     </div>
 
     
@@ -235,6 +265,10 @@ var duoshuoQuery = {short_name:"love2d"};
         <ul>
             
             <li>
+                <a class="footer-post" href="/2016/12/08/example01/">弹幕shooter(I)</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2016/12/08/chapter16/">第16章 网络游戏初步</a>
             </li>
             
@@ -244,10 +278,6 @@ var duoshuoQuery = {short_name:"love2d"};
             
             <li>
                 <a class="footer-post" href="/2016/12/08/chapter14/">第14章 文件的读写与数据保存</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2016/12/08/chapter13/">第13章 游戏对象的行为</a>
             </li>
             
         </ul>
@@ -261,11 +291,15 @@ var duoshuoQuery = {short_name:"love2d"};
     <ul>
         
         <li>
-            <a class="footer-post" href="/categories/中级教程/">中级教程</a>
+            <a class="footer-post" href="/categories/案例教程/">案例教程</a>
         </li>
         
         <li>
             <a class="footer-post" href="/categories/初级教程/">初级教程</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/中级教程/">中级教程</a>
         </li>
         
     </ul>
