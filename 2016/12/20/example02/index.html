@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="描述">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="AlexarJING">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="弹幕shooter(II)"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="描述" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Alexar的Love2d实战教程"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>弹幕shooter(II) - Alexar的Love2d实战教程</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+    <script>
+		(function(){
+		    var bp = document.createElement('script');
+		    var curProtocol = window.location.protocol.split(':')[0];
+		    if (curProtocol === 'https') {
+		        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+		    }
+		    else {
+		        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		    }
+		    var s = document.getElementsByTagName("script")[0];
+		    s.parentNode.insertBefore(bp, s);
+		})();
+	</script>
+
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2016/12/20/example02/">
+                弹幕shooter(II)
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016-12-20</span>
+            
+            <a href="#disqus_thread" class="comments">评论</a>
+            
+                <span class="category">
+                    <a href="/categories/案例教程/">案例教程</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>我们继续制作弹幕shooter，上一章我们构思了一下游戏的技术需求以及做了一些基本的通用性的框架，这一章我们来思考一下游戏对象的设计问题。<br><a id="more"></a></p>
+<h1 id="弹幕shooter-II"><a href="#弹幕shooter-II" class="headerlink" title="弹幕shooter(II)"></a>弹幕shooter(II)</h1><h2 id="游戏对象"><a href="#游戏对象" class="headerlink" title="游戏对象"></a>游戏对象</h2><p>我们在基础教程里曾经说过游戏对象的问题。因为我们决定使用oop的方式组织代码，所以游戏对象是既有数据又有功能函数的集合。而由于数据和功能一般有继承关系，因此结构是树状的。（相比而言，组件式编程的游戏对象仅仅含有数据，所有游戏功能是接入的形式的，因此结构是集合形式的。）<br>树状的类结构，我们要实现功能的不断继承和叠加。也就是从最基本的功能开始，到最个别的功能。但是，oop是辅助你写程序的形式，而非你的绊脚石，因此，不必为了写复杂层级而写，而是按自己需求，放心，额外的代码重复不会造成程序的拖延。</p>
+<h2 id="游戏对象设计"><a href="#游戏对象设计" class="headerlink" title="游戏对象设计"></a>游戏对象设计</h2><p>对于一般的游戏引擎而言，比如cocos他的基本对象是节点，带图片的就是精灵了。精灵作为最基本的游戏对象，它有下面的一些特征。</p>
+<ol>
+<li>位置<br>位置是控制对象在游戏坐标系的位置的参数，一般有x,y,游戏游戏还需要z序来控制层叠的顺序。对于位置的延伸，可能还包括速度、加速度、帧位移等内容。当然还有旋转以及旋转锚点。</li>
+<li>循环控制<br>还拿cocos举例，只要你把某个节点加入到场景中，就可以自动循环了，而love因为全是手动控制，因此需要你自己添加。比如我们游戏沙盒有个game.objects={}容器，我们每次生成的时候，把他们添加进去就行了。而game的循环控制会帮你循环。</li>
+<li>更新<br>我们刚刚提到了循环，而循环的意义实际上就是逻辑更新和绘图更新。而对于精灵而言，更新的意义可能是位置的更新，以及帧动画的更新。这里提一些额外的话，love的编程模式是回调式的，也就是在控制流中不停的跳转到项目的各个角落。但是，回调的嵌套往往会造成一些麻烦，比如已经嵌套的回调，你不太容易重新指定回调的顺序，或者移除某些嵌套的回调。还有一种控制形式是基于消息和事件的，而精灵会在更新逻辑中监听系统的事件和消息，如果有自己相关的事件广播或者有发向自己的消息，那么就处理相应的逻辑，这种方式的好处是，某个精灵不会保存外部的ref，使得代码很干净，通过对消息系统的监听也比较容易的debug，消息系统配合调度器系统也比较好用（相比延迟回调而言）。不过消息系统的效率往往不及回调，而且思路上也比较复杂，因此按个人需求自己选择用那种模式。</li>
+<li>绘制<br>绘制分为两部分，一部分是绘制的数据，一部分是绘制的回调。<br>从数据角度，我们可能需要image,quad,mesh,shader,canvas,animation等一大堆对象，以及颜色，混色方式，遮罩等控制，不过根据我们目前的项目而言，可以简化。<br>从绘制回调，我们一般要把绘制对象按其位置、角度、缩放一一绘制。同时还要注意绘制顺序问题。</li>
+<li>销毁<br>销毁过程主要是释放一些无法自动释放的东西，比如保存在外部容器的对象。同时，在游戏沙盒中注销自己。</li>
+</ol>
+<p>另外还要注意类的私有变量、公开变量及实例的变量。可能在lua中的oop并不是显式指明那些是私有，哪些是公开,哪些是受保护的，而且任何时候，任何位置的代码只要能够上查到他们，都可以编辑这些变量，使得Lua中的oop往往会存在一些陷阱。所以一定要理解这几种变量的作用、区别与定义方法。</p>
+<h2 id="游戏对象结构"><a href="#游戏对象结构" class="headerlink" title="游戏对象结构"></a>游戏对象结构</h2><p>base 游戏对象的基类，提供上文提到的循环加入与移除，基本绘图，基本的逻辑更新以及位置更新。一般而言，base可以用来表示一些没有互动的物体，比如背景图片，基本的UI内容等。<br>collidable 从base继承，加入碰撞初始化，碰撞筛选和碰撞遍历。绘制加入aabb的debugdraw方法。用来表示一些有碰撞却没有互动的物体，比如一些有碰撞的残骸等等。<br>bullet 从collidable继承，主要就是碰撞的检测了。以及特殊子弹的移动行为及特殊的绘制。<br>ship 从collidable继承，加入一些飞机的属性和行为，比如飞机的引擎火焰（从base继承），飞机的武器系统，飞机的移动控制，飞机摧毁（用来移除飞机火焰对象），飞机特有碰撞，飞机被弹，飞机开火等等。它是敌机和我机的基类，同时也可以是其他飞机的基类，比如飞机爆炸掉落的升级零件以及僚机等等。<br>enemy 从ship继承，是多有敌人飞机的基类，加入了敌人的行为控制。<br>player 从ship继承，是玩家控制飞机的类，也可以作为玩家其他机体的基类，主要是玩家控制飞机的行为。</p>
+<p>其他小的物体的类，比如一些障碍物，装饰品等都是通过上面的类简单继承出来的，还有各种各样的敌人飞机，是通过继承敌机类，通过控制飞机类的基本属性，修改行为方式，继承一些特殊的子弹来实现的。</p>
+<h2 id="游戏类的形成思路"><a href="#游戏类的形成思路" class="headerlink" title="游戏类的形成思路"></a>游戏类的形成思路</h2><p>往往新手对于类没什么概念，也不太会用继承关系得到比较丰富的对象。而是针对某一个物体，写出单独的类。这样，实际上是可以的，只是每一次拓展，都需要复制粘贴很多的东西，修改多，而且代码比较混乱，某一种方法如果错误了，需要调整所有的代码。<br>对于新人，完全可以分为两步走，第一步，按照就事论事的原则来做，比如一上来我们可以做一个玩家控制的飞机对象。实际上，我们基础教程的前几课就足够你用了。只不过，之前是组件式的编程，行为写在对象的外面。而这一次，行为写在对象的里面。<br>我们很容易就可以做出比如玩家、子弹、敌人这些对象。（基础课程我们制作的那种）<br>然后，我们可以看出，这些对象有很多共通的地方，比如加入循环，比如移动方式，绘制方式等。我们按其各自功能集合的包含性，就可以提炼出一些基类出来。然后我们将代码重写一次，就可以得到树状的类层级了。<br>熟练之后，我们需要从简单到复杂的进行思考，不同的对象的共性，方法等，然后正向的铺设层级树。</p>
+<h2 id="重点代码"><a href="#重点代码" class="headerlink" title="重点代码"></a>重点代码</h2><p>基类更新部分<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Base:update</span><span class="params">(dt)</span></span></div><div class="line">    <span class="keyword">if</span> self.destroyed <span class="keyword">then</span> <span class="keyword">return</span> <span class="keyword">end</span> <span class="comment">--如果被销毁了就不再更新</span></div><div class="line">    self:translate(dt) <span class="comment">--移动控制</span></div><div class="line">    <span class="keyword">if</span> self.anim <span class="keyword">then</span> self.anim:update(dt) <span class="keyword">end</span> <span class="comment">--动画更新</span></div><div class="line">    <span class="keyword">if</span> self.tweens <span class="keyword">then</span> <span class="comment">--缓动更新</span></div><div class="line">        <span class="keyword">for</span> i,tween <span class="keyword">in</span> <span class="built_in">pairs</span>(self.tweens) <span class="keyword">do</span></div><div class="line">            tween:update(dt)</div><div class="line">        <span class="keyword">end</span></div><div class="line">    <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Base:draw</span><span class="params">()</span></span></div><div class="line">    love.graphics.setColor(self.color)</div><div class="line">    <span class="keyword">if</span> self.anim <span class="keyword">then</span>  <span class="comment">--动画绘制，参数与draw类似</span></div><div class="line">        self.anim:draw(self.x,self.y,self.rot,self.scaleX,self.scaleY,self.anchorX,self.anchorY) </div><div class="line">    <span class="keyword">end</span></div><div class="line">    </div><div class="line">    <span class="keyword">if</span> self.image <span class="keyword">then</span></div><div class="line">        <span class="keyword">if</span> self.quad <span class="keyword">then</span> <span class="comment">--如果是大素材，则取其quad</span></div><div class="line">            love.graphics.draw(self.image,self.quad,self.x,self.y,self.rot - <span class="built_in">math</span>.pi/<span class="number">2</span>,</div><div class="line">                self.scaleX,self.scaleY,self.anchorX,self.anchorY)</div><div class="line">        <span class="keyword">else</span> <span class="comment">--单纯素材就直接整幅绘制</span></div><div class="line">            love.graphics.draw(self.image,self.x,self.y,self.rot - <span class="built_in">math</span>.pi/<span class="number">2</span>,</div><div class="line">                self.scaleX,self.scaleY,self.anchorX,self.anchorY)</div><div class="line">        <span class="keyword">end</span></div><div class="line">    <span class="keyword">end</span></div><div class="line">    </div><div class="line">    <span class="keyword">if</span> DEBUG <span class="keyword">then</span> <span class="comment">--用来矫正画面中心的</span></div><div class="line">        love.graphics.setColor(<span class="number">255</span>, <span class="number">0</span>, <span class="number">128</span>)</div><div class="line">        love.graphics.circle(self.x,self.y,<span class="number">5</span>)</div><div class="line">    <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
+<p>collidable对象<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">collidable:getAABB</span><span class="params">()</span></span> <span class="comment">--获取aabb信息，因为x,y本身是画面中心，而aabb要求的是左上角所以要额外计算</span></div><div class="line">    <span class="keyword">local</span> w = self.scaleX*self.w/<span class="number">1.5</span> <span class="comment">--一般而言aabb往往比图片本身小一点比较合适。这里取2/3图片宽</span></div><div class="line">    <span class="keyword">local</span> h = self.scaleY*self.h/<span class="number">1.5</span></div><div class="line">    <span class="keyword">local</span> x = self.x - w/<span class="number">2</span></div><div class="line">    <span class="keyword">local</span> y = self.y - h/<span class="number">2</span></div><div class="line">    <span class="keyword">return</span> x,y,w,h</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">collidable:setPosition</span><span class="params">(l,t)</span></span> <span class="comment">--l,t是左上角，要按原比例还原到图片中心。</span></div><div class="line">    self.x = l + self.scaleX*self.w/<span class="number">3</span></div><div class="line">    self.y = t + self.scaleX*self.h/<span class="number">3</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">collidable:initBump</span><span class="params">()</span></span> <span class="comment">--加入到碰撞世界中</span></div><div class="line">    game.world:add(self,self:getAABB())</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">collidable:destroy</span><span class="params">()</span></span> <span class="comment">--摧毁物体时也要把aabb移除</span></div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> self.destroyed <span class="keyword">then</span></div><div class="line">        game.world:remove(self)</div><div class="line">    <span class="keyword">end</span></div><div class="line">    base.destroy(self)</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">collidable.collidefilter</span><span class="params">(me,other)</span></span> <span class="comment">--碰撞过滤</span></div><div class="line">    <span class="keyword">return</span> bump.Response_Cross</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">collidable:collision</span><span class="params">(cols)</span></span> <span class="comment">--碰撞行为留空</span></div><div class="line">    </div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">collidable:updateBump</span><span class="params">()</span></span> <span class="comment">--每一次要更新碰撞世界的绑定aabb位置，根据碰撞结果来重新调整物体位置。</span></div><div class="line">    <span class="keyword">local</span> ox,oy = self:getAABB()</div><div class="line">	<span class="keyword">local</span> tx,ty ,cols = game.world:move(self,ox,oy,self.collidefilter)</div><div class="line">	self:setPosition(tx,ty)</div><div class="line">	self:collision(cols)</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
+<p>ship类的武器系统<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ship:weaponUpdate</span><span class="params">(dt)</span></span> <span class="comment">--武器冷却</span></div><div class="line">    <span class="keyword">for</span> _,weapon <span class="keyword">in</span> <span class="built_in">ipairs</span>(self.weapons) <span class="keyword">do</span></div><div class="line">        weapon.timer = weapon.timer - dt</div><div class="line">    <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ship:fire</span><span class="params">(gun,offx,offy,rot)</span></span></div><div class="line">    <span class="keyword">if</span> gun <span class="keyword">then</span> <span class="comment">--如果传入子弹类则直接开火</span></div><div class="line">        gun(self,offx,offy,rot)</div><div class="line">        <span class="keyword">return</span></div><div class="line">    <span class="keyword">end</span></div><div class="line">    <span class="keyword">for</span> _,weapon <span class="keyword">in</span> <span class="built_in">ipairs</span>(self.weapons) <span class="keyword">do</span> <span class="comment">--否则如果飞机某个武器更新完毕，就开火，并进入冷却</span></div><div class="line">        <span class="keyword">if</span> weapon.timer &lt; <span class="number">0</span> <span class="keyword">then</span></div><div class="line">            weapon.bullet(self,weapon.offx,weapon.offy,weapon.rot)</div><div class="line">            weapon.timer = weapon.cd</div><div class="line">        <span class="keyword">end</span></div><div class="line">    <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ship:damage</span><span class="params">(p)</span></span> <span class="comment">--受伤害，如果是无敌则不扣减</span></div><div class="line">    <span class="keyword">if</span> self.overwhelming <span class="keyword">then</span> <span class="keyword">return</span> <span class="keyword">end</span></div><div class="line">    self.hp = self.hp - p </div><div class="line">    <span class="keyword">if</span> self.hp&lt;<span class="number">0</span> <span class="keyword">then</span> <span class="comment">--如果生命小于0 则爆炸</span></div><div class="line">       self:destroy() </div><div class="line">    <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ship:destroy</span><span class="params">()</span></span></div><div class="line">    collidable.destroy(self) </div><div class="line">    Boom(self,self.scaleX*<span class="number">2</span>) <span class="comment">--生成一个爆炸动画，设个是从base继承来的</span></div><div class="line">    Frag(self) <span class="comment">--生成一个碎片动画，同样是base</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ship:update</span><span class="params">(dt)</span></span></div><div class="line">    collidable.update(self,dt)</div><div class="line">    <span class="keyword">for</span> _,fire <span class="keyword">in</span> <span class="built_in">ipairs</span>(self.fireAnims) <span class="keyword">do</span> <span class="comment">--引擎动画更新</span></div><div class="line">        fire:update(dt)</div><div class="line">    <span class="keyword">end</span></div><div class="line">    self:weaponUpdate(dt) <span class="comment">--武器更新</span></div><div class="line">    <span class="keyword">if</span> self.behavior <span class="keyword">then</span> <span class="comment">--行为更新，之所以写到这里，是因为如果你希望，也可以托管一下玩家控制的飞机。</span></div><div class="line">        self:behavior()</div><div class="line">    <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
+<p>玩家player类中的一些方法<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">player:onDestroy</span><span class="params">()</span></span> <span class="comment">--如果摧毁了就gameover了</span></div><div class="line">    delay:new(<span class="number">2</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span> game:gameover() <span class="keyword">end</span>)</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">player:keyControl</span><span class="params">()</span></span> <span class="comment">--按键控制，基础教程第一章就讲了</span></div><div class="line">    <span class="keyword">local</span> down = love.keyboard.isDown</div><div class="line">    <span class="keyword">local</span> dt = love.timer.getDelta()</div><div class="line">    <span class="keyword">if</span> down(<span class="string">"w"</span>) <span class="keyword">then</span></div><div class="line">       self.y = self.y - self.speed * dt</div><div class="line">    <span class="keyword">elseif</span> down(<span class="string">"s"</span>) <span class="keyword">then</span></div><div class="line">        self.y = self.y + self.speed * dt</div><div class="line">    <span class="keyword">end</span></div><div class="line">    <span class="keyword">if</span> down(<span class="string">"a"</span>) <span class="keyword">then</span></div><div class="line">        self.x = self.x - self.speed * dt</div><div class="line">    <span class="keyword">elseif</span> down(<span class="string">"d"</span>) <span class="keyword">then</span></div><div class="line">        self.x = self.x + self.speed * dt</div><div class="line">    <span class="keyword">end</span></div><div class="line">    </div><div class="line">    <span class="keyword">if</span> down(<span class="string">"space"</span>) <span class="keyword">then</span></div><div class="line">       self:fire()</div><div class="line">    <span class="keyword">end</span></div><div class="line"> <span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">player:limit</span><span class="params">()</span></span> <span class="comment">--你不希望玩家把飞机弄到屏幕外面吧。</span></div><div class="line">    <span class="keyword">if</span> self.x&lt;<span class="number">16</span> <span class="keyword">then</span> </div><div class="line">        self.x = <span class="number">16</span> </div><div class="line">    <span class="keyword">elseif</span> self.x&gt;<span class="number">484</span> <span class="keyword">then</span> </div><div class="line">        self.x = <span class="number">484</span></div><div class="line">    <span class="keyword">end</span></div><div class="line">    </div><div class="line">    <span class="keyword">if</span> self.y&lt;<span class="number">16</span> <span class="keyword">then</span></div><div class="line">        self.y = <span class="number">16</span></div><div class="line">    <span class="keyword">elseif</span> self.y&gt;<span class="number">784</span> <span class="keyword">then</span></div><div class="line">        self.y = <span class="number">784</span></div><div class="line">    <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">player:collision</span><span class="params">(cols)</span></span></div><div class="line">    <span class="keyword">for</span> i,col <span class="keyword">in</span> <span class="built_in">ipairs</span>(cols) <span class="keyword">do</span></div><div class="line">        <span class="keyword">local</span> other = col.other</div><div class="line">		<span class="keyword">if</span> other.tag == <span class="string">"enemy"</span> <span class="keyword">then</span>  <span class="comment">--飞机相撞,来啊，互相伤害啊。</span></div><div class="line">            self:damage(other.hp)</div><div class="line">            other:damage(self.hp)</div><div class="line">        <span class="keyword">elseif</span> other.tag == <span class="string">"item"</span> <span class="keyword">then</span> <span class="comment">--如果是物品就获取了。</span></div><div class="line">            self:getItem(other)</div><div class="line">            other:destroy()</div><div class="line">        <span class="keyword">end</span></div><div class="line">    <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line">```lua</div><div class="line">敌人enmey类</div></pre></td></tr></table></figure></p>
+<p>function enemy:behavior() –敌人的行为其实可以任意脚本的，这里这个就是沿着自身方向飞行并开火<br>    if self.state ~= “ok” then<br>        self.vx = self.speed <em> math.sin(self.rot)<br>        self.vy = -self.speed </em> math.cos(self.rot)<br>        self.state = “ok”<br>    end<br>    self:fire()<br>end</p>
+<p>function enemy:outTest() –敌人远离屏幕了就摧毁它吧。这个范围自己把握。因为有时候离开屏幕我们还想让它回来呢。<br>    if self.y&gt;1000 or self.y&lt;-1000 then self:destroy() end<br>    if self.x&lt;-500 or self.x&gt;1000 then self:destroy() end<br>end<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">子弹类bullet</div><div class="line">```lua</div><div class="line">Bullet.canbeTarget = &#123; --子弹的目标筛选，只有为真的才可以击中</div><div class="line">    bullet = false,</div><div class="line">    player = true,</div><div class="line">    enemy = true,</div><div class="line">    item = false</div><div class="line">&#125;</div><div class="line">function Bullet:collision(cols)</div><div class="line">    for _,col in ipairs(cols) do</div><div class="line">        local other = col.other </div><div class="line">        if self.canbeTarget[other.tag] and self.parent.tag~= other.tag then --只有子弹发射者的标签不同才可以击中，比如一个是敌人，一个是玩家</div><div class="line">            self:destroy()</div><div class="line">            other:damage(self.damage)</div><div class="line">        end</div><div class="line">    end</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>好啦，基本类都差不多了，实际上，我们每建立一个类，我们就可以把他们扔到场景上测试一下。下一章我们将介绍如何通过摆放和生成这些类的实例来组成游戏。</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="love2d" data-title="love2d" data-url="alexarjing.github.io"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"love2d"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+    </div>
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>关于</h2>
+                <p>
+                    本教程配套软件:<a href="https://alexarjing.github.io/tutorial.love">tutorial.love</a>. 请安装love环境使用。
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>最近发表</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2016/12/20/example02/">弹幕shooter(II)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2016/12/08/example01/">弹幕shooter(I)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2016/12/08/chapter16/">第16章 网络游戏初步</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2016/12/08/chapter15/">第15章 游戏中的虚拟系统</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>分类</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/案例教程/">案例教程</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/初级教程/">初级教程</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/中级教程/">中级教程</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/klugjo/hexo-theme-alpha-dust">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-instagram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://dribbble.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-dribbble"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.behance.net/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-behance"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://500px.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-500px"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:alexar@foxmail.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    本文作者Alexar alexar@foxmail.com; 原创内容禁止转载。作者保留一切权利。
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+
+
+</body>
+
+</html>

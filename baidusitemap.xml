@@ -4,6 +4,42 @@
 
     
   <url>
+    <loc>http://yoursite.com/2016/12/20/example02/</loc>
+    <lastmod>2016-12-20T07:17:49.074Z</lastmod>
+    <data>
+        <display>
+        <title>弹幕shooter(II)</title>
+        <pubTime>2016-12-20T02:38:45.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="案例教程" url="http://yoursite.com/categories/%E6%A1%88%E4%BE%8B%E6%95%99%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2016/12/08/example01/</loc>
+    <lastmod>2016-12-20T02:37:56.563Z</lastmod>
+    <data>
+        <display>
+        <title>弹幕shooter(I)</title>
+        <pubTime>2016-12-08T08:10:56.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="案例教程" url="http://yoursite.com/categories/%E6%A1%88%E4%BE%8B%E6%95%99%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2016/11/28/chapter4/</loc>
     <lastmod>2016-12-16T03:33:24.009Z</lastmod>
     <data>
@@ -15,24 +51,6 @@
            
              
               <breadCrumb title="初级教程" url="http://yoursite.com/categories/%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2016/12/08/example01/</loc>
-    <lastmod>2016-12-12T09:53:54.315Z</lastmod>
-    <data>
-        <display>
-        <title>弹幕shooter(I)</title>
-        <pubTime>2016-12-08T08:10:56.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="案例教程" url="http://yoursite.com/categories/%E6%A1%88%E4%BE%8B%E6%95%99%E7%A8%8B/"/>
           
         </display>
     </data>
