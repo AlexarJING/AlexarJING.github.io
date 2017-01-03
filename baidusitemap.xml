@@ -4,6 +4,42 @@
 
     
   <url>
+    <loc>http://yoursite.com/2016/12/23/blender-hotkey/</loc>
+    <lastmod>2017-01-03T03:58:36.540Z</lastmod>
+    <data>
+        <display>
+        <title>Blender热键</title>
+        <pubTime>2016-12-23T01:56:12.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="Blender学习笔记" url="http://yoursite.com/categories/Blender%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2016/12/27/blender-execises/</loc>
+    <lastmod>2017-01-03T03:58:05.118Z</lastmod>
+    <data>
+        <display>
+        <title>Blender习题计划</title>
+        <pubTime>2016-12-27T06:43:33.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="Blender学习笔记" url="http://yoursite.com/categories/Blender%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/01/03/example-flee/</loc>
     <lastmod>2017-01-03T03:53:19.416Z</lastmod>
     <data>
@@ -58,24 +94,6 @@
 
     
   <url>
-    <loc>http://yoursite.com/2016/12/27/blender-execises/</loc>
-    <lastmod>2017-01-03T00:39:59.938Z</lastmod>
-    <data>
-        <display>
-        <title>Blender习题计划</title>
-        <pubTime>2016-12-27T06:43:33.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="Blender学习笔记" url="http://yoursite.com/categories/Blender%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yoursite.com/2016/12/26/example-td01/</loc>
     <lastmod>2016-12-29T07:05:11.236Z</lastmod>
     <data>
@@ -87,24 +105,6 @@
            
              
               <breadCrumb title="案例教程" url="http://yoursite.com/categories/%E6%A1%88%E4%BE%8B%E6%95%99%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2016/12/23/blender-hotkey/</loc>
-    <lastmod>2016-12-23T03:55:53.758Z</lastmod>
-    <data>
-        <display>
-        <title>Blender热键</title>
-        <pubTime>2016-12-23T01:56:12.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="Blender学习笔记" url="http://yoursite.com/categories/Blender%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
