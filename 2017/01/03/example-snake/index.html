@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="描述">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="AlexarJING">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="贪吃蛇"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="描述" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Alexar的Love2d实战教程"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>贪吃蛇 - Alexar的Love2d实战教程</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+    <script>
+		(function(){
+		    var bp = document.createElement('script');
+		    var curProtocol = window.location.protocol.split(':')[0];
+		    if (curProtocol === 'https') {
+		        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+		    }
+		    else {
+		        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		    }
+		    var s = document.getElementsByTagName("script")[0];
+		    s.parentNode.insertBefore(bp, s);
+		})();
+	</script>
+
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2017/01/03/example-snake/">
+                贪吃蛇
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-01-03</span>
+            
+            <a href="#disqus_thread" class="comments">评论</a>
+            
+                <span class="category">
+                    <a href="/categories/案例教程/">案例教程</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h1 id="贪吃蛇案例"><a href="#贪吃蛇案例" class="headerlink" title="贪吃蛇案例"></a>贪吃蛇案例</h1><p>这个主题实际上是我很早之前写的一个案例教程，为了凑数也放到我的教程博客中吧。这个教程主要涉及一些俄罗斯方块类的矩阵游戏的基本思路和算法。<br><a id="more"></a></p>
+<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>贪吃蛇是一个很好的游戏教学项目，其原因在于：<br>•    基本的实物抽象思想<br>•    基本的键盘按下回调<br>•    基本的图形显示<br>•    基本的网格概念<br>•    基本的表数据更新<br>•    几乎无限的可拓展</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>我们先整理下贪吃蛇游戏的组成和游戏规则，然后我们初步抽象成逻辑关系，然后进一步抽象为伪代码，最后按照lua的语法形成执行代码。至于后续的美工，优化不作为本节重点。</p>
+<p>贪吃蛇是一个方块阵列游戏。游戏内容包括地图，边界，蛇，食物。规则包括蛇每次蛇按某方向移动一次，如果吃到食物则蛇长增长一格，如果碰壁或自己则游戏结束。<br>我们来分别分析一下。</p>
+<p>地图 是由固定数量的方块构成的矩阵组成，每个方块有两种状态，黑和白。因此，考虑建立一个二维数组来存储每个方块的状态，同时，方块的阵列位置和显示位置也构成简单的函数关系。可以让周围一圈为黑作为墙。</p>
+<p>蛇是一组连续的方块，从蛇的特性，类似火车，每次往前走，蛇头向控制方向移动一格，蛇头的后一节成为蛇头的位置，以此类推。那么，我们想到了，蛇的本质是一个存储着矩阵位置的数组，蛇头是第一个元素，而其他蛇节构成后面的，每个元素存储着（x，y），蛇头是有一个方向来控制，可能是上下左右中的一个，上的概念在矩阵里实际上是（0,-1），其他方向类推。在每次移动时，蛇头按方向变更其位置，而蛇节则继承其前一节的位置。而在地图上所有蛇的位置为黑。</p>
+<p>食物，实际上就是矩阵中的一个方块。当蛇吃到食物，也就是蛇头的位置与食物相同时，蛇节的所代表的数组总长度加1，里面存储蛇尾的位置。食物在地图上为黑。</p>
+<p>碰撞判断，如何判断蛇碰壁或碰自己呢？很简单，只要判断地图是否为黑就行了！哦，别忘了食物也是黑的，所以如果蛇头下一个位置如果为黑，那么不是碰壁就是吃到食物了，食物数量很少，分别判断就行了。</p>
+<p>游戏速度，显示帧率为60hz，我们的蛇每秒仅需走几次，根据游戏速度不同，那么我们需要差速更新逻辑。</p>
+<p>输入输出，输入我们仅仅需要上下左右就行了，我们通过输入来改变蛇的方向，但是蛇不能够向回转哦！输出我们暂时只用最基本的画矩阵的两个状态，白色就是线框方形，黑色就是填充方形。</p>
+<p>核心循环，上面是所有我们已经有的信息，现在让我们把它们串起来来完成我们的核心。首先，我们要读取按键信息来改变蛇的方向，然后我们的蛇按照方向移动，移动后就肯定有我们的碰撞判断。碰撞判断告诉我们蛇是普通，吃食物还是挂了，然后继续我们的循环。如果吃了食物就要在空位置再生成一个，挂了就要弹出gameover！了。</p>
+<h2 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h2><p>好像我们已经把贪吃蛇的轮廓刻画出来了，我们来用流程图和伪代码来实战演习一下！</p>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>定义地图为二维数组，每个位置初始为假<br>定义蛇为一个数组，初始为长度为5的蛇，放在矩阵中间。</p>
+<p>###循环<br>读取输入改变方向<br>蛇按方向移动<br>碰撞判断～否，正常移动:是，如果是食物则增长；否则游戏结束。</p>
+<h3 id="绘图"><a href="#绘图" class="headerlink" title="绘图"></a>绘图</h3><p>画矩阵</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>好啦，程序架构已经完成啦，接下来我们用lua代码把上面的流程翻译一下，就是我们的贪吃蛇啦。<br>注意，我们这里的代码并不是最简单和优化最好的，但是相比来讲更加适合理解。</p>
+<p>首先，我们把地图矩阵做出来，同时为了有可视化效果，我们再把绘图做出来。<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">local</span> <span class="function"><span class="keyword">function</span> <span class="title">setupMap</span><span class="params">()</span></span></div><div class="line">	<span class="keyword">for</span> x=<span class="number">1</span>,<span class="number">15</span> <span class="keyword">do</span></div><div class="line">		map[x]=&#123;&#125; <span class="comment">--定义二维数组的时候必须在遍历第一维的时候把第二维定义出来</span></div><div class="line">		<span class="keyword">for</span> y=<span class="number">1</span>,<span class="number">15</span> <span class="keyword">do</span></div><div class="line">			<span class="keyword">if</span> x==<span class="number">1</span> <span class="keyword">or</span> x==<span class="number">15</span> <span class="keyword">or</span> y==<span class="number">1</span> <span class="keyword">or</span> y==<span class="number">15</span> <span class="keyword">then</span> 这样我们的四周就被圈起来了，而中间是空的</div><div class="line">				map[x][y]=<span class="keyword">true</span> </div><div class="line">			<span class="keyword">else</span></div><div class="line">				map[x][y]=<span class="keyword">false</span></div><div class="line">			<span class="keyword">end</span></div><div class="line">		<span class="keyword">end</span></div><div class="line">	<span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"> </div><div class="line"><span class="keyword">local</span> <span class="function"><span class="keyword">function</span> <span class="title">drawMap</span><span class="params">()</span></span></div><div class="line">	love.graphics.setColor(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>)</div><div class="line">	<span class="keyword">for</span> x=<span class="number">1</span>,<span class="number">15</span> <span class="keyword">do</span></div><div class="line">		<span class="keyword">for</span> y=<span class="number">1</span>,<span class="number">15</span> <span class="keyword">do</span></div><div class="line">			<span class="keyword">local</span> how=map[x][y] <span class="keyword">and</span> <span class="string">"fill"</span> <span class="keyword">or</span> <span class="string">"line"</span> <span class="comment">--一个常用的三联表达式</span></div><div class="line">			love.graphics.rectangle(how, x*<span class="number">32</span>+<span class="number">200</span>, y*<span class="number">32</span>, <span class="number">30</span>, <span class="number">30</span>, <span class="number">5</span>, <span class="number">5</span>)</div><div class="line">		<span class="keyword">end</span></div><div class="line">	<span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"> </div><div class="line"><span class="keyword">local</span> <span class="function"><span class="keyword">function</span> <span class="title">check</span><span class="params">(x,y)</span></span> <span class="comment">--增加一个方法，这个就是检验某点位置是否被占的</span></div><div class="line">	<span class="keyword">return</span> map[x][y]</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
+<p>然后，我们定义一条蛇，放在屏幕中间。暂时它还是条死蛇^_^。<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">local</span> snake</div><div class="line"><span class="keyword">local</span> <span class="function"><span class="keyword">function</span> <span class="title">setupSnake</span><span class="params">()</span></span></div><div class="line">	snake=&#123;&#125;</div><div class="line">	<span class="keyword">for</span> i=<span class="number">1</span>,<span class="number">5</span> <span class="keyword">do</span></div><div class="line">		snake[i]=&#123;x=i+<span class="number">5</span>,y=<span class="number">7</span>&#125; <span class="comment">--蛇的本质就是一个数组，每一节存储位置x=?,y=?</span></div><div class="line">	<span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"> </div><div class="line"><span class="keyword">local</span> <span class="function"><span class="keyword">function</span> <span class="title">drawSnake</span><span class="params">(toggle)</span></span> <span class="comment">--这里toggle=true则绘制，toggle=false则擦除</span></div><div class="line">	<span class="keyword">for</span> i,v <span class="keyword">in</span> <span class="built_in">ipairs</span>(snake) <span class="keyword">do</span></div><div class="line">		map[v.x][v.y]=toggle</div><div class="line">	<span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line">``` </div><div class="line">然后我们让蛇动起来，我们暂时还无法控制蛇的方向。</div><div class="line">```lua</div><div class="line"><span class="keyword">local</span> dir=&#123;x=<span class="number">0</span>,y=<span class="number">1</span>&#125; <span class="comment">--定义蛇的方向</span></div><div class="line"><span class="keyword">local</span> <span class="function"><span class="keyword">function</span> <span class="title">updateSnake</span><span class="params">()</span></span></div><div class="line">	drawSnake(<span class="keyword">false</span>) <span class="comment">--更新之前，先把上一帧的蛇擦除，实际上只擦除蛇尾就行</span></div><div class="line">	<span class="keyword">for</span> i=#snake,<span class="number">2</span>,<span class="number">-1</span> <span class="keyword">do</span> <span class="comment">--先更新后面的蛇节，再更新蛇头，不然第二节以及后面所有的跟第一节位置相同了</span></div><div class="line">		snake[i].x=snake[i<span class="number">-1</span>].x</div><div class="line">		snake[i].y=snake[i<span class="number">-1</span>].y</div><div class="line">	<span class="keyword">end</span></div><div class="line">	snake[<span class="number">1</span>].x=snake[<span class="number">1</span>].x+dir.x</div><div class="line">	snake[<span class="number">1</span>].y=snake[<span class="number">1</span>].y+dir.y</div><div class="line">	drawSnake(<span class="keyword">true</span>)</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
+<p>这里 我们要插入一个差速更新的方法，使每隔固定时间长度，蛇更新一次。<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">local</span> updateCD=<span class="number">0.5</span></div><div class="line"><span class="keyword">local</span> timer=<span class="number">0.5</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">love.update</span><span class="params">(dt)</span></span> <span class="comment">--一旦cd小于0就更新，然后计时器重新回到cd的位置</span></div><div class="line">	timer=timer-dt </div><div class="line">	<span class="keyword">if</span> timer&lt;<span class="number">0</span> <span class="keyword">then</span></div><div class="line">		timer=updateCD</div><div class="line">		updateSnake()</div><div class="line">	<span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
+<p>想要控制方向我们需要读取按键或者按下回调。注意，蛇不能后退哦！<br>我们之所以用一个dir来控制方向是因为，蛇的方向更新的响应并不是立即的，也就是并不是按下左蛇就要直接向左移动一格，而是在蛇差速更新时，才会按方向移动，因此需要用一个变量来保存这个方向。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">local function input()</div><div class="line">	if love.keyboard.isDown(&quot;up&quot;) then</div><div class="line">		if lastDir.y==0 then --之所以加入这个判断是因为 只有在蛇左右移动的时候 改变到上下才有意义 同时也避免了让蛇后退。用上一帧的方向是因为避免在一帧内多次输入导致的错误。如果用当前方向dir,那么如果蛇的方向为right在一帧内快速按下up 和left就可以 ,就可以让蛇倒退了。</div><div class="line">			dir.x,dir.y=0,-1</div><div class="line">		end</div><div class="line">	elseif love.keyboard.isDown(&quot;down&quot;) then</div><div class="line">		if lastDir.y==0 then</div><div class="line">			dir.x,dir.y=0,1</div><div class="line">		end</div><div class="line">	elseif love.keyboard.isDown(&quot;left&quot;) then</div><div class="line">		if lastDir.x==0 then</div><div class="line">			dir.x,dir.y=-1,0</div><div class="line">		end</div><div class="line">	elseif love.keyboard.isDown(&quot;right&quot;) then</div><div class="line">		if lastDir.x==0 then</div><div class="line">			dir.x,dir.y=1,0</div><div class="line">		end</div><div class="line">	end</div><div class="line">end</div><div class="line">``` </div><div class="line"> </div><div class="line">现在我们的蛇可以移动了，动的多了蛇就饿了，得吃东西，随机生成一个食物，注意不能在已占的位置生成。</div><div class="line">```lua </div><div class="line">local function newFood()</div><div class="line">	repeat </div><div class="line">		food.x= love.math.random(2,14) --不能在框上画食物哦</div><div class="line">		food.y= love.math.random(2,14)</div><div class="line">	until not check(food.x,food.y) --直到食物位置是个空位，实际上这是个不严谨的写法。更加好的做法是把可以用的位置做一个表，然后随机选取一个来作为食物的位置。</div><div class="line">	map[food.x][food.y]=true</div><div class="line">end</div><div class="line">``` </div><div class="line"> </div><div class="line">吃到食物那么长度加1。游戏速度增加一些。</div></pre></td></tr></table></figure>
+<p>local function eat()<br>    table.insert(snake, {x=snake[1].x,y=snake[1].y}) –实际上 增加一节的位置可以是蛇上的任意点，因为下一帧会跳到上一次倒数第二的位置。<br>    updateCD=updateCD*0.9 –cd速度打九折<br>    newFood() –生成一个新的食物<br>end<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line">接下来是碰撞判断，我们看地图蛇头位置是否被占。</div></pre></td></tr></table></figure></p>
+<p>local targetX,targetY=snake[1].x+dir.x,snake[1].y+dir.y –实际上检验的位置是移动后的蛇头<br>if check(targetX,targetY) then<br>    if targetX==food.x and targetY==food.y then –如果位置是食物就吃了它，并生成新的食物<br>        eat()<br>    else –如果位置是墙就gameover了，这里注意有个return 因为游戏结束了，后面不需要再更新了。<br>        gameover()<br>        return<br>    end<br>end<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line">最后，我们gameover画面啦。</div><div class="line">``` </div><div class="line">local function gameover()</div><div class="line">	local title = &quot;Game Over&quot;</div><div class="line">	local message = &quot;Your Score is &quot;..tostring(#snake-5)</div><div class="line">	local buttons = &#123;&quot;Restart!&quot;, &quot;Quit!&quot;, escapebutton = 2&#125;	 </div><div class="line">	local pressedbutton = love.window.showMessageBox(title, message, buttons) --这个是个出对话框的命令，这个命令有自己的循环，当对话框存在时，游戏窗体的update是暂停的。</div><div class="line">	if pressedbutton == 1 then</div><div class="line">	    setupMap()</div><div class="line">		setupSnake()</div><div class="line">		drawSnake(true)</div><div class="line">		newFood()</div><div class="line">		timer=0.5</div><div class="line">	elseif pressedbutton == 2 then</div><div class="line">	    love.event.quit()</div><div class="line">	end</div><div class="line">end</div><div class="line">`` </div><div class="line"> </div><div class="line">我们把所有代码整合起来，如下</div><div class="line">这里要注意的是，由于lua的代码机制，在lua代码运行时之前，是有一个预编译过程的，所有的内部定义函数或者变量在运行前是固定的。因此，在存在函数嵌套引用的时候，千万要把被嵌套的写在前面，如果写在后面，在调用前面的时候会显示未定义。</div><div class="line"> </div><div class="line">## 回顾 </div><div class="line">贪吃蛇就做完啦！怎么样？是不是很简单？</div><div class="line">我们来回顾下学习的重点，</div><div class="line">•	实物抽象思想：通过把地图，蛇，食物进行抽象，建立数学模型。</div><div class="line">•	键盘按下回调，通过两种方法按下按键来改变方向。</div><div class="line">•	基本的图形显示，用矢量图绘制矩阵单元格，每个单元格跟矩阵位置的函数关系。</div><div class="line">•	基本的网格概念：使用网格法进行碰撞判断。</div><div class="line">•	基本的表数据更新，通过表的遍历来控制一组数据</div><div class="line"> </div><div class="line">## 拓展</div><div class="line">•	根据个人能力与时间完成下列拓展中的一个或几个，也可以合并到一个项目中。</div><div class="line">•	除了贪吃蛇的基本规则，通过拓展来实现新的游戏规则</div><div class="line">•	让屏幕上蛇、边框、食物有不同的颜色！</div><div class="line">•	我们的小蛇会饿了，如果一定时间吃不到食物就要缩短！</div><div class="line">•	有种东西叫虫洞，我们的小蛇要进行穿越之旅了！</div><div class="line">•	让地图和小蛇有个皮肤吧，你不再是裸蛇了！</div><div class="line">•	小蛇不再限制于上下左右四个方向了，是的，代号，自由行动！</div><div class="line">•	你的世界不再孤单！争夺食物，弱肉强食，想挑战比你大的？记得咬尾巴！</div><div class="line">•	贪吃蛇拼图？没错，吃进去的图片按顺序从尾部拉出来……听起来有点恶心，不过先进先出是关键！</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">```lua</div><div class="line">-------------------------------------------init--------------------------------</div><div class="line">local updateCD=0.5</div><div class="line">local timer=0.5</div><div class="line">local dir=&#123;x=0,y=1&#125;</div><div class="line">local lastDir=&#123;x=0,y=0&#125;</div><div class="line">local map=&#123;&#125;</div><div class="line">local food=&#123;x=0,y=0&#125;</div><div class="line"></div><div class="line">------------------------for map---------------------------</div><div class="line">local function setupMap()</div><div class="line">	map=&#123;&#125;</div><div class="line">	for x=1,15 do</div><div class="line">		map[x]=&#123;&#125;</div><div class="line">		for y=1,15 do</div><div class="line">			if x==1 or x==15 or y==1 or y==15 then</div><div class="line">				map[x][y]=true </div><div class="line">			else</div><div class="line">				map[x][y]=false</div><div class="line">			end</div><div class="line">		end</div><div class="line">	end </div><div class="line">end</div><div class="line"></div><div class="line">local function drawMap()</div><div class="line">	love.graphics.setColor(255,255,255)</div><div class="line">    for x=1,15 do</div><div class="line">	for y=1,15 do</div><div class="line">		local how=map[x][y] and &quot;fill&quot; or &quot;line&quot;</div><div class="line">		love.graphics.rectangle(how, x*32+100, y*32, 30, 30, 5, 5)</div><div class="line">	end</div><div class="line">	end</div><div class="line">end</div><div class="line"></div><div class="line">local function check(x,y)</div><div class="line">	return map[x][y]</div><div class="line">end</div><div class="line">-----------------------for food-----------------------</div><div class="line"></div><div class="line"></div><div class="line">local function newFood()</div><div class="line">	repeat </div><div class="line">		food.x= love.math.random(2,14)</div><div class="line">		food.y= love.math.random(2,14)</div><div class="line">	until check(food.x,food.y)==false</div><div class="line">	map[food.x][food.y]=true</div><div class="line">end</div><div class="line"></div><div class="line">-----------------------for snake------------------------------</div><div class="line">local snake=&#123;&#125;</div><div class="line">local function setupSnake()</div><div class="line">	snake=&#123;&#125;</div><div class="line">	for i=1,5 do</div><div class="line">		snake[i]=&#123;x=i+5,y=7&#125; </div><div class="line">	end</div><div class="line">end</div><div class="line"></div><div class="line"></div><div class="line">local function drawSnake(toggle)</div><div class="line">	for i,v in ipairs(snake) do</div><div class="line">		map[v.x][v.y]=toggle</div><div class="line">	end</div><div class="line">end</div><div class="line"></div><div class="line">--------------------game over--------------------------------</div><div class="line"></div><div class="line">local function gameover()</div><div class="line">	local title = &quot;Game Over&quot;</div><div class="line">	local message = &quot;Your Score is &quot;..tostring(#snake-5)</div><div class="line">	local buttons = &#123;&quot;Restart!&quot;, &quot;Quit!&quot;, escapebutton = 2&#125;</div><div class="line">	 </div><div class="line">	local pressedbutton = love.window.showMessageBox(title, message, buttons)</div><div class="line">	if pressedbutton == 1 then</div><div class="line">	   	setupMap()</div><div class="line">		setupSnake()</div><div class="line">		drawSnake(true)</div><div class="line">		newFood()</div><div class="line">		timer=0.5</div><div class="line">		dir=&#123;x=0,y=1&#125;</div><div class="line">		lastDir=&#123;x=0,y=0&#125;</div><div class="line">	elseif pressedbutton == 2 then</div><div class="line">	    --love.event.quit()</div><div class="line">	    exf.resume()</div><div class="line">	end</div><div class="line">end</div><div class="line"></div><div class="line">local function eat()</div><div class="line">	table.insert(snake, &#123;x=snake[1].x,y=snake[1].y&#125;)</div><div class="line">	updateCD=updateCD*0.9</div><div class="line">	newFood()</div><div class="line">end</div><div class="line"></div><div class="line">---------------------for update -------------------------</div><div class="line">local function updateSnake()</div><div class="line">	lastDir.x=dir.x</div><div class="line">	lastDir.y=dir.y</div><div class="line">	local targetX,targetY=snake[1].x+dir.x,snake[1].y+dir.y</div><div class="line">	if check(targetX,targetY) then</div><div class="line">		if targetX==food.x and targetY==food.y then --eat</div><div class="line">			eat()</div><div class="line">		else --hit</div><div class="line">			gameover()</div><div class="line">			return</div><div class="line">		end</div><div class="line">	end</div><div class="line">	drawSnake(false)</div><div class="line">	for i=#snake,2,-1 do</div><div class="line">		snake[i].x=snake[i-1].x</div><div class="line">		snake[i].y=snake[i-1].y</div><div class="line">	end</div><div class="line">	snake[1].x=targetX</div><div class="line">	snake[1].y=targetY</div><div class="line">	</div><div class="line">	drawSnake(true)</div><div class="line"></div><div class="line">end</div><div class="line"></div><div class="line">-----------------------for input-------------------</div><div class="line"></div><div class="line">local function input()</div><div class="line">	if love.keyboard.isDown(&quot;up&quot;) then</div><div class="line">		if lastDir.y==0 then</div><div class="line">			dir.x,dir.y=0,-1</div><div class="line">		end</div><div class="line">	elseif love.keyboard.isDown(&quot;down&quot;) then</div><div class="line">		if lastDir.y==0 then</div><div class="line">			dir.x,dir.y=0,1</div><div class="line">		end</div><div class="line">	elseif love.keyboard.isDown(&quot;left&quot;) then</div><div class="line">		if lastDir.x==0 then</div><div class="line">			dir.x,dir.y=-1,0</div><div class="line">		end</div><div class="line">	elseif love.keyboard.isDown(&quot;right&quot;) then</div><div class="line">		if lastDir.x==0 then</div><div class="line">			dir.x,dir.y=1,0</div><div class="line">		end</div><div class="line">	end</div><div class="line">end</div><div class="line"></div><div class="line">-------------------------------------the main frame------------------------------------</div><div class="line"></div><div class="line">function love.load()</div><div class="line">	setupMap()</div><div class="line">	setupSnake()</div><div class="line">	drawSnake(true)</div><div class="line">	newFood()</div><div class="line">end</div><div class="line"></div><div class="line">function love.update(dt)</div><div class="line">	--print(dir.x,dir.y)</div><div class="line">	input()</div><div class="line">	timer=timer-dt</div><div class="line">	if timer&lt;0 then</div><div class="line">		timer=updateCD</div><div class="line">		updateSnake()</div><div class="line">	end</div><div class="line">	</div><div class="line">end</div><div class="line"></div><div class="line">function love.draw()</div><div class="line">    drawMap()</div><div class="line">end</div></pre></td></tr></table></figure></p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="love2d" data-title="love2d" data-url="alexarjing.github.io"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"love2d"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+    </div>
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>关于</h2>
+                <p>
+                    本教程配套软件:<a href="https://alexarjing.github.io/tutorial.love">tutorial.love</a>. 请安装love环境使用。
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>最近发表</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2017/01/03/example-flee/">华容道案例</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/01/03/example-snake/">贪吃蛇</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2016/12/27/blender-execises/">Blender习题计划</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2016/12/26/example-td01/">宝石塔防复刻I</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>分类</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/Blender学习笔记/">Blender学习笔记</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/案例教程/">案例教程</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/初级教程/">初级教程</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/中级教程/">中级教程</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/klugjo/hexo-theme-alpha-dust">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-instagram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://dribbble.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-dribbble"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.behance.net/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-behance"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://500px.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-500px"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:alexar@foxmail.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    本文作者Alexar alexar@foxmail.com; 原创内容禁止转载。作者保留一切权利。
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+
+
+</body>
+
+</html>

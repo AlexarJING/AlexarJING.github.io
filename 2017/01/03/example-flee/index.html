@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="描述">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="AlexarJING">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="华容道案例"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="描述" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Alexar的Love2d实战教程"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>华容道案例 - Alexar的Love2d实战教程</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+    <script>
+		(function(){
+		    var bp = document.createElement('script');
+		    var curProtocol = window.location.protocol.split(':')[0];
+		    if (curProtocol === 'https') {
+		        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+		    }
+		    else {
+		        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		    }
+		    var s = document.getElementsByTagName("script")[0];
+		    s.parentNode.insertBefore(bp, s);
+		})();
+	</script>
+
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2017/01/03/example-flee/">
+                华容道案例
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-01-03</span>
+            
+            <a href="#disqus_thread" class="comments">评论</a>
+            
+                <span class="category">
+                    <a href="/categories/案例教程/">案例教程</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h1 id="命令行华容道案例"><a href="#命令行华容道案例" class="headerlink" title="命令行华容道案例"></a>命令行华容道案例</h1><p>在群里听O大的一个面试题是简单实现一个非图形的华容道，并自定义用户交互。因为手痒自己也想动动手，于是定了一个2小时的jam。当然，因为很简单，估计很多人都不屑于看吧，哈哈。这里用lua实现。<br><a id="more"></a></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>当面对华容道这个题目时，首先想到把它虚拟建模，这里的建模不是3d建模哈，是把实物抽象为数学，从而使用数学工具来控制他们。我们首先来分析一下华容道的棋盘，我们看到了几种棋子，和一个边框。棋子是占一格、横竖两格和方块四格几种。格。。。是什么？矩阵！是的，他们抽象出来实际上跟俄罗斯方块是一个东西啦。我看到了俄罗斯方块的各种落块。如果是俄罗斯就很简单了，我想写程序或者说写游戏的应该多少都实现过俄罗斯吧。如果没有。。。赶紧动动手吧。</p>
+<p>俄罗斯和贪吃蛇等等都是所谓的矩阵游戏，图像通过矩阵的点来表示，碰撞就更简单了，对于某一个矩阵节点而言，都有自身的状态，如空，由何种块来占据等。碰撞检测主要是用来看物体是否能够移动。</p>
+<p>接下来，很多问题就迎刃而解了，比如华容道的各种棋子就是各种形状的块，块有自身的矩阵，而我们把左上角作为其锚点，用来描述块的位置。然后按照初始状态把块放到棋盘中，然后把块按其位置，把块自身的类别写入到棋盘的矩阵中，用来做碰撞检测的。当块移动时，我们看目标矩阵位置是否是空的，如果是就可以走了。如果曹操走到下方就结束游戏咯。</p>
+<p>好啦思路理清了，我们开始设计和实现。</p>
+<h2 id="设计和实现"><a href="#设计和实现" class="headerlink" title="设计和实现"></a>设计和实现</h2><p>首先我们来设计一下棋子的数据结构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">local data = &#123;&#125;</div><div class="line">local grid22 = &#123;&#123;1,1&#125;,&#123;1,1&#125;&#125;</div><div class="line">--[[如果写成这样你就明白了吧</div><div class="line">1,1</div><div class="line">1,1</div><div class="line">]]</div><div class="line">data.caocao = &#123;</div><div class="line">	name = &quot;曹操&quot;,--名字，当然以后可以再加要给字段作为图片名</div><div class="line">	pos = &#123;2,1&#125;, --棋盘的初始网格位置</div><div class="line">	grid = grid22, --曹操是四方格，也就是四个点组成的矩阵</div><div class="line">	ctrl = &quot;cc&quot; --控制方式，我们后面说互动的时候再说</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>我们希望把数据和逻辑分开写，这样更加清晰，修改数据或修改逻辑也可以比较明了一些。这里用曹操这个棋子举例。</p>
+<p>然后我们来做棋盘矩阵。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">local map = &#123;&#125;</div><div class="line">local empty = &#123; --实际上是仿造棋子做的空数据，之所以要这么写主要是为了遍历方便，不报错。</div><div class="line">	name = &quot;  &quot;,</div><div class="line">	pos = &#123;0,0&#125;,</div><div class="line">	grid = &#123;&#125;</div><div class="line">&#125;</div><div class="line">local function clearMap() --清空棋盘方法，实际和新建是一样滴</div><div class="line">	for x = 1, 4 do --华容道的棋盘是4x5的矩阵</div><div class="line">		map[x] = &#123;&#125;</div><div class="line">		for y = 1,5 do</div><div class="line">			map[x][y] = empty --初始值</div><div class="line">		end</div><div class="line">	end</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>接下来我们来摆放棋子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">local function setupMap() --摆放棋子</div><div class="line">	for _,role in pairs(data) do</div><div class="line">		local roleX = role.pos[1] --棋子在棋盘的矩阵位置</div><div class="line">		local roleY = role.pos[2]</div><div class="line">		for y,tab in ipairs(role.grid) do --对于棋子网格中的每一个点，都映射到棋盘网格上。</div><div class="line">			for x,tab in ipairs(tab) do </div><div class="line">				map[roleX + x - 1][roleY + y -1] = role --为什么要-1？因为棋子网格初始不是0，0而是1，1</div><div class="line">			end</div><div class="line">		end</div><div class="line">	end</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>既然摆好了，我们来画一下，因为我们不需要图形界面，所以直接用打印输出吧。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">local function printMap()</div><div class="line">	local scr = &quot;&quot; --字符串段初始化</div><div class="line">	for y = 1, 5 do</div><div class="line">		for x = 1,4 do</div><div class="line">			scr = scr .. string.sub(map[x][y].name,1,3) --对于棋盘矩阵的每一个点，按其棋子的名字进行打印，只打印第一个字。</div><div class="line">		end</div><div class="line">		scr = scr .. &quot;\n&quot; --换行</div><div class="line">	end</div><div class="line">	print(scr) --输出</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>实际上，如果你更细致的话，对于棋子矩阵的每个点，都对应一下名字，这样就可以输出完整名字了。不过懒得写了。</p>
+<p>下面是移动棋子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">local function move(x,y)</div><div class="line">    local tx,ty = selected.pos[1] + x,selected.pos[2] + y --目标位置</div><div class="line">    local coll --是否碰撞标志</div><div class="line">    for y,tab in ipairs(selected.grid) do --对于选定棋子的每个点</div><div class="line">        for x,tab in ipairs(tab) do</div><div class="line">            if  not map[tx + x - 1] --如果无次点说明超出棋盘范围了</div><div class="line">                or ( map[tx + x - 1][ty + y -1] ~= empty --如果是空值是自身那么就不碰撞可以走</div><div class="line">                and map[tx + x - 1][ty + y -1] ~= selected) then --否则就不能移动跳出循环</div><div class="line">                coll = true </div><div class="line">                break</div><div class="line">            end</div><div class="line">        end</div><div class="line">    end</div><div class="line">    if coll then</div><div class="line">       print(&quot;不能这样移动哦!&quot;) --不能移动的提示</div><div class="line">    else</div><div class="line">        selected.pos[1] = tx --如果移动了就把棋子的位置移动到目标位置</div><div class="line">        selected.pos[2] = ty</div><div class="line">        updateMap() --更新地图信息即清空棋盘、摆放棋子</div><div class="line">        checkWin() --暂时不说，因为只有移动的时候才可能胜利</div><div class="line">    end</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>接下来我们考虑一下互动的问题。<br>一般而言，命令行程序的互动的方法是命令+参数的形式。而对于我们的华容道而言，可能的效果是这样：<br>move caocao 1,0<br>move bing 0,-1<br>然后我们可以通过split方法来切割命令和参数。最后解析出我们想要的行为。<br>不过我们发现move一直在重复，而且对于棋子的控制一般我们会选中一个连续移动，移动的方式也只有上下左右四种，因此，为了简便操作我们换了另一种方案。<br>选中物体，然后adws来控制上下左右，这样仅仅通过简单的按键就可以实现目的了。对于棋子，我们希望用他们的简称，于是就有其ctrl字段的意义了。<br>下面是实现。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">local moveDir = &#123;</div><div class="line">    w = &#123;0,-1&#125;,</div><div class="line">    s = &#123;0,1&#125;,</div><div class="line">    a = &#123;-1,0&#125;,</div><div class="line">    d = &#123;1,0&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">local function interactive() --互动</div><div class="line">    printMap() --显示器盘</div><div class="line">    print(&quot;输入help获得帮助；输入quit退出&quot;) -- 显示帮助</div><div class="line">    print(string.format(&quot;当前选中\&quot;%s\&quot;&quot;,selected.name)) --显示当前选中</div><div class="line">    local cmd = io.read() --等待用户输入</div><div class="line">    for k,role in pairs(data) do --如果用户指令是任意棋子的控制指令，那么就将当前的控制棋子切换到它</div><div class="line">        if role.ctrl == cmd then</div><div class="line">           selected = role</div><div class="line">           printMap()</div><div class="line">           return interactive() --继续互动</div><div class="line">        end</div><div class="line">    end</div><div class="line">    if cmd == &quot;help&quot; then --显示帮助信息</div><div class="line">        print(help)</div><div class="line">    elseif cmd == &quot;quit&quot; then --退出，命令行嘛，直接返回互动模式就退出了。</div><div class="line">        return</div><div class="line">    elseif cmd == &quot;show&quot; then --再次显示棋盘</div><div class="line">        printMap()</div><div class="line">    elseif cmd == &quot;reset&quot; then --重置</div><div class="line">        data = loadfile(&quot;data.lua&quot;)() --这里是一个lua的技巧，后文讲解</div><div class="line">        selected = data.bing</div><div class="line">        updateMap()</div><div class="line">    elseif moveDir[cmd] then --移动控制命令，这里也是一个小技巧</div><div class="line">        move(unpack(moveDir[cmd]))</div><div class="line">    else </div><div class="line">        print(&quot;未知命令&quot;) </div><div class="line">    end</div><div class="line">    return interactive() --尾调用 实际上就是实现了个无限循环而已。</div><div class="line">end</div></pre></td></tr></table></figure>
+<p>最后就是程序的初始化与循环了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">local data =require &quot;data&quot; --读取棋子信息</div><div class="line">local function updateMap() --更新棋盘是个组合技，清空棋盘及摆棋子</div><div class="line">    clearMap()</div><div class="line">    setupMap()</div><div class="line">end</div><div class="line"></div><div class="line">print(&quot;欢迎来到命令行华容道&quot;) --欢迎信息</div><div class="line">selected = data.bing --设置一个当前选中的棋子</div><div class="line">updateMap() -- 初始化一下棋盘</div><div class="line">interactive() --开始互动模式</div></pre></td></tr></table></figure></p>
+<p>以上就是华容道的全部代码啦，很简单？</p>
+<h2 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h2><p>下面将一下一些lua的特性以及上面需要注意的地方。</p>
+<ol>
+<li>一定要记住，lua是解释型的语言，因此在一些定义和调用上要注意顺序。否则会报未定义的错误。</li>
+<li>数据和逻辑分开写有利于维护。</li>
+<li>尽量使用局部变量。当然，这与你语句块的层数有关，如果仅仅是一层的话就无所谓了。</li>
+<li>有一些表可以重复利用的，没必要复制那么多，比如棋子数据中的grid。</li>
+<li>Lua中oop的所谓单例模式就是一个表啦，我们这里的所有棋子实际上是通过数据模板做出的单例，因为我们在使用中改变了棋子的位置。</li>
+<li>一定要注意，require得到的永远是第一次require文件的返回值，无论多少次都是这样，因此，你重新用require对棋子进行重置是不行的，需要用到一个用法：loadfile(“data.lua”)() 或者 dofile(“data.lua”)。这样每次得到的都是新的实例。实际上如果你愿意，也可以使用这种特性来做oop。</li>
+<li>lua并不提供switch方法，所以感觉不太舒服，不过table的键值中的值可以是function,所以可以用table来做switch。</li>
+<li>还有就是遍历中的提前退出机制，比如在碰撞检测时，我们检测其任意地点有障碍而非所有地点没有障碍就是为了减少循环次数。 </li>
+</ol>
+<h2 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h2><ol>
+<li>刚才已经说了，对名字的显示进行处理的话可以显示出全名来。</li>
+<li>把命令行的形式改成图形界面。</li>
+<li>自定义其他棋盘形状和兵种。</li>
+<li>自动解正常版华容道</li>
+<li>通过自动解任意华容道来自动设计随机华容道。（筛选中步长较多但有解的棋盘）</li>
+</ol>
+<h2 id="全部代码"><a href="#全部代码" class="headerlink" title="全部代码"></a>全部代码</h2><p>main.lua<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">local</span> map = &#123;&#125;</div><div class="line"><span class="keyword">local</span> data =<span class="built_in">require</span> <span class="string">"data"</span></div><div class="line"><span class="keyword">local</span> empty = &#123;</div><div class="line">	name = <span class="string">"  "</span>,</div><div class="line">	pos = &#123;<span class="number">0</span>,<span class="number">0</span>&#125;,</div><div class="line">	grid = &#123;&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">local</span> selected = <span class="keyword">nil</span></div><div class="line"></div><div class="line"><span class="keyword">local</span> <span class="function"><span class="keyword">function</span> <span class="title">clearMap</span><span class="params">()</span></span></div><div class="line">	<span class="keyword">for</span> x = <span class="number">1</span>, <span class="number">4</span> <span class="keyword">do</span></div><div class="line">		map[x] = &#123;&#125;</div><div class="line">		<span class="keyword">for</span> y = <span class="number">1</span>,<span class="number">5</span> <span class="keyword">do</span></div><div class="line">			map[x][y] = empty</div><div class="line">		<span class="keyword">end</span></div><div class="line">	<span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">local</span> <span class="function"><span class="keyword">function</span> <span class="title">setupMap</span><span class="params">()</span></span></div><div class="line">	<span class="keyword">for</span> _,role <span class="keyword">in</span> <span class="built_in">pairs</span>(data) <span class="keyword">do</span></div><div class="line">		<span class="keyword">local</span> roleX = role.pos[<span class="number">1</span>]</div><div class="line">		<span class="keyword">local</span> roleY = role.pos[<span class="number">2</span>]</div><div class="line">		<span class="keyword">for</span> y,tab <span class="keyword">in</span> <span class="built_in">ipairs</span>(role.grid) <span class="keyword">do</span></div><div class="line">			<span class="keyword">for</span> x,tab <span class="keyword">in</span> <span class="built_in">ipairs</span>(tab) <span class="keyword">do</span></div><div class="line">				map[roleX + x - <span class="number">1</span>][roleY + y <span class="number">-1</span>] = role</div><div class="line">			<span class="keyword">end</span></div><div class="line">		<span class="keyword">end</span></div><div class="line">	<span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="keyword">local</span> <span class="function"><span class="keyword">function</span> <span class="title">printMap</span><span class="params">()</span></span></div><div class="line">	<span class="keyword">local</span> scr = <span class="string">""</span></div><div class="line">	<span class="keyword">for</span> y = <span class="number">1</span>, <span class="number">5</span> <span class="keyword">do</span></div><div class="line">		<span class="keyword">for</span> x = <span class="number">1</span>,<span class="number">4</span> <span class="keyword">do</span></div><div class="line">			scr = scr .. <span class="built_in">string</span>.sub(map[x][y].name,<span class="number">1</span>,<span class="number">3</span>)</div><div class="line">		<span class="keyword">end</span></div><div class="line">		scr = scr .. <span class="string">"\n"</span></div><div class="line">	<span class="keyword">end</span></div><div class="line">	<span class="built_in">print</span>(scr)</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="keyword">local</span> <span class="function"><span class="keyword">function</span> <span class="title">updateMap</span><span class="params">()</span></span></div><div class="line">    clearMap()</div><div class="line">    setupMap()</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="keyword">local</span> <span class="function"><span class="keyword">function</span> <span class="title">checkWin</span><span class="params">()</span></span></div><div class="line">    <span class="keyword">local</span> pos = data.caocao.pos</div><div class="line">    <span class="keyword">if</span> pos[<span class="number">1</span>] == <span class="number">2</span> <span class="keyword">and</span> pos[<span class="number">2</span>] == <span class="number">4</span> <span class="keyword">then</span></div><div class="line">        <span class="built_in">print</span>(<span class="string">"混蛋，你让曹操跑了！"</span>)</div><div class="line">    <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="keyword">local</span> help = <span class="string">[[</span></div><div class="line">    请输入人物简码选中人物，按回车键确定；</div><div class="line">    按a,w,s,d来对选中人物进行移动，按回车键确定；</div><div class="line">    人物为姓名前两字缩写，士兵为数字1，2，3，4</div><div class="line">    输入quit退出游戏；</div><div class="line">    输入show显示棋牌；</div><div class="line">    输入reset重启游戏；</div><div class="line">    输入help游戏帮助</div><div class="line">]]</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">local</span> <span class="function"><span class="keyword">function</span> <span class="title">move</span><span class="params">(x,y)</span></span></div><div class="line">    <span class="keyword">local</span> tx,ty = selected.pos[<span class="number">1</span>] + x,selected.pos[<span class="number">2</span>] + y</div><div class="line">    <span class="keyword">local</span> coll</div><div class="line">    <span class="keyword">for</span> y,tab <span class="keyword">in</span> <span class="built_in">ipairs</span>(selected.grid) <span class="keyword">do</span></div><div class="line">        <span class="keyword">for</span> x,tab <span class="keyword">in</span> <span class="built_in">ipairs</span>(tab) <span class="keyword">do</span></div><div class="line">            <span class="keyword">if</span>  <span class="keyword">not</span> map[tx + x - <span class="number">1</span>] </div><div class="line">                <span class="keyword">or</span> ( map[tx + x - <span class="number">1</span>][ty + y <span class="number">-1</span>] ~= empty</div><div class="line">                <span class="keyword">and</span> map[tx + x - <span class="number">1</span>][ty + y <span class="number">-1</span>] ~= selected) <span class="keyword">then</span></div><div class="line">                coll = <span class="keyword">true</span></div><div class="line">                <span class="keyword">break</span></div><div class="line">            <span class="keyword">end</span></div><div class="line">        <span class="keyword">end</span></div><div class="line">    <span class="keyword">end</span></div><div class="line">    <span class="keyword">if</span> coll <span class="keyword">then</span></div><div class="line">       <span class="built_in">print</span>(<span class="string">"不能这样移动哦!"</span>)</div><div class="line">    <span class="keyword">else</span></div><div class="line">        selected.pos[<span class="number">1</span>] = tx</div><div class="line">        selected.pos[<span class="number">2</span>] = ty</div><div class="line">        updateMap()</div><div class="line">        checkWin()</div><div class="line">    <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="keyword">local</span> moveDir = &#123;</div><div class="line">    w = &#123;<span class="number">0</span>,<span class="number">-1</span>&#125;,</div><div class="line">    s = &#123;<span class="number">0</span>,<span class="number">1</span>&#125;,</div><div class="line">    a = &#123;<span class="number">-1</span>,<span class="number">0</span>&#125;,</div><div class="line">    d = &#123;<span class="number">1</span>,<span class="number">0</span>&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">local</span> <span class="function"><span class="keyword">function</span> <span class="title">interactive</span><span class="params">()</span></span></div><div class="line">    printMap()</div><div class="line">    <span class="built_in">print</span>(<span class="string">"输入help获得帮助；输入quit退出"</span>)</div><div class="line">    <span class="built_in">print</span>(<span class="built_in">string</span>.format(<span class="string">"当前选中\"%s\""</span>,selected.name))</div><div class="line">    <span class="keyword">local</span> cmd = <span class="built_in">io</span>.read()</div><div class="line">    <span class="keyword">for</span> k,role <span class="keyword">in</span> <span class="built_in">pairs</span>(data) <span class="keyword">do</span></div><div class="line">        <span class="keyword">if</span> role.ctrl == cmd <span class="keyword">then</span></div><div class="line">           selected = role</div><div class="line">           printMap()</div><div class="line">           <span class="keyword">return</span> interactive()</div><div class="line">        <span class="keyword">end</span></div><div class="line">    <span class="keyword">end</span></div><div class="line">    <span class="keyword">if</span> cmd == <span class="string">"help"</span> <span class="keyword">then</span></div><div class="line">        <span class="built_in">print</span>(help)</div><div class="line">    <span class="keyword">elseif</span> cmd == <span class="string">"quit"</span> <span class="keyword">then</span></div><div class="line">        <span class="keyword">return</span></div><div class="line">    <span class="keyword">elseif</span> cmd == <span class="string">"show"</span> <span class="keyword">then</span></div><div class="line">        printMap()</div><div class="line">    <span class="keyword">elseif</span> cmd == <span class="string">"reset"</span> <span class="keyword">then</span></div><div class="line">        data = <span class="built_in">dofile</span>(<span class="string">"data.lua"</span>)</div><div class="line">        selected = data.bing</div><div class="line">        updateMap()</div><div class="line">    <span class="keyword">elseif</span> moveDir[cmd] <span class="keyword">then</span></div><div class="line">        move(<span class="built_in">unpack</span>(moveDir[cmd]))</div><div class="line">    <span class="keyword">else</span> </div><div class="line">        <span class="built_in">print</span>(<span class="string">"未知命令"</span>)</div><div class="line">    <span class="keyword">end</span></div><div class="line">    <span class="keyword">return</span> interactive()</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="comment">-----go------</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"欢迎来到命令行华容道"</span>)</div><div class="line">selected = data.bing</div><div class="line">updateMap()</div><div class="line">interactive()</div></pre></td></tr></table></figure></p>
+<p>data.lua<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">local</span> data = &#123;&#125;</div><div class="line"><span class="keyword">local</span> grid12 = &#123;&#123;<span class="number">1</span>&#125;,&#123;<span class="number">1</span>&#125;&#125;</div><div class="line"><span class="keyword">local</span> grid21 = &#123;&#123;<span class="number">1</span>,<span class="number">1</span>&#125;&#125;</div><div class="line"><span class="keyword">local</span> grid11 = &#123;&#123;<span class="number">1</span>&#125;&#125;</div><div class="line"><span class="keyword">local</span> grid22 = &#123;&#123;<span class="number">1</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">1</span>&#125;&#125;</div><div class="line">data.caocao = &#123;</div><div class="line">	name = <span class="string">"曹操"</span>,</div><div class="line">	pos = &#123;<span class="number">2</span>,<span class="number">1</span>&#125;,</div><div class="line">	grid = grid22,</div><div class="line">	ctrl = <span class="string">"cc"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">data.zhangfei = &#123;</div><div class="line">	name = <span class="string">"张飞"</span>,</div><div class="line">	pos = &#123;<span class="number">1</span>,<span class="number">1</span>&#125;,</div><div class="line">	grid = grid12</div><div class="line">&#125;</div><div class="line">data.zhaoyun = &#123;</div><div class="line">	name = <span class="string">"赵云"</span>,</div><div class="line">	pos = &#123;<span class="number">1</span>,<span class="number">3</span>&#125;,</div><div class="line">	grid = grid12,</div><div class="line">	ctrl = <span class="string">"zy"</span></div><div class="line">&#125;</div><div class="line">data.huangzhong = &#123;</div><div class="line">	name = <span class="string">"黄忠"</span>,</div><div class="line">	pos = &#123;<span class="number">4</span>,<span class="number">1</span>&#125;,</div><div class="line">	grid = grid12,</div><div class="line">	ctrl = <span class="string">"hz"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">data.machao = &#123;</div><div class="line">	name = <span class="string">"马超"</span>,</div><div class="line">	pos = &#123;<span class="number">4</span>,<span class="number">3</span>&#125;,</div><div class="line">	grid = grid12,</div><div class="line">	ctrl = <span class="string">"mc"</span></div><div class="line">&#125;</div><div class="line">data.guanyu = &#123;</div><div class="line">	name = <span class="string">"关羽"</span>,</div><div class="line">	pos = &#123;<span class="number">2</span>,<span class="number">3</span>&#125;,</div><div class="line">	grid = grid21,</div><div class="line">	ctrl = <span class="string">"gy"</span></div><div class="line">&#125;</div><div class="line">data.bing = &#123;</div><div class="line">	name = <span class="string">"兵"</span>,</div><div class="line">	pos = &#123;<span class="number">1</span>,<span class="number">5</span>&#125;,</div><div class="line">	grid = grid11,</div><div class="line">	ctrl = <span class="string">"1"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">data.zu = &#123;</div><div class="line">	name = <span class="string">"卒"</span>,</div><div class="line">	pos = &#123;<span class="number">4</span>,<span class="number">5</span>&#125;,</div><div class="line">	grid = grid11,</div><div class="line">	ctrl = <span class="string">"2"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">data.shi = &#123;</div><div class="line">	name = <span class="string">"士"</span>,</div><div class="line">	pos = &#123;<span class="number">2</span>,<span class="number">4</span>&#125;,</div><div class="line">	grid = grid11,</div><div class="line">	ctrl = <span class="string">"3"</span>,</div><div class="line">&#125;</div><div class="line"></div><div class="line">data.zuo = &#123;</div><div class="line">	name = <span class="string">"佐"</span>,</div><div class="line">	pos = &#123;<span class="number">3</span>,<span class="number">4</span>&#125;,</div><div class="line">	grid = grid11,</div><div class="line">	ctrl = <span class="string">"4"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">return</span> data</div></pre></td></tr></table></figure></p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="love2d" data-title="love2d" data-url="alexarjing.github.io"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"love2d"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+    </div>
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>关于</h2>
+                <p>
+                    本教程配套软件:<a href="https://alexarjing.github.io/tutorial.love">tutorial.love</a>. 请安装love环境使用。
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>最近发表</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2017/01/03/example-flee/">华容道案例</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/01/03/example-snake/">贪吃蛇</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2016/12/27/blender-execises/">Blender习题计划</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2016/12/26/example-td01/">宝石塔防复刻I</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>分类</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/Blender学习笔记/">Blender学习笔记</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/案例教程/">案例教程</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/初级教程/">初级教程</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/中级教程/">中级教程</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/klugjo/hexo-theme-alpha-dust">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-instagram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://dribbble.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-dribbble"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.behance.net/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-behance"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://500px.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-500px"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:alexar@foxmail.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    本文作者Alexar alexar@foxmail.com; 原创内容禁止转载。作者保留一切权利。
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+
+
+</body>
+
+</html>
