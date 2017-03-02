@@ -4,6 +4,42 @@
 
     
   <url>
+    <loc>http://yoursite.com/2016/11/30/chapter6/</loc>
+    <lastmod>2017-02-22T09:28:37.011Z</lastmod>
+    <data>
+        <display>
+        <title>第6章 动画与音效</title>
+        <pubTime>2016-11-30T02:45:33.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="初级教程" url="http://yoursite.com/categories/%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2016/11/25/chapter2/</loc>
+    <lastmod>2017-01-20T06:40:20.664Z</lastmod>
+    <data>
+        <display>
+        <title>第2章 让画面动起来</title>
+        <pubTime>2016-11-25T06:53:56.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="初级教程" url="http://yoursite.com/categories/%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2016/12/23/blender-hotkey/</loc>
     <lastmod>2017-01-03T03:58:36.540Z</lastmod>
     <data>
@@ -202,24 +238,6 @@
 
     
   <url>
-    <loc>http://yoursite.com/2016/11/25/chapter2/</loc>
-    <lastmod>2016-12-08T08:51:05.462Z</lastmod>
-    <data>
-        <display>
-        <title>第2章 让画面动起来</title>
-        <pubTime>2016-11-25T06:53:56.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="初级教程" url="http://yoursite.com/categories/%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yoursite.com/2016/11/25/chapter1/</loc>
     <lastmod>2016-12-08T08:45:52.225Z</lastmod>
     <data>
@@ -406,24 +424,6 @@
         <display>
         <title>第3章 角度，方向以及旋转</title>
         <pubTime>2016-11-28T01:33:23.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="初级教程" url="http://yoursite.com/categories/%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2016/11/30/chapter6/</loc>
-    <lastmod>2016-12-02T06:06:29.532Z</lastmod>
-    <data>
-        <display>
-        <title>第6章 动画与音效</title>
-        <pubTime>2016-11-30T02:45:33.000Z</pubTime>
         
          
            
