@@ -1,0 +1,74 @@
+local wave = {}
+
+local normal = 0
+
+for i = 1, 180 do
+	local p = {
+		x = i,
+		y = 0,
+		as = 0,
+		dy = 0,
+		ay = 0
+	}
+	table.insert(wave,p)
+end
+
+
+local strain = 0.008
+local buoyance = 0.03 
+local step = 20
+
+function applyStrain(p)
+	local prevP = wave[p.x - 1]
+	if prevP then
+		p.as = p.as - ((p.y - prevP.y)*strain)
+	else
+		p.as = p.as - ((p.y - 0)*strain)
+	end
+	local nextP = wave[p.x + 1]
+	if nextP then
+		p.as = p.as - ((p.y - nextP.y)*strain)
+	else
+		p.as = p.as - ((p.y - 0)*strain)
+	end
+end
+
+function applyBuoyance(p)
+	p.ay = p.ay - ((p.y - normal)*buoyance)^3
+end
+
+function translate(p)
+	p.dy = p.dy + p.ay/500 + p.as
+	p.dy = p.dy*0.99
+	p.y = p.y + p.dy
+	p.ay = 0
+	p.as = 0
+end
+
+function love.update()
+	if love.mouse.isDown(1) then
+		local x,y = love.mouse.getPosition()
+		local index = math.floor(x/5)
+		for i = -3+index,3+index do
+			local p = wave[i]
+			if p then
+				p.y = 300 - y
+			end
+		end
+	end
+
+	for i =  1, step do
+		for i,p in ipairs(wave) do
+			applyStrain(p)
+			applyBuoyance(p)
+			translate(p)
+		end
+	end
+end
+
+function love.draw()
+	for i,p in ipairs(wave) do
+		love.graphics.rectangle("fill", p.x*5, p.y+300, 5, p.y+600)
+	end
+
+end
