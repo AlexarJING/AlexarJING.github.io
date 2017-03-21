@@ -181,7 +181,18 @@
 
         <!-- Post Content -->
         <p>本章介绍如何将love项目编译到web并发布<br><a id="more"></a></p>
-<h1 id="love项目的web编译"><a href="#love项目的web编译" class="headerlink" title="love项目的web编译"></a>love项目的web编译</h1><h2 id="安装love-js"><a href="#安装love-js" class="headerlink" title="安装love.js"></a>安装love.js</h2><h2 id="编译love项目到web"><a href="#编译love项目到web" class="headerlink" title="编译love项目到web"></a>编译love项目到web</h2><h2 id="发布到服务器"><a href="#发布到服务器" class="headerlink" title="发布到服务器"></a>发布到服务器</h2>
+<h1 id="love项目的web编译"><a href="#love项目的web编译" class="headerlink" title="love项目的web编译"></a>love项目的web编译</h1><p>love在不同平台的编译并不像其他引擎那么方便，android和ios系统是从个人编译项目上合并到官方里的，在web上同样，是个人项目，它是利用Emscripten将love的源码转到了等价的js端口,然后运行时实际仍然是在使用lua的机制但是翻译成了js，而且没有jit了。项目的git，<a href="https://github.com/TannerRogalsky/love.js，如果你英文没啥问题，看一眼就不用看我下面写的了。" target="_blank" rel="external">https://github.com/TannerRogalsky/love.js，如果你英文没啥问题，看一眼就不用看我下面写的了。</a></p>
+<h2 id="安装love-js"><a href="#安装love-js" class="headerlink" title="安装love.js"></a>安装love.js</h2><p>使用git工具来安装love.js到本地<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/TannerRogalsky/love.js.git</div></pre></td></tr></table></figure></p>
+<p>这时,由于项目中有外接的子模块emscripten,单纯克隆项目不会下载外接子模块，因此需要再次使用git命令把项目下载全。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git submodule update --init --recursive</div></pre></td></tr></table></figure></p>
+<p>同时，这个项目还需要你安装python2.7。记住py2和py3不是一个东西，不兼容！下载地址自己任意选一个吧，安装好。</p>
+<h2 id="编译love项目到web"><a href="#编译love项目到web" class="headerlink" title="编译love项目到web"></a>编译love项目到web</h2><p>首先准备好你的游戏项目目录，注意，不需要打包成.love文件，而是源码文件夹。<br>把当前的文件目录（cd命令）设置为love.js/debug。别跟我说不会打这个命令或者不知道目录为何物哈。<br>使用命令行来打包项目<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python ../emscripten/tools/file_packager.py game.data --preload [path-to-game]@/ --js-output=game.js</div></pre></td></tr></table></figure></p>
+<p>其中 [path-to-game]是你的love源文件目录，同时目录中不能有非ascii码（经常提的不能用中文目录，但是如果目录上加双引号应该就不会报错了）<br>目录名后面要紧接着@/,这是必要的<br>命令执行后，应该会在你的cd（debug目录）中产生两个文件：game.data,game.js.</p>
+<h2 id="本地测试"><a href="#本地测试" class="headerlink" title="本地测试"></a>本地测试</h2><p>本地测试必须在服务器环境下才可以，仅仅打开目录下的index.html是不行的<br>运行下面命令来使用py搭建一个简易本地服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python -m SimpleHTTPServer 8000</div></pre></td></tr></table></figure></p>
+<p>运行窗体不要关，否则服务器也关闭了。<br>在浏览器中打开localhost:8000地址,就是一个文件服务器啦，你可以选择到debug下来运行相应页面。<br>如果在debug中没有问题，你就可以把game.data,game.js复制到发布文件夹下了。<br>注意，你能变动的只是这两个文件，其他的不要动。当然如果你懂如何写页面的话可以自己修改，但是跟游戏相关的只有上面两个文件。其他的文件是不通用的。<br>发布目录，有一个兼容性的和一个性能的，实际测试中后者经常出现各种问题。</p>
+<h2 id="发布到服务器"><a href="#发布到服务器" class="headerlink" title="发布到服务器"></a>发布到服务器</h2><p>仅仅需要将你的release整个文件夹上传到服务器的指定目录就可以啦。你就可以在远端测试你的项目了。</p>
+<p><a href="https://alexarjing.github.io/demo/wave" target="_blank" rel="external">https://alexarjing.github.io/demo/wave</a><br>笔者自己上传的一个love.js转码项目；注意第一次除了下载项目俩文件外，还要下载love.js文件，比较慢，需要等待一下。</p>
+<p>实际测试中，项目的表现可能与你在本地.love运行的有一定差异，需要你自己进行调整，同时web端还不支持shader。</p>
+
     </div>
 
     
