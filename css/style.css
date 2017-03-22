@@ -431,16 +431,16 @@ section.main .post .content .video-container embed {
   font-size: 30px;
   border-bottom: none;
 }
-.nav {
+nav {
   position: fixed;
   right: 2em;
   top: 100em;
   z-index: 10000;
 }
-.nav a,
-.nav a:link,
-.nav a:visited,
-.nav a:active {
+nav a,
+nav a:link,
+nav a:visited,
+nav a:active {
   font-family: FontAwesome;
   font-style: normal;
   border-bottom: none;
@@ -448,7 +448,7 @@ section.main .post .content .video-container embed {
   opacity: 0.5;
   transition: opacity 0.3s ease;
 }
-.nav a:hover {
+nav a:hover {
   opacity: 1;
 }
 .wrap-pagination {
