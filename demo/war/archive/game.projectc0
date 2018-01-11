@@ -11,18 +11,25 @@ game_binding = /input/game.input_bindingc
 [display]
 width = 1280
 height = 720
+update_frequency = 30
+variable_dt = 1
+dynamic_orientation = 0
 
 [physics]
 scale = 0.02
 gravity_y = 0
 debug = 0
 debug_alpha = 0.2
-max_collisions = 1000
-max_contacts = 1000
+max_collisions = 9999
+max_contacts = 9999
+trigger_overlap_capacity = 9999
 
 [script]
 shared_state = 1
 
 [library]
 include_dirs = def-war-battles
+
+[sprite]
+max_count = 999
 
