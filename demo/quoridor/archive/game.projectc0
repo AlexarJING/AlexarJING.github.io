@@ -1,6 +1,6 @@
 [project]
-title = My project
-version = 0.1
+title = quoridor
+version = 0.2
 
 [bootstrap]
 main_collection = /main/main.collectionc
