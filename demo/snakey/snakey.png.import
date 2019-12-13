@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/snakey.png-7c4a8ac06acc66b99df9ca930b66346c.stex"
+path="res://.import/snakey.png-b01b443babd81c69803aacdcc8063e5e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://output/h5/snakey.png"
-dest_files=[ "res://.import/snakey.png-7c4a8ac06acc66b99df9ca930b66346c.stex" ]
+source_file="res://output/snakey.png"
+dest_files=[ "res://.import/snakey.png-b01b443babd81c69803aacdcc8063e5e.stex" ]
 
 [params]
 
