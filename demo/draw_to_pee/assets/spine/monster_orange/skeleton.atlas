@@ -1,0 +1,76 @@
+
+skeleton.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+monster_orange/Group 6
+  rotate: false
+  xy: 486, 166
+  size: 112, 120
+  orig: 112, 120
+  offset: 0, 0
+  index: -1
+monster_orange/Group 7
+  rotate: true
+  xy: 397, 114
+  size: 178, 87
+  orig: 178, 87
+  offset: 0, 0
+  index: -1
+monster_orange/Group 8
+  rotate: true
+  xy: 610, 48
+  size: 61, 49
+  orig: 61, 49
+  offset: 0, 0
+  index: -1
+monster_orange/Group 9
+  rotate: false
+  xy: 2, 27
+  size: 63, 49
+  orig: 63, 49
+  offset: 0, 0
+  index: -1
+monster_orange/Shape 58
+  rotate: 180
+  xy: 2, 2
+  size: 380, 290
+  orig: 380, 290
+  offset: 0, 0
+  index: -1
+monster_orange/Shape 63
+  rotate: 180
+  xy: 383, 21
+  size: 166, 143
+  orig: 166, 143
+  offset: 0, 0
+  index: -1
+monster_orange/Shape 64
+  rotate: false
+  xy: 188, 85
+  size: 110, 85
+  orig: 110, 85
+  offset: 0, 0
+  index: -1
+monster_orange/Shape 68
+  rotate: false
+  xy: 104, 172
+  size: 291, 120
+  orig: 291, 120
+  offset: 0, 0
+  index: -1
+monster_orange/Shape 69 copy 15
+  rotate: true
+  xy: 600, 111
+  size: 169, 33
+  orig: 169, 33
+  offset: 0, 0
+  index: -1
+monster_orange/Shape 69 copy 25
+  rotate: true
+  xy: 547, 3
+  size: 106, 61
+  orig: 106, 61
+  offset: 0, 0
+  index: -1

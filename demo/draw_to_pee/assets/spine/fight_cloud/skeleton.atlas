@@ -1,0 +1,111 @@
+
+skeleton.png
+size: 1024, 512
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+fx/fight_cloud_anim/fight_cloud00
+  rotate: false
+  xy: 0.5, 241.5
+  size: 180, 120
+  orig: 180, 120
+  offset: 0, 0
+  index: -1
+fx/fight_cloud_anim/fight_cloud01
+  rotate: false
+  xy: 181, 241.5
+  size: 180, 120
+  orig: 180, 120
+  offset: 0, 0
+  index: -1
+fx/fight_cloud_anim/fight_cloud02
+  rotate: false
+  xy: 361.5, 241.5
+  size: 180, 120
+  orig: 180, 120
+  offset: 0, 0
+  index: -1
+fx/fight_cloud_anim/fight_cloud03
+  rotate: false
+  xy: 542, 241.5
+  size: 180, 120
+  orig: 180, 120
+  offset: 0, 0
+  index: -1
+fx/fight_cloud_anim/fight_cloud04
+  rotate: false
+  xy: 722.5, 241.5
+  size: 180, 120
+  orig: 180, 120
+  offset: 0, 0
+  index: -1
+fx/fight_cloud_anim/fight_cloud05
+  rotate: true
+  xy: 903, 181.5
+  size: 180, 120
+  orig: 180, 120
+  offset: 0, 0
+  index: -1
+fx/fight_cloud_anim/fight_cloud06
+  rotate: false
+  xy: 0.5, 121
+  size: 180, 120
+  orig: 180, 120
+  offset: 0, 0
+  index: -1
+fx/fight_cloud_anim/fight_cloud07
+  rotate: false
+  xy: 181, 121
+  size: 180, 120
+  orig: 180, 120
+  offset: 0, 0
+  index: -1
+fx/fight_cloud_anim/fight_cloud08
+  rotate: false
+  xy: 361.5, 121
+  size: 180, 120
+  orig: 180, 120
+  offset: 0, 0
+  index: -1
+fx/fight_cloud_anim/fight_cloud09
+  rotate: false
+  xy: 542, 121
+  size: 180, 120
+  orig: 180, 120
+  offset: 0, 0
+  index: -1
+fx/fight_cloud_anim/fight_cloud10
+  rotate: false
+  xy: 722.5, 61
+  size: 180, 120
+  orig: 180, 120
+  offset: 0, 0
+  index: -1
+fx/fight_cloud_anim/fight_cloud11
+  rotate: true
+  xy: 903, 1
+  size: 180, 120
+  orig: 180, 120
+  offset: 0, 0
+  index: -1
+fx/fight_cloud_anim/fight_cloud12
+  rotate: false
+  xy: 0.5, 0.5
+  size: 180, 120
+  orig: 180, 120
+  offset: 0, 0
+  index: -1
+fx/fight_cloud_anim/fight_cloud13
+  rotate: false
+  xy: 181, 0.5
+  size: 180, 120
+  orig: 180, 120
+  offset: 0, 0
+  index: -1
+fx/fight_cloud_anim/fight_cloud14
+  rotate: false
+  xy: 361.5, 0.5
+  size: 180, 120
+  orig: 180, 120
+  offset: 0, 0
+  index: -1

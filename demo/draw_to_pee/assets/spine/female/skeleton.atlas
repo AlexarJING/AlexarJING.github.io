@@ -1,0 +1,755 @@
+
+skeleton.png
+size: 2048, 256
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+lady/Layer 1
+  rotate: false
+  xy: 121.5, 56
+  size: 7.5, 27
+  orig: 7.5, 27
+  offset: 0, 0
+  index: -1
+lady2/Layer 1
+  rotate: false
+  xy: 121.5, 56
+  size: 7.5, 27
+  orig: 7.5, 27
+  offset: 0, 0
+  index: -1
+lady3/Layer 1
+  rotate: false
+  xy: 121.5, 56
+  size: 7.5, 27
+  orig: 7.5, 27
+  offset: 0, 0
+  index: -1
+lady4/Layer 1
+  rotate: false
+  xy: 121.5, 56
+  size: 7.5, 27
+  orig: 7.5, 27
+  offset: 0, 0
+  index: -1
+lady5/Layer 1
+  rotate: false
+  xy: 121.5, 56
+  size: 7.5, 27
+  orig: 7.5, 27
+  offset: 0, 0
+  index: -1
+lady6/Layer 1
+  rotate: false
+  xy: 121.5, 56
+  size: 7.5, 27
+  orig: 7.5, 27
+  offset: 0, 0
+  index: -1
+lady7/Layer 1
+  rotate: false
+  xy: 121.5, 56
+  size: 7.5, 27
+  orig: 7.5, 27
+  offset: 0, 0
+  index: -1
+lady8/Layer 1
+  rotate: false
+  xy: 121.5, 56
+  size: 7.5, 27
+  orig: 7.5, 27
+  offset: 0, 0
+  index: -1
+lady/Layer 2 copy
+  rotate: false
+  xy: 364.5, 31
+  size: 80.5, 76.5
+  orig: 80.5, 76.5
+  offset: 0, 0
+  index: -1
+lady/Layer 4
+  rotate: false
+  xy: 511, 10
+  size: 15, 24.5
+  orig: 15, 24.5
+  offset: 0, 0
+  index: -1
+lady2/Layer 4
+  rotate: false
+  xy: 511, 10
+  size: 15, 24.5
+  orig: 15, 24.5
+  offset: 0, 0
+  index: -1
+lady3/Layer 4
+  rotate: false
+  xy: 511, 10
+  size: 15, 24.5
+  orig: 15, 24.5
+  offset: 0, 0
+  index: -1
+lady4/Layer 4
+  rotate: false
+  xy: 511, 10
+  size: 15, 24.5
+  orig: 15, 24.5
+  offset: 0, 0
+  index: -1
+lady5/Layer 4
+  rotate: false
+  xy: 511, 10
+  size: 15, 24.5
+  orig: 15, 24.5
+  offset: 0, 0
+  index: -1
+lady6/Layer 4
+  rotate: false
+  xy: 511, 10
+  size: 15, 24.5
+  orig: 15, 24.5
+  offset: 0, 0
+  index: -1
+lady7/Layer 4
+  rotate: false
+  xy: 511, 10
+  size: 15, 24.5
+  orig: 15, 24.5
+  offset: 0, 0
+  index: -1
+lady8/Layer 4
+  rotate: false
+  xy: 511, 10
+  size: 15, 24.5
+  orig: 15, 24.5
+  offset: 0, 0
+  index: -1
+lady/Shape 10
+  rotate: false
+  xy: 1091.5, 8
+  size: 37.5, 63
+  orig: 37.5, 63
+  offset: 0, 0
+  index: -1
+lady/Shape 24
+  rotate: true
+  xy: 728.5, 2.5
+  size: 24.5, 66
+  orig: 24.5, 66
+  offset: 0, 0
+  index: -1
+lady/Shape 3
+  rotate: false
+  xy: 295.5, 4
+  size: 19.5, 20.5
+  orig: 19.5, 20.5
+  offset: 0, 0
+  index: -1
+lady/Shape 4
+  rotate: 180
+  xy: 865.5, 99.5
+  size: 44, 44
+  orig: 44, 44
+  offset: 0, 0
+  index: -1
+lady/Shape 5
+  rotate: 270
+  xy: 755, 23.5
+  size: 69, 40
+  orig: 69, 40
+  offset: 0, 0
+  index: -1
+lady/Shape 56 copy
+  rotate: 270
+  xy: 150.5, 23
+  size: 60.5, 92
+  orig: 60.5, 92
+  offset: 0, 0
+  index: -1
+lady/Shape 58 copy 2
+  rotate: false
+  xy: 1144.5, 6
+  size: 37.5, 43.5
+  orig: 37.5, 43.5
+  offset: 0, 0
+  index: -1
+lady/Shape 6
+  rotate: 180
+  xy: 1117, 4.5
+  size: 32, 64.5
+  orig: 32, 64.5
+  offset: 0, 0
+  index: -1
+lady/Shape 71 copy
+  rotate: false
+  xy: 1136.5, 68.5
+  size: 32, 49.5
+  orig: 32, 49.5
+  offset: 0, 0
+  index: -1
+lady/Shape 8 copy
+  rotate: false
+  xy: 912.5, 1.5
+  size: 35.5, 62.5
+  orig: 35.5, 62.5
+  offset: 0, 0
+  index: -1
+lady/choang
+  rotate: false
+  xy: 796, 33.5
+  size: 42.5, 45.5
+  orig: 42.5, 45.5
+  offset: 0, 0
+  index: -1
+lady/noel
+  rotate: 270
+  xy: 748, 119
+  size: 78, 52.5
+  orig: 78, 52.5
+  offset: 0, 0
+  index: -1
+lady/rope
+  rotate: false
+  xy: 221, 59.5
+  size: 142.5, 48
+  orig: 142.5, 48
+  offset: 0, 0
+  index: -1
+lady2/Layer 2 copy
+  rotate: true
+  xy: 220.5, 108.5
+  size: 100, 94.5
+  orig: 100, 94.5
+  offset: 0, 0
+  index: -1
+lady2/Shape 10
+  rotate: false
+  xy: 1052, 103.5
+  size: 33, 72.5
+  orig: 33, 72.5
+  offset: 0, 0
+  index: -1
+lady2/Shape 24
+  rotate: true
+  xy: 655, 5
+  size: 27, 67.5
+  orig: 27, 67.5
+  offset: 0, 0
+  index: -1
+lady2/Shape 3
+  rotate: false
+  xy: 1, 83
+  size: 5.5, 5
+  orig: 5.5, 5
+  offset: 0, 0
+  index: -1
+lady2/Shape 56 copy
+  rotate: false
+  xy: 1, 83
+  size: 5.5, 5
+  orig: 5.5, 5
+  offset: 0, 0
+  index: -1
+lady2/Shape 58 copy 2
+  rotate: false
+  xy: 1, 83
+  size: 5.5, 5
+  orig: 5.5, 5
+  offset: 0, 0
+  index: -1
+lady2/Shape 71 copy
+  rotate: false
+  xy: 1, 83
+  size: 5.5, 5
+  orig: 5.5, 5
+  offset: 0, 0
+  index: -1
+lady3/Shape 3
+  rotate: false
+  xy: 1, 83
+  size: 5.5, 5
+  orig: 5.5, 5
+  offset: 0, 0
+  index: -1
+lady3/Shape 58 copy 2
+  rotate: false
+  xy: 1, 83
+  size: 5.5, 5
+  orig: 5.5, 5
+  offset: 0, 0
+  index: -1
+lady3/Shape 71 copy
+  rotate: false
+  xy: 1, 83
+  size: 5.5, 5
+  orig: 5.5, 5
+  offset: 0, 0
+  index: -1
+lady4/Shape 3
+  rotate: false
+  xy: 1, 83
+  size: 5.5, 5
+  orig: 5.5, 5
+  offset: 0, 0
+  index: -1
+lady4/Shape 56 copy
+  rotate: false
+  xy: 1, 83
+  size: 5.5, 5
+  orig: 5.5, 5
+  offset: 0, 0
+  index: -1
+lady4/Shape 58 copy 2
+  rotate: false
+  xy: 1, 83
+  size: 5.5, 5
+  orig: 5.5, 5
+  offset: 0, 0
+  index: -1
+lady4/Shape 71 copy
+  rotate: false
+  xy: 1, 83
+  size: 5.5, 5
+  orig: 5.5, 5
+  offset: 0, 0
+  index: -1
+lady5/Shape 3
+  rotate: false
+  xy: 1, 83
+  size: 5.5, 5
+  orig: 5.5, 5
+  offset: 0, 0
+  index: -1
+lady6/Shape 3
+  rotate: false
+  xy: 1, 83
+  size: 5.5, 5
+  orig: 5.5, 5
+  offset: 0, 0
+  index: -1
+lady7/Shape 3
+  rotate: false
+  xy: 1, 83
+  size: 5.5, 5
+  orig: 5.5, 5
+  offset: 0, 0
+  index: -1
+lady7/Shape 58 copy 2
+  rotate: false
+  xy: 1, 83
+  size: 5.5, 5
+  orig: 5.5, 5
+  offset: 0, 0
+  index: -1
+lady7/Shape 71 copy
+  rotate: false
+  xy: 1, 83
+  size: 5.5, 5
+  orig: 5.5, 5
+  offset: 0, 0
+  index: -1
+lady8/Shape 3
+  rotate: false
+  xy: 1, 83
+  size: 5.5, 5
+  orig: 5.5, 5
+  offset: 0, 0
+  index: -1
+lady8/Shape 5
+  rotate: false
+  xy: 1, 83
+  size: 5.5, 5
+  orig: 5.5, 5
+  offset: 0, 0
+  index: -1
+lady8/Shape 56 copy
+  rotate: false
+  xy: 1, 83
+  size: 5.5, 5
+  orig: 5.5, 5
+  offset: 0, 0
+  index: -1
+lady8/Shape 58 copy 2
+  rotate: false
+  xy: 1, 83
+  size: 5.5, 5
+  orig: 5.5, 5
+  offset: 0, 0
+  index: -1
+lady8/Shape 71 copy
+  rotate: false
+  xy: 1, 83
+  size: 5.5, 5
+  orig: 5.5, 5
+  offset: 0, 0
+  index: -1
+lady2/Shape 4
+  rotate: 180
+  xy: 902, 65
+  size: 38, 49
+  orig: 38, 49
+  offset: 0, 0
+  index: -1
+lady2/Shape 5
+  rotate: true
+  xy: 1002.5, 165.5
+  size: 43, 34.5
+  orig: 43, 34.5
+  offset: 0, 0
+  index: -1
+lady2/Shape 6
+  rotate: 180
+  xy: 1106, 72
+  size: 32.5, 65
+  orig: 32.5, 65
+  offset: 0, 0
+  index: -1
+lady2/Shape 8 copy
+  rotate: false
+  xy: 931.5, 136
+  size: 33.5, 72.5
+  orig: 33.5, 72.5
+  offset: 0, 0
+  index: -1
+lady3/Layer 2 copy
+  rotate: true
+  xy: 316, 108.5
+  size: 97, 93.5
+  orig: 97, 93.5
+  offset: 0, 0
+  index: -1
+lady3/Shape 10
+  rotate: false
+  xy: 1063, 69
+  size: 32.5, 73
+  orig: 32.5, 73
+  offset: 0, 0
+  index: -1
+lady3/Shape 24
+  rotate: false
+  xy: 1039, 138.5
+  size: 26.5, 70
+  orig: 26.5, 70
+  offset: 0, 0
+  index: -1
+lady3/Shape 4
+  rotate: false
+  xy: 823, 80
+  size: 42, 49.5
+  orig: 42, 49.5
+  offset: 0, 0
+  index: -1
+lady3/Shape 5
+  rotate: 270
+  xy: 668, 84
+  size: 57.5, 52.5
+  orig: 57.5, 52.5
+  offset: 0, 0
+  index: -1
+lady3/Shape 56 copy
+  rotate: true
+  xy: 243.5, 21.5
+  size: 37, 119.5
+  orig: 37, 119.5
+  offset: 0, 0
+  index: -1
+lady3/Shape 6
+  rotate: 270
+  xy: 967.5, 14
+  size: 33.5, 71.5
+  orig: 33.5, 71.5
+  offset: 0, 0
+  index: -1
+lady3/Shape 8 copy
+  rotate: 180
+  xy: 980.5, 60.5
+  size: 31, 72.5
+  orig: 31, 72.5
+  offset: 0, 0
+  index: -1
+lady4/Layer 2 copy
+  rotate: true
+  xy: 505, 108.5
+  size: 90.5, 82.5
+  orig: 90.5, 82.5
+  offset: 0, 0
+  index: -1
+lady4/Shape 10
+  rotate: true
+  xy: 146, 3
+  size: 32.5, 78
+  orig: 32.5, 78
+  offset: 0, 0
+  index: -1
+lady4/Shape 24
+  rotate: true
+  xy: 795, 11.5
+  size: 29, 68
+  orig: 29, 68
+  offset: 0, 0
+  index: -1
+lady4/Shape 4
+  rotate: 180
+  xy: 877, 161
+  size: 39.5, 47.5
+  orig: 39.5, 47.5
+  offset: 0, 0
+  index: -1
+lady4/Shape 5
+  rotate: true
+  xy: 714, 23.5
+  size: 69, 40
+  orig: 69, 40
+  offset: 0, 0
+  index: -1
+lady4/Shape 6
+  rotate: 180
+  xy: 1044.5, 2
+  size: 33.5, 66
+  orig: 33.5, 66
+  offset: 0, 0
+  index: -1
+lady4/Shape 8 copy
+  rotate: false
+  xy: 880, 15
+  size: 32.5, 78
+  orig: 32.5, 78
+  offset: 0, 0
+  index: -1
+lady5/Layer 2 copy
+  rotate: true
+  xy: 588.5, 118.5
+  size: 80.5, 78.5
+  orig: 80.5, 78.5
+  offset: 0, 0
+  index: -1
+lady5/Shape 10
+  rotate: 270
+  xy: 353.5, 2
+  size: 32.5, 78
+  orig: 32.5, 78
+  offset: 0, 0
+  index: -1
+lady5/Shape 24
+  rotate: false
+  xy: 1019.5, 96.5
+  size: 27, 68
+  orig: 27, 68
+  offset: 0, 0
+  index: -1
+lady5/Shape 4
+  rotate: true
+  xy: 1, 11.5
+  size: 43.5, 51.5
+  orig: 43.5, 51.5
+  offset: 0, 0
+  index: -1
+lady5/Shape 5
+  rotate: 270
+  xy: 53, 7.5
+  size: 43, 34
+  orig: 43, 34
+  offset: 0, 0
+  index: -1
+lady5/Shape 56 copy
+  rotate: 270
+  xy: 431, 13.5
+  size: 30.5, 79
+  orig: 30.5, 79
+  offset: 0, 0
+  index: -1
+lady5/Shape 58 copy 2
+  rotate: false
+  xy: 1127, 135.5
+  size: 33.5, 63
+  orig: 33.5, 63
+  offset: 0, 0
+  index: -1
+lady5/Shape 6
+  rotate: 180
+  xy: 998.5, 31
+  size: 32.5, 67
+  orig: 32.5, 67
+  offset: 0, 0
+  index: -1
+lady5/Shape 71 copy
+  rotate: 270
+  xy: 87, 17
+  size: 53, 61.5
+  orig: 53, 61.5
+  offset: 0, 0
+  index: -1
+lady5/Shape 8 copy
+  rotate: true
+  xy: 569, 10
+  size: 32.5, 78
+  orig: 32.5, 78
+  offset: 0, 0
+  index: -1
+lady6/Layer 2 copy
+  rotate: 180
+  xy: 116.5, 84
+  size: 103.5, 125
+  orig: 164.5, 167.5
+  offset: 30, 42.5
+  index: -1
+lady6/Shape 10
+  rotate: 180
+  xy: 1028.5, 26
+  size: 32.5, 78
+  orig: 32.5, 78
+  offset: 0, 0
+  index: -1
+lady6/Shape 24
+  rotate: false
+  xy: 949.5, 54.5
+  size: 30, 75
+  orig: 32.5, 82
+  offset: 0, 0
+  index: -1
+lady6/Shape 4
+  rotate: 180
+  xy: 781, 80
+  size: 43.5, 51.5
+  orig: 43.5, 51.5
+  offset: 0, 0
+  index: -1
+lady6/Shape 5
+  rotate: true
+  xy: 797.5, 156.5
+  size: 52, 41
+  orig: 52, 41
+  offset: 0, 0
+  index: -1
+lady6/Shape 56 copy
+  rotate: true
+  xy: 561.5, 45.5
+  size: 72.5, 88.5
+  orig: 72.5, 93
+  offset: 0, 0
+  index: -1
+lady6/Shape 58 copy 2
+  rotate: 270
+  xy: 1066, 161.5
+  size: 33.5, 63
+  orig: 33.5, 63
+  offset: 0, 0
+  index: -1
+lady6/Shape 6
+  rotate: false
+  xy: 966, 131
+  size: 34, 70
+  orig: 35, 72.5
+  offset: 1, 0
+  index: -1
+lady6/Shape 71 copy
+  rotate: false
+  xy: 522.5, 24.5
+  size: 53, 61.5
+  orig: 53, 61.5
+  offset: 0, 0
+  index: -1
+lady6/Shape 8 copy
+  rotate: false
+  xy: 856, 10
+  size: 32.5, 78
+  orig: 32.5, 78
+  offset: 0, 0
+  index: -1
+lady7/Layer 2 copy
+  rotate: true
+  xy: 410.5, 108.5
+  size: 97, 93.5
+  orig: 97, 93.5
+  offset: 0, 0
+  index: -1
+lady7/Shape 10
+  rotate: false
+  xy: 1070.5, 2
+  size: 32.5, 73
+  orig: 32.5, 73
+  offset: 0, 0
+  index: -1
+lady7/Shape 24
+  rotate: true
+  xy: 224.5, 7.5
+  size: 26.5, 70
+  orig: 26.5, 70
+  offset: 0, 0
+  index: -1
+lady7/Shape 4
+  rotate: false
+  xy: 834.5, 130.5
+  size: 42, 49.5
+  orig: 42, 49.5
+  offset: 0, 0
+  index: -1
+lady7/Shape 5
+  rotate: 270
+  xy: 648, 26
+  size: 57.5, 52.5
+  orig: 57.5, 52.5
+  offset: 0, 0
+  index: -1
+lady7/Shape 56 copy
+  rotate: true
+  xy: 1, 51
+  size: 37, 119.5
+  orig: 37, 119.5
+  offset: 0, 0
+  index: -1
+lady7/Shape 6
+  rotate: 180
+  xy: 733, 93.5
+  size: 33.5, 71.5
+  orig: 33.5, 71.5
+  offset: 0, 0
+  index: -1
+lady7/Shape 8 copy
+  rotate: false
+  xy: 936, 12
+  size: 31, 72.5
+  orig: 31, 72.5
+  offset: 0, 0
+  index: -1
+lady8/Layer 2 copy
+  rotate: false
+  xy: 1, 89
+  size: 115, 119.5
+  orig: 115, 119.5
+  offset: 0, 0
+  index: -1
+lady8/Shape 10
+  rotate: false
+  xy: 1084.5, 76
+  size: 32.5, 73
+  orig: 32.5, 73
+  offset: 0, 0
+  index: -1
+lady8/Shape 24
+  rotate: 180
+  xy: 910.5, 115.5
+  size: 26.5, 66
+  orig: 26.5, 70
+  offset: 0, 4
+  index: -1
+lady8/Shape 4
+  rotate: true
+  xy: 444, 37.5
+  size: 66, 77.5
+  orig: 66, 77.5
+  offset: 0, 0
+  index: -1
+lady8/Shape 6
+  rotate: 180
+  xy: 698.5, 137
+  size: 39, 71.5
+  orig: 39, 71.5
+  offset: 0, 0
+  index: -1
+lady8/Shape 8 copy
+  rotate: false
+  xy: 991, 99
+  size: 31, 72.5
+  orig: 31, 72.5
+  offset: 0, 0
+  index: -1

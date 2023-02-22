@@ -1,0 +1,69 @@
+
+skeleton.png
+size: 256,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+monster_green/Group 1
+  rotate: true
+  xy: 2, 372
+  size: 445, 131
+  orig: 445, 131
+  offset: 0, 0
+  index: -1
+monster_green/Group 10
+  rotate: true
+  xy: 87, 467
+  size: 125, 44
+  orig: 125, 44
+  offset: 0, 0
+  index: -1
+monster_green/Group 11
+  rotate: true
+  xy: 85, 594
+  size: 116, 39
+  orig: 116, 39
+  offset: 0, 0
+  index: -1
+monster_green/Group 12
+  rotate: false
+  xy: 85, 712
+  size: 45, 84
+  orig: 45, 84
+  offset: 0, 0
+  index: -1
+monster_green/Group 13
+  rotate: true
+  xy: 2, 2
+  size: 41, 74
+  orig: 41, 74
+  offset: 0, 0
+  index: -1
+monster_green/Group 2
+  rotate: false
+  xy: 2, 140
+  size: 135, 113
+  orig: 135, 113
+  offset: 0, 0
+  index: -1
+monster_green/Shape 37
+  rotate: true
+  xy: 2, 255
+  size: 115, 136
+  orig: 115, 136
+  offset: 0, 0
+  index: -1
+monster_green/Shape 43
+  rotate: false
+  xy: 2, 819
+  size: 139, 320
+  orig: 139, 320
+  offset: 0, 0
+  index: -1
+monster_green/Shape 54
+  rotate: false
+  xy: 2, 45
+  size: 134, 93
+  orig: 134, 93
+  offset: 0, 0
+  index: -1

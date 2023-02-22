@@ -1,0 +1,143 @@
+{
+    "skeleton": {
+        "hash": "S28dCB73gFPEgSxyZvRJZFeZsxE",
+        "spine": "3.8.99",
+        "images": "",
+        "audio": "D:/OneDrive - GVST Việt Nam/Desktop/toilet_draw/Spine_draw2pee"
+    },
+    "bones": [
+        {
+            "name": "root"
+        },
+        {
+            "name": "bone",
+            "parent": "root",
+            "x": -0.35,
+            "y": 0.9
+        }
+    ],
+    "slots": [
+        {
+            "name": "fight_clound",
+            "bone": "bone"
+        }
+    ],
+    "skins": [
+        {
+            "name": "default",
+            "attachments": {
+                "fight_clound": {
+                    "fx/fight_cloud_anim/fight_cloud00": {
+                        "width": 720,
+                        "height": 480
+                    },
+                    "fx/fight_cloud_anim/fight_cloud01": {
+                        "width": 720,
+                        "height": 480
+                    },
+                    "fx/fight_cloud_anim/fight_cloud02": {
+                        "width": 720,
+                        "height": 480
+                    },
+                    "fx/fight_cloud_anim/fight_cloud03": {
+                        "width": 720,
+                        "height": 480
+                    },
+                    "fx/fight_cloud_anim/fight_cloud04": {
+                        "width": 720,
+                        "height": 480
+                    },
+                    "fx/fight_cloud_anim/fight_cloud05": {
+                        "width": 720,
+                        "height": 480
+                    },
+                    "fx/fight_cloud_anim/fight_cloud06": {
+                        "width": 720,
+                        "height": 480
+                    },
+                    "fx/fight_cloud_anim/fight_cloud07": {
+                        "width": 720,
+                        "height": 480
+                    },
+                    "fx/fight_cloud_anim/fight_cloud08": {
+                        "width": 720,
+                        "height": 480
+                    },
+                    "fx/fight_cloud_anim/fight_cloud09": {
+                        "width": 720,
+                        "height": 480
+                    },
+                    "fx/fight_cloud_anim/fight_cloud10": {
+                        "width": 720,
+                        "height": 480
+                    },
+                    "fx/fight_cloud_anim/fight_cloud11": {
+                        "width": 720,
+                        "height": 480
+                    },
+                    "fx/fight_cloud_anim/fight_cloud12": {
+                        "width": 720,
+                        "height": 480
+                    },
+                    "fx/fight_cloud_anim/fight_cloud13": {
+                        "width": 720,
+                        "height": 480
+                    },
+                    "fx/fight_cloud_anim/fight_cloud14": {
+                        "width": 720,
+                        "height": 480
+                    }
+                }
+            }
+        }
+    ],
+    "animations": {
+        "animation": {
+            "slots": {
+                "fight_clound": {
+                    "attachment": [
+                        {
+                            "name": "fx/fight_cloud_anim/fight_cloud00"
+                        },
+                        {
+                            "time": 0.0333,
+                            "name": "fx/fight_cloud_anim/fight_cloud02"
+                        },
+                        {
+                            "time": 0.0667,
+                            "name": "fx/fight_cloud_anim/fight_cloud04"
+                        },
+                        {
+                            "time": 0.1,
+                            "name": "fx/fight_cloud_anim/fight_cloud05"
+                        },
+                        {
+                            "time": 0.1333,
+                            "name": "fx/fight_cloud_anim/fight_cloud07"
+                        },
+                        {
+                            "time": 0.1667,
+                            "name": "fx/fight_cloud_anim/fight_cloud08"
+                        },
+                        {
+                            "time": 0.2,
+                            "name": "fx/fight_cloud_anim/fight_cloud10"
+                        },
+                        {
+                            "time": 0.2333,
+                            "name": "fx/fight_cloud_anim/fight_cloud12"
+                        },
+                        {
+                            "time": 0.2667,
+                            "name": "fx/fight_cloud_anim/fight_cloud13"
+                        },
+                        {
+                            "time": 0.3,
+                            "name": null
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

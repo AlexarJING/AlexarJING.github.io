@@ -1,0 +1,636 @@
+
+skeleton.png
+size: 1024,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+lady_win/Layer 6 copy 2
+  rotate: 180
+  xy: 303, 791
+  size: 165, 148
+  orig: 165, 148
+  offset: 0, 0
+  index: -1
+lady_win/Rectangle 1
+  rotate: true
+  xy: 255, 168
+  size: 88, 88
+  orig: 88, 88
+  offset: 0, 0
+  index: -1
+lady_win/Shape 42
+  rotate: false
+  xy: 212, 1145
+  size: 90, 60
+  orig: 90, 60
+  offset: 0, 0
+  index: -1
+lady_win/Shape 56 copy
+  rotate: 270
+  xy: 2, 703
+  size: 121, 184
+  orig: 121, 184
+  offset: 0, 0
+  index: -1
+lady_win/Shape 58 copy 2
+  rotate: true
+  xy: 433, 3
+  size: 75, 87
+  orig: 75, 87
+  offset: 0, 0
+  index: -1
+lady_win/Shape 59 copy
+  rotate: false
+  xy: 356, 1288
+  size: 39, 41
+  orig: 39, 41
+  offset: 0, 0
+  index: -1
+lady_win/Shape 63 copy
+  rotate: false
+  xy: 578, 1244
+  size: 71, 125
+  orig: 71, 125
+  offset: 0, 0
+  index: -1
+lady_win/Shape 63 copy 2
+  rotate: false
+  xy: 578, 533
+  size: 75, 126
+  orig: 75, 126
+  offset: 0, 0
+  index: -1
+lady_win/Shape 7 copy 4
+  rotate: 180
+  xy: 585, 842
+  size: 64, 129
+  orig: 64, 129
+  offset: 0, 0
+  index: -1
+lady_win/Shape 7 copy 5
+  rotate: false
+  xy: 601, 1083
+  size: 49, 132
+  orig: 49, 132
+  offset: 0, 0
+  index: -1
+lady_win/Shape 71 copy
+  rotate: 270
+  xy: 61, 802
+  size: 64, 99
+  orig: 64, 99
+  offset: 0, 0
+  index: -1
+lady_win/Shape 72
+  rotate: false
+  xy: 420, 543
+  size: 138, 80
+  orig: 138, 80
+  offset: 0, 0
+  index: -1
+lady_win/noel
+  rotate: false
+  xy: 140, 511
+  size: 156, 105
+  orig: 156, 105
+  offset: 0, 0
+  index: -1
+lady_win2/Layer 6 copy 2
+  rotate: 180
+  xy: 340, 1099
+  size: 212, 203
+  orig: 212, 203
+  offset: 0, 0
+  index: -1
+lady_win2/Rectangle 1
+  rotate: 270
+  xy: 448, 199
+  size: 76, 98
+  orig: 76, 98
+  offset: 0, 0
+  index: -1
+lady_win2/Shape 56 copy
+  rotate: false
+  xy: 2, 1195
+  size: 11, 10
+  orig: 11, 10
+  offset: 0, 0
+  index: -1
+lady_win2/Shape 58 copy 2
+  rotate: false
+  xy: 2, 1195
+  size: 11, 10
+  orig: 11, 10
+  offset: 0, 0
+  index: -1
+lady_win2/Shape 59 copy
+  rotate: false
+  xy: 2, 1195
+  size: 11, 10
+  orig: 11, 10
+  offset: 0, 0
+  index: -1
+lady_win2/Shape 71 copy
+  rotate: false
+  xy: 2, 1195
+  size: 11, 10
+  orig: 11, 10
+  offset: 0, 0
+  index: -1
+lady_win3/Shape 58 copy 2
+  rotate: false
+  xy: 2, 1195
+  size: 11, 10
+  orig: 11, 10
+  offset: 0, 0
+  index: -1
+lady_win3/Shape 59 copy
+  rotate: false
+  xy: 2, 1195
+  size: 11, 10
+  orig: 11, 10
+  offset: 0, 0
+  index: -1
+lady_win3/Shape 71 copy
+  rotate: false
+  xy: 2, 1195
+  size: 11, 10
+  orig: 11, 10
+  offset: 0, 0
+  index: -1
+lady_win4/Shape 56 copy
+  rotate: false
+  xy: 2, 1195
+  size: 11, 10
+  orig: 11, 10
+  offset: 0, 0
+  index: -1
+lady_win4/Shape 58 copy 2
+  rotate: false
+  xy: 2, 1195
+  size: 11, 10
+  orig: 11, 10
+  offset: 0, 0
+  index: -1
+lady_win4/Shape 59 copy
+  rotate: false
+  xy: 2, 1195
+  size: 11, 10
+  orig: 11, 10
+  offset: 0, 0
+  index: -1
+lady_win4/Shape 71 copy
+  rotate: false
+  xy: 2, 1195
+  size: 11, 10
+  orig: 11, 10
+  offset: 0, 0
+  index: -1
+lady_win5/Shape 59 copy
+  rotate: false
+  xy: 2, 1195
+  size: 11, 10
+  orig: 11, 10
+  offset: 0, 0
+  index: -1
+lady_win6/Shape 59 copy
+  rotate: false
+  xy: 2, 1195
+  size: 11, 10
+  orig: 11, 10
+  offset: 0, 0
+  index: -1
+lady_win7/Shape 58 copy 2
+  rotate: false
+  xy: 2, 1195
+  size: 11, 10
+  orig: 11, 10
+  offset: 0, 0
+  index: -1
+lady_win7/Shape 59 copy
+  rotate: false
+  xy: 2, 1195
+  size: 11, 10
+  orig: 11, 10
+  offset: 0, 0
+  index: -1
+lady_win7/Shape 71 copy
+  rotate: false
+  xy: 2, 1195
+  size: 11, 10
+  orig: 11, 10
+  offset: 0, 0
+  index: -1
+lady_win8/Shape 56 copy
+  rotate: false
+  xy: 2, 1195
+  size: 11, 10
+  orig: 11, 10
+  offset: 0, 0
+  index: -1
+lady_win8/Shape 58 copy 2
+  rotate: false
+  xy: 2, 1195
+  size: 11, 10
+  orig: 11, 10
+  offset: 0, 0
+  index: -1
+lady_win8/Shape 59 copy
+  rotate: false
+  xy: 2, 1195
+  size: 11, 10
+  orig: 11, 10
+  offset: 0, 0
+  index: -1
+lady_win8/Shape 71 copy
+  rotate: false
+  xy: 2, 1195
+  size: 11, 10
+  orig: 11, 10
+  offset: 0, 0
+  index: -1
+lady_win8/Shape 72
+  rotate: false
+  xy: 2, 1195
+  size: 11, 10
+  orig: 11, 10
+  offset: 0, 0
+  index: -1
+lady_win2/Shape 63 copy
+  rotate: true
+  xy: 54, 138
+  size: 67, 145
+  orig: 67, 145
+  offset: 0, 0
+  index: -1
+lady_win2/Shape 63 copy 2
+  rotate: true
+  xy: 345, 160
+  size: 66, 145
+  orig: 66, 145
+  offset: 0, 0
+  index: -1
+lady_win2/Shape 7 copy 4
+  rotate: 180
+  xy: 578, 710
+  size: 65, 130
+  orig: 65, 130
+  offset: 0, 0
+  index: -1
+lady_win2/Shape 7 copy 5
+  rotate: false
+  xy: 554, 1040
+  size: 54, 135
+  orig: 54, 135
+  offset: 0, 0
+  index: -1
+lady_win2/Shape 72
+  rotate: true
+  xy: 569, 336
+  size: 86, 69
+  orig: 86, 69
+  offset: 0, 0
+  index: -1
+lady_win3/Layer 6 copy 2
+  rotate: 180
+  xy: 206, 932
+  size: 191, 209
+  orig: 191, 209
+  offset: 0, 0
+  index: -1
+lady_win3/Rectangle 1
+  rotate: true
+  xy: 124, 434
+  size: 84, 99
+  orig: 84, 99
+  offset: 0, 0
+  index: -1
+lady_win3/Shape 56 copy
+  rotate: true
+  xy: 187, 709
+  size: 74, 239
+  orig: 74, 239
+  offset: 0, 0
+  index: -1
+lady_win3/Shape 63 copy
+  rotate: false
+  xy: 548, 89
+  size: 62, 145
+  orig: 62, 145
+  offset: 0, 0
+  index: -1
+lady_win3/Shape 63 copy 2
+  rotate: 270
+  xy: 198, 121
+  size: 65, 146
+  orig: 65, 146
+  offset: 0, 0
+  index: -1
+lady_win3/Shape 7 copy 4
+  rotate: 270
+  xy: 2, 50
+  size: 67, 143
+  orig: 67, 143
+  offset: 0, 0
+  index: -1
+lady_win3/Shape 7 copy 5
+  rotate: true
+  xy: 147, 44
+  size: 53, 140
+  orig: 53, 140
+  offset: 0, 0
+  index: -1
+lady_win3/Shape 72
+  rotate: false
+  xy: 416, 625
+  size: 115, 105
+  orig: 115, 105
+  offset: 0, 0
+  index: -1
+lady_win4/Layer 6 copy 2
+  rotate: 180
+  xy: 396, 922
+  size: 178, 177
+  orig: 178, 177
+  offset: 0, 0
+  index: -1
+lady_win4/Rectangle 1
+  rotate: true
+  xy: 158, 202
+  size: 79, 95
+  orig: 79, 95
+  offset: 0, 0
+  index: -1
+lady_win4/Shape 63 copy
+  rotate: 270
+  xy: 269, 410
+  size: 65, 156
+  orig: 65, 156
+  offset: 0, 0
+  index: -1
+lady_win4/Shape 63 copy 2
+  rotate: true
+  xy: 196, 315
+  size: 65, 156
+  orig: 65, 156
+  offset: 0, 0
+  index: -1
+lady_win4/Shape 7 copy 4
+  rotate: 180
+  xy: 550, 1364
+  size: 67, 132
+  orig: 67, 132
+  offset: 0, 0
+  index: -1
+lady_win4/Shape 7 copy 5
+  rotate: true
+  xy: 425, 118
+  size: 58, 136
+  orig: 58, 136
+  offset: 0, 0
+  index: -1
+lady_win4/Shape 72
+  rotate: false
+  xy: 118, 583
+  size: 138, 80
+  orig: 138, 80
+  offset: 0, 0
+  index: -1
+lady_win5/Layer 6 copy 2
+  rotate: 180
+  xy: 2, 866
+  size: 162, 150
+  orig: 162, 150
+  offset: 0, 0
+  index: -1
+lady_win5/Rectangle 1
+  rotate: 270
+  xy: 365, 474
+  size: 87, 103
+  orig: 87, 103
+  offset: 0, 0
+  index: -1
+lady_win5/Shape 56 copy
+  rotate: 270
+  xy: 2, 261
+  size: 61, 158
+  orig: 61, 158
+  offset: 0, 0
+  index: -1
+lady_win5/Shape 58 copy 2
+  rotate: false
+  xy: 574, 19
+  size: 67, 126
+  orig: 67, 126
+  offset: 0, 0
+  index: -1
+lady_win5/Shape 63 copy
+  rotate: true
+  xy: 427, 393
+  size: 65, 156
+  orig: 65, 156
+  offset: 0, 0
+  index: -1
+lady_win5/Shape 63 copy 2
+  rotate: 270
+  xy: 349, 277
+  size: 65, 156
+  orig: 65, 156
+  offset: 0, 0
+  index: -1
+lady_win5/Shape 7 copy 4
+  rotate: 180
+  xy: 558, 895
+  size: 65, 134
+  orig: 65, 134
+  offset: 0, 0
+  index: -1
+lady_win5/Shape 7 copy 5
+  rotate: false
+  xy: 539, 1176
+  size: 54, 136
+  orig: 54, 136
+  offset: 0, 0
+  index: -1
+lady_win5/Shape 71 copy
+  rotate: 270
+  xy: 12, 495
+  size: 106, 123
+  orig: 106, 123
+  offset: 0, 0
+  index: -1
+lady_win5/Shape 72
+  rotate: 270
+  xy: 576, 445
+  size: 86, 68
+  orig: 86, 68
+  offset: 0, 0
+  index: -1
+lady_win6/Layer 6 copy 2
+  rotate: false
+  xy: 2, 1207
+  size: 352, 326
+  orig: 352, 326
+  offset: 0, 0
+  index: -1
+lady_win6/Rectangle 1
+  rotate: 180
+  xy: 260, 458
+  size: 87, 103
+  orig: 87, 103
+  offset: 0, 0
+  index: -1
+lady_win6/Shape 56 copy
+  rotate: 180
+  xy: 436, 732
+  size: 145, 186
+  orig: 145, 186
+  offset: 0, 0
+  index: -1
+lady_win6/Shape 58 copy 2
+  rotate: false
+  xy: 585, 216
+  size: 67, 126
+  orig: 67, 126
+  offset: 0, 0
+  index: -1
+lady_win6/Shape 63 copy
+  rotate: true
+  xy: 111, 369
+  size: 65, 156
+  orig: 65, 156
+  offset: 0, 0
+  index: -1
+lady_win6/Shape 63 copy 2
+  rotate: 270
+  xy: 142, 273
+  size: 65, 156
+  orig: 65, 156
+  offset: 0, 0
+  index: -1
+lady_win6/Shape 7 copy 4
+  rotate: 270
+  xy: 2, 324
+  size: 70, 145
+  orig: 70, 145
+  offset: 0, 0
+  index: -1
+lady_win6/Shape 7 copy 5
+  rotate: false
+  xy: 543, 575
+  size: 55, 136
+  orig: 65, 164
+  offset: 5, 14
+  index: -1
+lady_win6/Shape 71 copy
+  rotate: 270
+  xy: 298, 563
+  size: 106, 123
+  orig: 106, 123
+  offset: 0, 0
+  index: -1
+lady_win6/Shape 72
+  rotate: false
+  xy: 470, 459
+  size: 104, 82
+  orig: 104, 82
+  offset: 0, 0
+  index: -1
+lady_win7/Layer 6 copy 2
+  rotate: true
+  xy: 2, 1014
+  size: 191, 209
+  orig: 191, 209
+  offset: 0, 0
+  index: -1
+lady_win7/Rectangle 1
+  rotate: true
+  xy: 2, 413
+  size: 84, 99
+  orig: 84, 99
+  offset: 0, 0
+  index: -1
+lady_win7/Shape 56 copy
+  rotate: 270
+  xy: 175, 664
+  size: 74, 239
+  orig: 74, 239
+  offset: 0, 0
+  index: -1
+lady_win7/Shape 63 copy
+  rotate: true
+  xy: 282, 78
+  size: 62, 145
+  orig: 62, 145
+  offset: 0, 0
+  index: -1
+lady_win7/Shape 63 copy 2
+  rotate: true
+  xy: 2, 194
+  size: 65, 146
+  orig: 65, 146
+  offset: 0, 0
+  index: -1
+lady_win7/Shape 7 copy 4
+  rotate: true
+  xy: 429, 49
+  size: 67, 143
+  orig: 67, 143
+  offset: 0, 0
+  index: -1
+lady_win7/Shape 7 copy 5
+  rotate: true
+  xy: 291, 37
+  size: 53, 140
+  orig: 53, 140
+  offset: 0, 0
+  index: -1
+lady_win7/Shape 72
+  rotate: false
+  xy: 2, 601
+  size: 115, 105
+  orig: 115, 105
+  offset: 0, 0
+  index: -1
+lady_win8/Layer 6 copy 2
+  rotate: false
+  xy: 356, 1304
+  size: 209, 229
+  orig: 209, 229
+  offset: 0, 0
+  index: -1
+lady_win8/Rectangle 1
+  rotate: false
+  xy: 165, 775
+  size: 132, 155
+  orig: 132, 155
+  offset: 0, 0
+  index: -1
+lady_win8/Shape 63 copy
+  rotate: 180
+  xy: 516, 261
+  size: 62, 145
+  orig: 62, 145
+  offset: 0, 0
+  index: -1
+lady_win8/Shape 63 copy 2
+  rotate: true
+  xy: 300, 235
+  size: 65, 146
+  orig: 65, 146
+  offset: 0, 0
+  index: -1
+lady_win8/Shape 7 copy 4
+  rotate: 270
+  xy: 307, 345
+  size: 67, 143
+  orig: 67, 143
+  offset: 0, 0
+  index: -1
+lady_win8/Shape 7 copy 5
+  rotate: true
+  xy: 71, 91
+  size: 53, 140
+  orig: 53, 140
+  offset: 0, 0
+  index: -1
