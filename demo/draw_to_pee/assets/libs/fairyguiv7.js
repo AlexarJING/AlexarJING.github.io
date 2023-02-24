@@ -2414,6 +2414,8 @@ PIXI = PIXI || globalThis.PIXI;var __awaiter = (this && this.__awaiter) || funct
                     var resource = fgui.utils.Assets.get(`${packname}@${item.id}`);
                     this.playSound(resource);
                 }
+            } else if (fgui.UIConfig.defaultButtonSound){
+                this.playSound(fgui.UIConfig.defaultButtonSound);
             }
         }
         playSound(resource) {
