@@ -1421,9 +1421,9 @@ PIXI = PIXI || globalThis.PIXI;var __awaiter = (this && this.__awaiter) || funct
                 throw new Error("Invalid child index");
         }
         removeChildren(beginIndex = 0, endIndex = -1, dispose = false) {
-            if (endIndex < 0 || endIndex >= this.numChildren)
+            if (endIndex < 0 || endIndex >= this.numChildren) {}
                 endIndex = this.numChildren - 1;
-            for (let i = beginIndex; i <= endIndex; ++i)
+            for (let i = endIndex; i >= beginIndex; i--)
                 this.removeChildAt(beginIndex, dispose);
         }
         getChildAt(index = 0) {
