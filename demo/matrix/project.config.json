@@ -1,0 +1,18 @@
+{
+  "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "postcss": true,
+    "minified": true,
+    "newFeature": true,
+    "autoCompile": true
+  },
+  "appid": "tt0a007cbd953918a802",
+  "projectname": "连连看模拟器",
+  "condition": {
+    "game": {
+      "current": -1,
+      "list": []
+    }
+  }
+}
