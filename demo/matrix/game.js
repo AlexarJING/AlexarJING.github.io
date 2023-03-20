@@ -1,5 +1,5 @@
 console.log('使用抖音开发者工具开发过程中可以参考以下文档:')
-
+console.log = function () { }
 require("./assets/libs/fetch.umd.js")
 require("./assets/libs/adapter.js")
 globalThis.TWEEN = require("./assets/libs/tween.umd.min.js")

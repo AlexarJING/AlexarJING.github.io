@@ -12388,8 +12388,11 @@ var PIXI;
         }
         set selectedIndex(value) {
             if (this.$selectedIndex != value) {
-                if (value > this.$pageIds.length - 1)
-                    throw new Error(`index out of range: ${value}`);
+                if (value > this.$pageIds.length - 1) {
+                    console.error(this, `index out of range: ${value}`);
+                    value = this.$pageIds.length - 1
+                }
+
                 this.$updating = true;
                 this.$previousIndex = this.$selectedIndex;
                 this.$selectedIndex = value;
