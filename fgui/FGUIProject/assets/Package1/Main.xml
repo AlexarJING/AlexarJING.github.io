@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="800,600">
+  <displayList>
+    <text id="n0_pgwq" name="n0" xy="123,81" size="159,94" fontSize="12" autoSize="none" text="测试页面"/>
+  </displayList>
+</component>

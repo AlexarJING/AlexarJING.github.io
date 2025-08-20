@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch FairyGUI HTML",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:3000/fairygui-demo.html",
+            "webRoot": "${workspaceFolder}",
+            "sourceMaps": true,
+            "preLaunchTask": "serve"
+        }
+    ]
+}
