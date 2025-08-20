@@ -1,0 +1,560 @@
+[
+  {
+    "name": "Abomination",
+    "gold": 6,
+    "image": "images/Statue_Abomination_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Angry Chickens",
+    "gold": 2,
+    "image": "images/Statue_AngryChickens_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Arcane Blast",
+    "gold": 1,
+    "image": "images/Statue_ArcaneBlast_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Ancient of War",
+    "gold": 10,
+    "image": "images/Statue_AncientofWar_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Banshee",
+    "gold": 4,
+    "image": "images/Statue_Banshee_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Bat Rider",
+    "gold": 2,
+    "image": "images/Statue_BatRider_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Blizzard",
+    "gold": 4,
+    "image": "images/Statue_Blizzard_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Bog Beast",
+    "gold": 3,
+    "image": "images/Statue_BogBeast_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Chain Lightning",
+    "gold": 2,
+    "image": "images/Statue_ChainLightning_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Cheat Death",
+    "gold": 3,
+    "image": "images/Statue_CheatDeath_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Chimaera",
+    "gold": 5,
+    "image": "images/Statue_Chimaera_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Core Hounds",
+    "gold": 6,
+    "image": "images/Statue_CoreHounds_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Dark Iron Miner",
+    "gold": 2,
+    "image": "images/Statue_DarkIronMiner_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Darkspear Troll",
+    "gold": 3,
+    "image": "images/Statue_DarkspearTroll_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Deep Breath",
+    "gold": 5,
+    "image": "images/Statue_DeepBreath_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Defias Bandits",
+    "gold": 1,
+    "image": "images/Statue_DefiasBandits_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Dire Batlings",
+    "gold": 2,
+    "image": "images/Statue_DireBatlings_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Drake",
+    "gold": 4,
+    "image": "images/Statue_Drake_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Dryad",
+    "gold": 4,
+    "image": "images/Statue_Dryad_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Earth and Moon",
+    "gold": 6,
+    "image": "images/Statue_EarthAndMoon_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Druid of the Claw",
+    "gold": 3,
+    "image": "images/Statue_DruidoftheClaw_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Earth Elemental",
+    "gold": 3,
+    "image": "images/Statue_EarthElemental_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Eclipse",
+    "gold": 3,
+    "image": "images/Statue_Eclipse_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Execute",
+    "gold": 3,
+    "image": "images/Statue_Execute_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Faerie Dragon",
+    "gold": 3,
+    "image": "images/Statue_FaerieDragon_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Fire Elemental",
+    "gold": 4,
+    "image": "images/Statue_FireElemental_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Firehammer",
+    "gold": 4,
+    "image": "images/Statue_Firehammer_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Flamewaker",
+    "gold": 4,
+    "image": "images/Statue_Flamewaker_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Footmen",
+    "gold": 5,
+    "image": "images/Statue_Footmen_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Gargoyle",
+    "gold": 4,
+    "image": "images/Statue_Gargoyle_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Ghoul",
+    "gold": 2,
+    "image": "images/Statue_Ghoul_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Gnoll Brute",
+    "gold": 3,
+    "image": "images/Statue_GnollBrute_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Goblin Sapper",
+    "gold": 2,
+    "image": "images/Statue_GoblinSapper_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Gryphon Rider",
+    "gold": 2,
+    "image": "images/Statue_GryphonRider_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Harpies",
+    "gold": 3,
+    "image": "images/Statue_Harpy_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Harvest Golem",
+    "gold": 3,
+    "image": "images/Statue_HarvestGolem_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Headless Horseman",
+    "gold": 5,
+    "image": "images/Statue_HeadlessHorseman_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Holy Nova",
+    "gold": 3,
+    "image": "images/Statue_HolyNova_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Huntress",
+    "gold": 5,
+    "image": "images/Statue_Huntress_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Living Bomb",
+    "gold": 5,
+    "image": "images/Statue_LivingBomb_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Meat Wagon",
+    "gold": 3,
+    "image": "images/Statue_MeatWagon_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Molten Giant",
+    "gold": 6,
+    "image": "images/Statue_MoltenGiant_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Moonkin",
+    "gold": 4,
+    "image": "images/Statue_Moonkin_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Mountaineer",
+    "gold": 5,
+    "image": "images/Statue_Mountaineer_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Murloc Tidehunters",
+    "gold": 2,
+    "image": "images/Statue_MurlocTidehunters_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Necromancer",
+    "gold": 4,
+    "image": "images/Statue_Necromancer_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Ogre Mage",
+    "gold": 5,
+    "image": "images/Statue_OgreMage_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Plague Farmer",
+    "gold": 2,
+    "image": "images/Statue_PlagueFarmer_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Polymorph",
+    "gold": 3,
+    "image": "images/Statue_PolymorphSpell_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Priestess",
+    "gold": 2,
+    "image": "images/Statue_Priestess_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Prowler",
+    "gold": 3,
+    "image": "images/Statue_Prowler_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Pyromancer",
+    "gold": 3,
+    "image": "images/Statue_Pyromancer_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Quilboar",
+    "gold": 2,
+    "image": "images/Statue_Quilboar_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Raptors",
+    "gold": 3,
+    "image": "images/Statue_Raptors_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "S.A.F.E. Pilot",
+    "gold": 3,
+    "image": "images/Statue_S.A.F.E.PilotFlyingMachine_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Frostwolf Shaman",
+    "gold": 4,
+    "image": "images/Statue_Shaman_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Skeleton Party",
+    "gold": 4,
+    "image": "images/Statue_SkeletonParty_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Skeletons",
+    "gold": 2,
+    "image": "images/Statue_SkeletonWarrior_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Smoke Bomb",
+    "gold": 1,
+    "image": "images/Statue_SmokeBombSpell_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Spiderlings",
+    "gold": 2,
+    "image": "images/Statue_Spiderlings_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Stonehoof Tauren",
+    "gold": 4,
+    "image": "images/Statue_StonehoofTauren_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Swole Troll",
+    "gold": 4,
+    "image": "images/Statue_SwoleTroll_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Treant",
+    "gold": 1,
+    "image": "images/Statue_Treant_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Vultures",
+    "gold": 1,
+    "image": "images/Statue_Vultures_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Warsong Grunts",
+    "gold": 5,
+    "image": "images/Statue_WarsongGrunts_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Warsong Raider",
+    "gold": 4,
+    "image": "images/Statue_WarsongRaider_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Whelp Eggs",
+    "gold": 3,
+    "image": "images/Statue_WhelpEggs_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Witch Doctor",
+    "gold": 2,
+    "image": "images/Statue_WitchDoctor_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Worgen",
+    "gold": 3,
+    "image": "images/Statue_Worgen_Pose.webp",
+    "isLeader": false
+  },
+  {
+    "name": "Arthas Menethil",
+    "gold": 5,
+    "image": "images/Indicator_ArthasMenethil_Pose.webp",
+    "isLeader": true
+  },
+  {
+    "name": "Anub'arak",
+    "gold": 4,
+    "image": "images/Indicator_Anubarak_Pose.webp",
+    "isLeader": true
+  },
+  {
+    "name": "Baron Rivendare",
+    "gold": 4,
+    "image": "images/Indicator_BaronRivendare_Pose.webp",
+    "isLeader": true
+  },
+  {
+    "name": "Bloodmage Thalnos",
+    "gold": 4,
+    "image": "images/Indicator_BloodmageThalnos_Pose.webp",
+    "isLeader": true
+  },
+  {
+    "name": "Cairne Bloodhoof",
+    "gold": 5,
+    "image": "images/Indicator_Cairne_Pose.webp",
+    "isLeader": true
+  },
+  {
+    "name": "Cenarius",
+    "gold": 5,
+    "image": "images/Indicator_Cenarius_Pose.webp",
+    "isLeader": true
+  },
+  {
+    "name": "Charlga Razorflank",
+    "gold": 2,
+    "image": "images/Indicator_Charlga_Pose.webp",
+    "isLeader": true
+  },
+  {
+    "name": "General Drakkisath",
+    "gold": 5,
+    "image": "images/Indicator_Drakkisath_Pose.webp",
+    "isLeader": true
+  },
+  {
+    "name": "Emperor Thaurissan",
+    "gold": 4,
+    "image": "images/Indicator_Thaurissan_Pose.webp",
+    "isLeader": true
+  },
+  {
+    "name": "Grommash Hellscream",
+    "gold": 4,
+    "image": "images/Indicator_Grommash_Pose.webp",
+    "isLeader": true
+  },
+  {
+    "name": "Hogger",
+    "gold": 4,
+    "image": "images/Indicator_Hogger_Pose.webp",
+    "isLeader": true
+  },
+  {
+    "name": "Jaina Proudmoore",
+    "gold": 3,
+    "image": "images/Indicator_Jaina_Pose.webp",
+    "isLeader": true
+  },
+  {
+    "name": "Maiev Shadowsong",
+    "gold": 6,
+    "image": "images/Indicator_Maiev_Pose.webp",
+    "isLeader": true
+  },
+  {
+    "name": "Malfurion",
+    "gold": 4,
+    "image": "images/Indicator_Malfurion_Pose.webp",
+    "isLeader": true
+  },
+  {
+    "name": "Old Murk-Eye",
+    "gold": 4,
+    "image": "images/Indicator_OldMurkEye_Pose.webp",
+    "isLeader": true
+  },
+  {
+    "name": "Onu",
+    "gold": 6,
+    "image": "images/Indicator_Onu_Pose.webp",
+    "isLeader": true
+  },
+  {
+    "name": "Orgrim Doomhammer",
+    "gold": 3,
+    "image": "images/Indicator_OrgrimDoomhammer_Pose.webp",
+    "isLeader": true
+  },
+  {
+    "name": "Ragnaros",
+    "gold": 5,
+    "image": "images/Indicator_Ragnaros_Pose.webp",
+    "isLeader": true
+  },
+  {
+    "name": "Rend Blackhand",
+    "gold": 6,
+    "image": "images/Indicator_Rend_Pose.webp",
+    "isLeader": true
+  },
+  {
+    "name": "Sneed",
+    "gold": 5,
+    "image": "images/Indicator_Sneed_Pose.webp",
+    "isLeader": true
+  },
+  {
+    "name": "Sylvanas Windrunner",
+    "gold": 6,
+    "image": "images/Indicator_Sylvanas_Pose.webp",
+    "isLeader": true
+  },
+  {
+    "name": "Thrall",
+    "gold": 4,
+    "image": "images/Indicator_Thrall_Pose.webp",
+    "isLeader": true
+  },
+  {
+    "name": "Tirion Fordring",
+    "gold": 4,
+    "image": "images/Indicator_Tirion_Pose.webp",
+    "isLeader": true
+  },
+  {
+    "name": "Ysera",
+    "gold": 3,
+    "image": "images/Indicator_Ysera_Pose.webp",
+    "isLeader": true
+  }
+]

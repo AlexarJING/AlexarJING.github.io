@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Abomination",
+    "gold": 6,
+    "image": "/warcraft-rumble/res/img/minis/statues/Statue_Abomination_Pose.webp"
+  },
+  {
+    "name": "Angry Chickens",
+    "gold": 2,
+    "image": "/warcraft-rumble/res/img/minis/statues/Statue_AngryChickens_Pose.webp"
+  },
+  {
+    "name": "Arcane Blast",
+    "gold": 1,
+    "image": "/warcraft-rumble/res/img/minis/statues/Statue_ArcaneBlast_Pose.webp"
+  },
+  {
+    "name": "Ancient of War",
+    "gold": 10,
+    "image": "/warcraft-rumble/res/img/minis/statues/Statue_AncientofWar_Pose.webp"
+  },
+  {
+    "name": "Banshee",
+    "gold": 4,
+    "image": "/warcraft-rumble/res/img/minis/statues/Statue_Banshee_Pose.webp"
+  },
+  {
+    "name": "Bat Rider",
+    "gold": 2,
+    "image": "/warcraft-rumble/res/img/minis/statues/Statue_BatRider_Pose.webp"
+  },
+  {
+    "name": "Blizzard",
+    "gold": 4,
+    "image": "/warcraft-rumble/res/img/minis/statues/Statue_Blizzard_Pose.webp"
+  },
+  {
+    "name": "Bog Beast",
+    "gold": 3,
+    "image": "/warcraft-rumble/res/img/minis/statues/Statue_BogBeast_Pose.webp"
+  },
+  {
+    "name": "Chain Lightning",
+    "gold": 2,
+    "image": "/warcraft-rumble/res/img/minis/statues/Statue_ChainLightning_Pose.webp"
+  },
+  {
+    "name": "Cheat Death",
+    "gold": 3,
+    "image": "/warcraft-rumble/res/img/minis/statues/Statue_CheatDeath_Pose.webp"
+  },
+  {
+    "name": "Chimaera",
+    "gold": 5,
+    "image": "/warcraft-rumble/res/img/minis/statues/Statue_Chimaera_Pose.webp"
+  },
+  {
+    "name": "Core Hounds",
+    "gold": 6,
+    "image": "/warcraft-rumble/res/img/minis/statues/Statue_CoreHounds_Pose.webp"
+  },
+  {
+    "name": "Dark Iron Miner",
+    "gold": 2,
+    "image": "/warcraft-rumble/res/img/minis/statues/Statue_DarkIronMiner_Pose.webp"
+  },
+  {
+    "name": "Darkspear Troll",
+    "gold": 3,
+    "image": "/warcraft-rumble/res/img/minis/statues/Statue_DarkspearTroll_Pose.webp"
+  }
+]

@@ -2,6 +2,8 @@
 <packageDescription id="n6kxwmfe">
   <resources>
     <component id="rz180" name="Main.xml" path="/" exported="true"/>
+    <component id="dik81" name="Button1.xml" path="/"/>
+    <component id="dik82" name="listItem.xml" path="/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

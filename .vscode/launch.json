@@ -5,7 +5,7 @@
             "name": "Launch FairyGUI HTML",
             "type": "chrome",
             "request": "launch",
-            "url": "http://localhost:3000/fairygui-demo.html",
+            "url": "http://localhost:3000/warcraft_rumble.html",
             "webRoot": "${workspaceFolder}",
             "sourceMaps": true,
             "preLaunchTask": "serve"

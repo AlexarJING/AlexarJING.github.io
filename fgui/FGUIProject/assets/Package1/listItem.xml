@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="100,127">
+  <displayList>
+    <text id="n0_pgwq" name="title" xy="0,102" size="100,25" fontSize="12" align="center" vAlign="middle" autoSize="shrink" autoClearText="true" text="测试页面"/>
+    <graph id="n2_dik8" name="n2" xy="0,0" size="100,100" type="rect" lineSize="4" fillColor="#ffcccccc" corner="12"/>
+    <loader id="n1_dik8" name="icon" xy="4,4" size="92,92" url="assets/images/Indicator_OldMurkEye_Pose.webp" align="center" vAlign="middle" fill="scale" clearOnPublish="true"/>
+    <text id="n3_orfz" name="gold" xy="53,59" size="43,38" fontSize="27" color="#ffff00" align="right" autoSize="none" strokeColor="#000000" text="6"/>
+  </displayList>
+</component>
