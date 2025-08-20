@@ -9,6 +9,7 @@ export default class UI_Main extends fgui.GComponent {
 	public m_hero:UI_listItem;
 	public m_try:fgui.GButton;
 	public m_list:fgui.GList;
+	public m_all:fgui.GButton;
 	public static URL:string = "ui://n6kxwmferz180";
 
 	public static createInstance():UI_Main {
@@ -19,5 +20,6 @@ export default class UI_Main extends fgui.GComponent {
 		this.m_hero = <UI_listItem>(this.getChildAt(0));
 		this.m_try = <fgui.GButton>(this.getChildAt(1));
 		this.m_list = <fgui.GList>(this.getChildAt(2));
+		this.m_all = <fgui.GButton>(this.getChildAt(3));
 	}
 }

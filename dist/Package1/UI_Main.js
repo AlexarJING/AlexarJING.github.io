@@ -8,6 +8,7 @@ class UI_Main extends fgui.GComponent {
         this.m_hero = (this.getChildAt(0));
         this.m_try = (this.getChildAt(1));
         this.m_list = (this.getChildAt(2));
+        this.m_all = (this.getChildAt(3));
     }
 }
 UI_Main.URL = "ui://n6kxwmferz180";

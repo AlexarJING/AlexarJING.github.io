@@ -2,8 +2,8 @@
 <component size="800,600">
   <displayList>
     <component id="n0_pgwq" name="hero" src="dik82" fileName="listItem.xml" xy="159,204"/>
-    <component id="n3_dik8" name="try" src="dik81" fileName="Button1.xml" xy="350,493" size="200,79">
-      <Button title="&#xA;        随机生成" titleFontSize="22"/>
+    <component id="n3_dik8" name="try" src="dik81" fileName="Button1.xml" xy="459,481" size="200,79">
+      <Button title="&#xA;         按费随机" titleFontSize="22"/>
     </component>
     <list id="n4_dik8" name="list" xy="325,134" size="402,300" layout="flow_hz" overflow="scroll" lineGap="10" colGap="9" defaultItem="ui://n6kxwmfedik82" vAlign="middle">
       <item/>
@@ -13,5 +13,8 @@
       <item/>
       <item/>
     </list>
+    <component id="n6_orfz" name="all" src="dik81" fileName="Button1.xml" xy="153,481" size="200,79">
+      <Button title="&#xA;         全部随机" titleFontSize="22"/>
+    </component>
   </displayList>
 </component>

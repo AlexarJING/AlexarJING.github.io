@@ -8,5 +8,6 @@ export default class UIMain extends UI_Main {
     }[];
     protected onConstruct(): void;
     loadData(): Promise<void>;
-    updateAll(): void;
+    updateByPrice(): void;
+    updateByALL(): void;
 }
