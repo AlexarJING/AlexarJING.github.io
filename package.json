@@ -19,7 +19,7 @@
     "concurrently": "^8.2.2",
     "http-server": "^14.1.1",
     "jsdom": "^23.2.0",
-    "rollup": "^4.0.0",
+    "rollup": "^4.59.0",
     "typescript": "^5.3.0"
   }
 }
